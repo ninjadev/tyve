@@ -6,7 +6,16 @@
     "endFrame": 1443,
     "color": "#1b592f",
     "config": {
-        "offset": 1
+        "offset": 2
+    }
+  },
+  {
+    "type": "VCRLayer",
+    "displayName": "VCR FX",
+    "startFrame": 0,
+    "endFrame": 1443,
+    "color": "#521b9f",
+    "config": {
     }
   }
 ]
