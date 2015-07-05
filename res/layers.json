@@ -1,21 +1,23 @@
 [
   {
-    "type": "BlankLayer",
-    "displayName": "Blank layer",
+    "type": "GridLayer",
+    "displayName": "Grid layer",
     "startFrame": 0,
     "endFrame": 1443,
-    "color": "#1b592f",
-    "config": {
-        "offset": 2
-    }
+    "color": "#ecf0f1"
   },
   {
     "type": "VCRLayer",
     "displayName": "VCR FX",
     "startFrame": 0,
     "endFrame": 1443,
-    "color": "#521b9f",
-    "config": {
-    }
+    "color": "#e74c3c"
+  },
+  {
+    "type": "NoiseFXLayer",
+    "displayName": "Noise fx",
+    "startFrame": 0,
+    "endFrame": 1443,
+    "color": "#c0392b"
   }
 ]
