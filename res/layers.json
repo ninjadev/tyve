@@ -1,0 +1,12 @@
+[
+  {
+    "type": "BlankLayer",
+    "displayName": "Blank layer",
+    "startFrame": 0,
+    "endFrame": 1443,
+    "color": "#1b592f",
+    "config": {
+        "offset": 1
+    }
+  }
+]
