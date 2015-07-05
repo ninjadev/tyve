@@ -6,7 +6,7 @@ function BlankLayer(layer) {
   this.scene = new THREE.Scene();
   this.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, 10000);
   this.cube = new THREE.Mesh(new THREE.BoxGeometry(50, 5, 5),
-                             new THREE.MeshLambertMaterial({color: 0x00ff00}));
+                             new THREE.MeshLambertMaterial({color: 0xffffff}));
   this.scene.add(this.cube);
 
   this.cube.position.x = 45 * this.offset;
