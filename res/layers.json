@@ -13,14 +13,14 @@
     "type": "GridLayer",
     "displayName": "Grid layer",
     "startFrame": 654,
-    "endFrame": 1443,
+    "endFrame": 1731,
     "color": "#ecf0f1"
   },
   {
     "type": "VCRLayer",
     "displayName": "VCR FX",
     "startFrame": 0,
-    "endFrame": 1443,
+    "endFrame": 1726,
     "color": "#c0392b",
     "config": {}
   },
@@ -28,7 +28,7 @@
     "type": "NoiseFXLayer",
     "displayName": "Noise fx",
     "startFrame": 654,
-    "endFrame": 1443,
+    "endFrame": 1716,
     "color": "#521b9f"
   }
 ]
