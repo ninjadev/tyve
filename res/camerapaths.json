@@ -1,10 +1,6 @@
-[
-  {
-    "position": [
-    ]
-  },
-  {
+{
+  "GridLayer": {
     "position": [
     ]
   }
-]
+}

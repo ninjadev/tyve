@@ -3,7 +3,7 @@
  */
 function GridLayer(layer) {
   this.scene = new THREE.Scene();
-  this.cameraController = new CameraController(layer.position);
+  this.cameraController = new CameraController(layer.type);
   this.camera = this.cameraController.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, 400);
 
   var light = new THREE.PointLight( 0xffffff, 1, 100 );
