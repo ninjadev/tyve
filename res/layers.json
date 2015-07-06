@@ -17,10 +17,17 @@
     "color": "#ecf0f1"
   },
   {
+    "type": "ScreenLayer",
+    "displayName": "Screen",
+    "startFrame": 1443,
+    "endFrame": 2632,
+    "color": "#0cffe1"
+  },
+  {
     "type": "VCRLayer",
     "displayName": "VCR FX",
     "startFrame": 0,
-    "endFrame": 1443,
+    "endFrame": 2635,
     "color": "#c0392b",
     "config": {}
   },
@@ -28,7 +35,7 @@
     "type": "NoiseFXLayer",
     "displayName": "Noise fx",
     "startFrame": 654,
-    "endFrame": 1443,
+    "endFrame": 2633,
     "color": "#521b9f"
   }
 ]
