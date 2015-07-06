@@ -1,8 +1,18 @@
 [
   {
+    "type": "IntroLayer",
+    "displayName": "Intro",
+    "startFrame": 0,
+    "endFrame": 654,
+    "color": "#1b592f",
+    "config": {
+      "offset": 2
+    }
+  },
+  {
     "type": "GridLayer",
     "displayName": "Grid layer",
-    "startFrame": 0,
+    "startFrame": 654,
     "endFrame": 1443,
     "color": "#ecf0f1"
   },
@@ -11,13 +21,14 @@
     "displayName": "VCR FX",
     "startFrame": 0,
     "endFrame": 1443,
-    "color": "#e74c3c"
+    "color": "#c0392b",
+    "config": {}
   },
   {
     "type": "NoiseFXLayer",
     "displayName": "Noise fx",
-    "startFrame": 0,
+    "startFrame": 654,
     "endFrame": 1443,
-    "color": "#c0392b"
+    "color": "#521b9f"
   }
 ]
