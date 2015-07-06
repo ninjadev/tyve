@@ -115,4 +115,27 @@ GridLayer.prototype.update = function(frame, relativeFrame) {
       ));
     }
   }
+
+  if(BEAN >= 216) {
+    var sizeX = 500,
+        stretch = 2,
+        sizeZ = sizeX * stretch,
+        step = 10;
+    this.sizeZ = sizeZ;
+
+    var scale = smoothstep(0, 50, (frame - 1296) / (1350 - 1296));
+
+    var length = this.grid.geometry.vertices.length / 4;
+    for (var i = 0; i < length; i++) {
+        var vertexHorizontalA = this.grid.geometry.vertices[i * 4 + 0];
+        var vertexHorizontalB = this.grid.geometry.vertices[i * 4 + 1];
+        var vertexVerticalA = this.grid.geometry.vertices[i * 4 + 2];
+        var vertexVerticalB = this.grid.geometry.vertices[i * 4 + 3];
+        vertexVerticalA.y = scale * Math.sin(vertexVerticalA.x);
+        vertexVerticalB.y = scale * Math.sin(vertexVerticalB.x);
+        vertexHorizontalA.y = scale * Math.sin(vertexVerticalA.x);
+        vertexHorizontalB.y = scale * Math.sin(vertexVerticalB.x);
+    }
+    this.grid.geometry.verticesNeedUpdate = true;
+  }
 };
