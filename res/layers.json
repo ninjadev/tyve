@@ -1,21 +1,20 @@
 [
   {
-    "type": "BlankLayer",
-    "displayName": "Blank layer",
+    "type": "BlobLayer",
+    "displayName": "Blob layer",
     "startFrame": 0,
     "endFrame": 1443,
     "color": "#1b592f",
     "config": {
-        "offset": 2
+      "offset": 2
     }
   },
   {
     "type": "VCRLayer",
     "displayName": "VCR FX",
-    "startFrame": 0,
-    "endFrame": 1443,
+    "startFrame": 2042,
+    "endFrame": 3659,
     "color": "#521b9f",
-    "config": {
-    }
+    "config": {}
   }
 ]
