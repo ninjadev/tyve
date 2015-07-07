@@ -18,7 +18,8 @@ function GridLayer(layer) {
       gridMaterial = new THREE.LineBasicMaterial(
     {
       color: this.neonGreen,
-      linewidth: 2
+      linewidth: 1 /* will always be 1 on windows no matter what you
+                      actually set it to because of the ANGLE layer */
     }
   );
 
