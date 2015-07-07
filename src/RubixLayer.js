@@ -167,7 +167,7 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
   }
 
   if(this.innerCubeGlow > 0) {
-    this.innerCubeGlow *= 0.85;
+    this.innerCubeGlow *= 0.87;
   }
 
   if(BEAT && BEAN % 6 == 0) {
