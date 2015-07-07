@@ -2,5 +2,37 @@
   "GridLayer": {
     "position": [
     ]
+  },
+  "AtomiumLayer": {
+    "position": [
+      {
+        "startFrame": 0,
+        "endFrame": 1000,
+        "points": [
+          [-70, 200, -70],
+          [-1300, 1100, -1250],
+          [-2150, 800, -2200],
+          [-3000, 700, -3500]
+        ],
+        "easing": "easeOut"
+      }
+    ],
+    "lookAt": [
+      {
+        "startFrame": 0,
+        "endFrame": 350,
+        "point": [0, 0, 0]
+      },
+      {
+        "startFrame": 351,
+        "endFrame": 950,
+        "easing": "smoothstep",
+        "points": [
+          [0, 0, 0],
+          [-1800, -200, -800],
+          [-3300, -500, -1400]
+        ]
+      }
+    ]
   }
 }

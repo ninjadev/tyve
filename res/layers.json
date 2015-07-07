@@ -37,5 +37,22 @@
     "startFrame": 654,
     "endFrame": 2633,
     "color": "#521b9f"
+  },
+  {
+    "type": "AtomiumLayer",
+    "displayName": "Atomium",
+    "startFrame": 1700,
+    "endFrame": 2750,
+    "color": "#99bbff"
+  },
+  {
+    "type": "NoiseFXLayer",
+    "displayName": "Noise fx",
+    "startFrame": 1700,
+    "endFrame": 2750,
+    "color": "#521b9f",
+    "config": {
+      "amount": 0.15
+    }
   }
 ]
