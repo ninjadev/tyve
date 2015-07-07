@@ -94,7 +94,7 @@ GridLayer.prototype.update = function(frame, relativeFrame) {
     if (BEAN % 3 == 0) {
         this.lightning[1].update();
     }
-    if (BEAN % 12 == 5) {
+    if (BEAN % 12 == 6) {
         this.lightning[0].update();
     }
   }

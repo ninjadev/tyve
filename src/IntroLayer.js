@@ -133,11 +133,11 @@ IntroLayer.prototype.update = function(frame) {
              (BEAN == 36) ||
              (BEAN == 39) ||
              (BEAN == 42) ||
-             (BEAN == 56) ||
-             (BEAN == 59) ||
-             (BEAN == 62) ||
-             (BEAN == 65) ||
-             (BEAN == 68)
+             (BEAN == 57) ||
+             (BEAN == 60) ||
+             (BEAN == 63) ||
+             (BEAN == 66) ||
+             (BEAN == 69)
              ) {
     this.bassScaler = 1;
   }
