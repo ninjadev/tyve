@@ -6,13 +6,14 @@ function ScreenLayer(layer) {
   this.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, 10000);
 
   var light = new THREE.PointLight( 0xffffff, 1, 100 );
-  light.position.set( -50, -50, -50 );
+  light.position.set( -50, -50, -50);
   this.scene.add(light);
   var pointLight = new THREE.PointLight(0xFFFFFF);
   pointLight.position.x = 10;
   pointLight.position.y = 50;
   pointLight.position.z = 130;
   this.scene.add(pointLight);
+  var directionalLight = new THREE.DirectionalLight( 0xffffff, 1);
 
   this.screen = [];
 
@@ -21,11 +22,9 @@ function ScreenLayer(layer) {
     this.screen[x] = [];
     for(var y = 0; y < 9; y++) {
       var frontPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshPhongMaterial({
-        metal: true,
         color: 0xc45079
       }));
       var backPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshPhongMaterial({
-        metal: true,
         color: 0x4e8393
       }));
       var pixel = new THREE.Object3D();
@@ -196,7 +195,7 @@ ScreenLayer.prototype.update = function(frame) {
   for(var x = 0; x < 16; x++) {
     for(var y = 0; y < 9; y++) {
       var pixel = this.screen[x][y];
-      if(BEAN < 312) {
+      if(BEAN < 1056) {
         pixel.rotation.x = ((1 + x) * (1 + y) + frame / 20) % (Math.PI * 2);
       } else {
         pixel.rotation.x = lerp(pixel.rotation.x, pixel.targetRotation.x, 0.1);
@@ -206,7 +205,27 @@ ScreenLayer.prototype.update = function(frame) {
     }
   }
 
-  if(BEAN >= 312) {
-  this.screenSetBuffer(this.images[((BEAN - 312) / 12 | 0) % this.images.length]);
+  this.camera.position.x = 0;
+  this.camera.position.z = 130;
+  if(BEAN >= 1080) {
+    if(BEAN % 24 < 12) {
+      this.camera.position.x = -lerp(140, 120, (BEAN % 12) / 12);
+      this.camera.position.z = 100;
+    } else {
+      this.camera.position.x = lerp(140, 120, (BEAN % 12) / 12);
+      this.camera.position.z = 100;
+    }
+    if(BEAT && BEAN % 24 == 0) {
+      this.camera.lookAt(new THREE.Vector3(-80, 0, 0));
+    }
+    if(BEAT && BEAN % 24 == 12) {
+      this.camera.lookAt(new THREE.Vector3(80, 0, 0));
+    }
+  } else {
+    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
+  }
+
+  if(BEAN >= 1056) {
+  this.screenSetBuffer(this.images[((BEAN - 1056) / 12 | 0) % this.images.length]);
   }
 };
