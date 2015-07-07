@@ -26,8 +26,8 @@
   {
     "type": "RubixLayer",
     "displayName": "Rubix",
-    "startFrame": 1997,
-    "endFrame": 2761,
+    "startFrame": 1702,
+    "endFrame": 2500,
     "color": "#a19bf2"
   },
   {
@@ -48,15 +48,15 @@
   {
     "type": "AtomiumLayer",
     "displayName": "Atomium",
-    "startFrame": 1700,
-    "endFrame": 2750,
+    "startFrame": 2752,
+    "endFrame": 3750,
     "color": "#99bbff"
   },
   {
     "type": "NoiseFXLayer",
     "displayName": "Noise fx",
-    "startFrame": 1700,
-    "endFrame": 2750,
+    "startFrame": 2752,
+    "endFrame": 3750,
     "color": "#521b9f",
     "config": {
       "amount": 0.15

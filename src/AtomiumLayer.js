@@ -2,13 +2,12 @@
  * @constructor
  */
 function AtomiumLayer(layer) {
+  this.layer = layer;
   this.scene = new THREE.Scene();
   this.cameraController = new CameraController(layer.type);
   this.camera = this.cameraController.camera;
 
   this.random = Random(1337);
-
-  this.lastDisplayedSphere = 0;
 
   var sphereInfo = {
     color: new THREE.Color(0.5, 1, 1),
@@ -70,8 +69,6 @@ AtomiumLayer.prototype.getEffectComposerPass = function() {
 };
 
 AtomiumLayer.prototype.start = function() {
-  this.lastDisplayedSphere = 0;
-
   for (var i=0; i < this.sphereMeshes.length; i++) {
     this.scene.remove(this.sphereMeshes[i]);
   }
@@ -86,9 +83,8 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
   this.camLight.position.copy(this.camera.position);
   this.camLight.rotation.copy(this.camera.rotation);
 
-  var sphereCount = ((BEAN / 6) | 0) - 52;
-  if (BEAT && sphereCount >= this.lastDisplayedSphere) {
-    this.lastDisplayedSphere = sphereCount;
+  if (BEAT % 6) {
+    var sphereCount = ((BEAN - BEAN_FOR_FRAME(this.layer.startFrame)) / 6) | 0;
 
     if (sphereCount < this.spheres.length) {
       if (sphereCount in this.sphereMeshes) {
