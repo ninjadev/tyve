@@ -2,6 +2,7 @@
  * @constructor
  */
 function RubixLayer(layer) {
+  this.layer = layer;
   this.scene = new THREE.Scene();
   this.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, 10000);
 
@@ -88,25 +89,25 @@ RubixLayer.prototype.end = function() {
 };
 
 RubixLayer.prototype.twists = {
-  61: { axis: 'z', row: 0}, 62: { axis: 'x', row: 1},
-  63: { axis: 'y', row: 2}, 64: { axis: 'z', row: 0},
-  65: { axis: 'y', row: 1}, 66: { axis: 'z', row: 2},
-  67: { axis: 'x', row: 2}, 68: { axis: 'z', row: 1},
-  69: { axis: 'x', row: 1}, 70: { axis: 'y', row: 0},
-  71: { axis: 'z', row: 0}, 72: { axis: 'x', row: 1},
-  73: { axis: 'y', row: 2}, 74: { axis: 'z', row: 0},
-  75: { axis: 'y', row: 1}, 76: { axis: 'z', row: 2},
-  77: { axis: 'x', row: 2}, 78: { axis: 'z', row: 1},
-  79: { axis: 'x', row: 1}, 80: { axis: 'y', row: 0},
-  81: { axis: 'x', row: 2}, 82: { axis: 'z', row: 1},
-  83: { axis: 'x', row: 1}, 84: { axis: 'y', row: 0},
-  85: { axis: 'z', row: 0}, 86: { axis: 'x', row: 1}
+  0: { axis: 'z', row: 0}, 1: { axis: 'x', row: 1},
+  2: { axis: 'y', row: 2}, 3: { axis: 'z', row: 0},
+  4: { axis: 'y', row: 1}, 5: { axis: 'z', row: 2},
+  6: { axis: 'x', row: 2}, 7: { axis: 'z', row: 1},
+  8: { axis: 'x', row: 1}, 9: { axis: 'y', row: 0},
+  10: { axis: 'z', row: 0}, 11: { axis: 'x', row: 1},
+  12: { axis: 'y', row: 2}, 13: { axis: 'z', row: 0},
+  14: { axis: 'y', row: 1}, 15: { axis: 'z', row: 2},
+  16: { axis: 'x', row: 2}, 17: { axis: 'z', row: 1},
+  18: { axis: 'x', row: 1}, 19: { axis: 'y', row: 0},
+  20: { axis: 'x', row: 2}, 21: { axis: 'z', row: 1},
+  22: { axis: 'x', row: 1}, 23: { axis: 'y', row: 0},
+  24: { axis: 'z', row: 0}, 25: { axis: 'x', row: 1}
 };
 
 RubixLayer.prototype.update = function(frame, relativeFrame) {
 
   var framesPerBean = 32.72727272727272727272727272;
-  var twistIndex = BEAN / 6 | 0;
+  var twistIndex = (BEAN - BEAN_FOR_FRAME(this.layer.startFrame)) / 6 | 0;
   if(BEAT && BEAN % 6 == 0) {
     THREE.SceneUtils.detach(this.twistHelper, this.twistHelper.parent, this.scene);
     this.twistHelper = new THREE.Object3D();
