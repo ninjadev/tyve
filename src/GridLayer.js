@@ -2,14 +2,13 @@
  * @constructor
  */
 function GridLayer(layer) {
+  this.neonGreen = 0x316276;
+  this.neonPink = 0x9B7EBA;
+  this.viewDistance = 400;
   this.random = Random(14);
   this.scene = new THREE.Scene();
   this.cameraController = new CameraController(layer.type);
-  this.camera = this.cameraController.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, 400);
-
-  var light = new THREE.PointLight( 0xffffff, 1, 100 );
-  light.position.set( -50, -50, -50 );
-  this.scene.add(light);
+  this.camera = this.cameraController.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, this.viewDistance);
 
   /*             */
   /* Create grid */
@@ -18,7 +17,7 @@ function GridLayer(layer) {
   var gridGeometry = new THREE.Geometry();
       gridMaterial = new THREE.LineBasicMaterial(
     {
-      color: 0x316276,
+      color: this.neonGreen,
       linewidth: 2
     }
   );
@@ -61,12 +60,72 @@ function GridLayer(layer) {
     new Lightning(map,
       new THREE.Vector3(10, 24, -80),
       new THREE.Vector3(50, 0, 50),
-      -Math.PI / 3));
+      -Math.PI / 3
+    )
+  );
 
   for (var i=0; i<2; i++) {
     this.scene.add(this.lightning[i].mesh);
-    console.log(this.lightning[i].mesh.position);
   }
+
+  /*                */
+  /* Create pyramid */
+  /*                */
+
+  var verticesOfPyramid = [
+    -1, 0, -1,
+     1, 0, -1,
+     1, 0,  1,
+     -1, 0,  1,
+     0, 1,  0
+  ];
+
+  var facesOfPyramid = [
+    1, 0, 4,
+    2, 1, 4,
+    3, 2, 4,
+    0, 3, 4
+  ];
+
+  this.pyramidSize = 30;
+  var pyramidGeometry = new THREE.PolyhedronGeometry(
+    verticesOfPyramid, facesOfPyramid, this.pyramidSize, 0
+  );
+
+  var map = Loader.loadTexture('res/pyramid_gradient.png');
+  map.wrapS = map.wrapT = THREE.RepeatWrapping;
+  map.repeat.set( 2, 2 );
+
+  var pyramidMaterial = new THREE.MeshBasicMaterial({
+    map: map
+  });
+  var pyramid = new THREE.Mesh(pyramidGeometry, pyramidMaterial);
+
+  this.pyramidWrapper = new THREE.Object3D();
+  this.pyramidWrapper.add(pyramid);
+
+  // Glow
+  var pyramidGlowMaterial = new THREE.ShaderMaterial(SHADERS.glow);
+  pyramidGlowMaterial.side = THREE.BackSide;
+  pyramidGlowMaterial.blending = THREE.AdditiveBlending;
+  pyramidGlowMaterial.transparent = true;
+
+  pyramidGlowMaterial.uniforms.glowColor.value = new THREE.Color(this.neonPink);
+  pyramidGlowMaterial.uniforms.viewVector.value = null;
+  pyramidGlowMaterial.uniforms.c.value = 0.1;
+  pyramidGlowMaterial.uniforms.p.value = 3.4;
+
+  var pyramidGlow = new THREE.Mesh(
+    new THREE.PolyhedronGeometry(
+      verticesOfPyramid, facesOfPyramid, this.pyramidSize + 5, 0
+    ), pyramidGlowMaterial);
+
+  pyramidGlowMaterial.uniforms.viewVector.value = new THREE.Vector3().subVectors(
+      this.camera.position, this.pyramidWrapper.position);
+  this.pyramidWrapper.add(pyramidGlow);
+
+  this.pyramidWrapper.position.z = -this.viewDistance;
+  this.scene.add(this.pyramidWrapper);
 
   if (!window.FILES) {
     Loader.start(function () {}, function() {});
@@ -87,8 +146,54 @@ GridLayer.prototype.end = function() {
 
 GridLayer.prototype.update = function(frame, relativeFrame) {
   this.camera.rotation.z = 0.5 + Math.sin(relativeFrame / 60) * 0.1;
-
   this.grid.position.z = -this.sizeZ + (relativeFrame % this.sizeZ);
+
+  /*                */
+  /* Update pyramid */
+  /*                */
+
+  this.pyramidWrapper.position.z = -this.viewDistance;
+
+  var limit = 8 * 60,
+      localFrame = relativeFrame - limit;
+  if (localFrame > 0) {
+    this.pyramidWrapper.position.z = smoothstep(
+      -this.viewDistance,
+      -100,
+      localFrame  / (4 * 60));
+  };
+
+
+  var limit = 10 * 60,
+      localFrame = relativeFrame - limit;
+  if (localFrame > 0) {
+
+    this.pyramidWrapper.position.y = smoothstep(
+        0,
+        -this.pyramidSize / 2,
+        localFrame  / (2 * 60));
+
+    var sizeX = 500,
+        stretch = 2,
+        sizeZ = sizeX * stretch,
+        step = 10;
+    this.sizeZ = sizeZ;
+
+    var scale = smoothstep(0, 50, localFrame / (2 * 60));
+
+    var length = this.grid.geometry.vertices.length / 4;
+    for (var i = 0; i < length; i++) {
+      var vertexHorizontalA = this.grid.geometry.vertices[i * 4 + 0];
+      var vertexHorizontalB = this.grid.geometry.vertices[i * 4 + 1];
+      var vertexVerticalA = this.grid.geometry.vertices[i * 4 + 2];
+      var vertexVerticalB = this.grid.geometry.vertices[i * 4 + 3];
+      vertexVerticalA.y = scale * Math.sin(vertexVerticalA.x);
+      vertexVerticalB.y = scale * Math.sin(vertexVerticalB.x);
+      vertexHorizontalA.y = scale * Math.sin(vertexVerticalA.x);
+      vertexHorizontalB.y = scale * Math.sin(vertexVerticalB.x);
+    }
+    this.grid.geometry.verticesNeedUpdate = true;
+  }
 
   if (BEAT) {
     if (BEAN % 3 == 0) {
