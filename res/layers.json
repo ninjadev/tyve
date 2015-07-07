@@ -13,7 +13,7 @@
     "type": "GridLayer",
     "displayName": "Grid layer",
     "startFrame": 654,
-    "endFrame": 1443,
+    "endFrame": 1170,
     "color": "#ecf0f1"
   },
   {
@@ -29,6 +29,20 @@
     "startFrame": 1702,
     "endFrame": 2500,
     "color": "#a19bf2"
+  },
+  {
+    "type": "RobotsLayer",
+    "displayName": "RobotsLayer",
+    "startFrame": 1177,
+    "endFrame": 2500,
+    "color": "#af219b"
+  },
+  {
+    "type": "BlinkyTunnelLayer",
+    "displayName": "Blinky Tunnel",
+    "startFrame": 1595,
+    "endFrame": 2500,
+    "color": "#a219bf"
   },
   {
     "type": "VCRLayer",
@@ -68,7 +82,6 @@
     "startFrame": 0,
     "endFrame": 8000,
     "color": "#5bbb1f",
-    "config": {
-    }
+    "config": {}
   }
 ]
