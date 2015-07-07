@@ -45,10 +45,17 @@
     "color": "#a219bf"
   },
   {
+    "type": "AtomiumLayer",
+    "displayName": "Atomium",
+    "startFrame": 2752,
+    "endFrame": 3750,
+    "color": "#99bbff"
+  },
+  {
     "type": "VCRLayer",
     "displayName": "VCR FX",
     "startFrame": 0,
-    "endFrame": 2635,
+    "endFrame": 8000,
     "color": "#c0392b",
     "config": {}
   },
@@ -58,13 +65,6 @@
     "startFrame": 654,
     "endFrame": 2633,
     "color": "#521b9f"
-  },
-  {
-    "type": "AtomiumLayer",
-    "displayName": "Atomium",
-    "startFrame": 2752,
-    "endFrame": 3750,
-    "color": "#99bbff"
   },
   {
     "type": "NoiseFXLayer",
