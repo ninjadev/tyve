@@ -61,5 +61,14 @@
     "config": {
       "amount": 0.15
     }
+  },
+  {
+    "type": "BloomLayer",
+    "displayName": "Bloom fx",
+    "startFrame": 0,
+    "endFrame": 8000,
+    "color": "#5bbb1f",
+    "config": {
+    }
   }
 ]
