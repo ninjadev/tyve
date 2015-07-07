@@ -127,7 +127,6 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
     });
     for(var i = 0; i < cubes.length; i++) {
       var pos = cubes[i].position;
-      console.log(pos[that.twists[twistIndex].axis]);
     }
     for(var x = 0; x < 3; x++) {
       for(var y = 0; y < 3; y++) {
