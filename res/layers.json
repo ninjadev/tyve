@@ -24,6 +24,13 @@
     "color": "#0cffe1"
   },
   {
+    "type": "RubixLayer",
+    "displayName": "Rubix",
+    "startFrame": 1997,
+    "endFrame": 2761,
+    "color": "#a19bf2"
+  },
+  {
     "type": "VCRLayer",
     "displayName": "VCR FX",
     "startFrame": 0,
