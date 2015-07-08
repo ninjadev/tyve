@@ -18,7 +18,7 @@
   },
   {
     "type": "TextOverlayLayer",
-    "displayName": "GridLayer - TextOverlayLayer",
+    "displayName": "Grid text",
     "startFrame": 5380,
     "endFrame": 5816,
     "color": "#5bbb1f",
