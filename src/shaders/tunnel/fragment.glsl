@@ -1,5 +1,5 @@
 uniform sampler2D tDiffuse;
-uniform sampler2D greets;
+uniform sampler2D wall;
 uniform float t;
 uniform float tunnelAmount;
 uniform float throb;
@@ -30,7 +30,7 @@ void main(void)
     vec2 tiles = vec2(32., 18.);
 
     vec4 diffuse = texture2D(tDiffuse, (0.5 + floor(uv * tiles)) / tiles);
-    vec4 greetsDiffuse = texture2D(greets, 0.01 + floor(uv * tiles) / tiles);
+    vec4 wallDiffuse = texture2D(wall, 0.01 + floor(uv * tiles) / tiles);
     float p = 1.0 - (diffuse.r + diffuse.g + diffuse.b) / 3.;
     p = min(max(p * 3.0 - 1.8, 0.1), 10.0);
     p = 1.;
@@ -38,7 +38,7 @@ void main(void)
     vec2 r = mod(uv * tiles, 1.0);
     r = vec2(pow(r.x - 0.5, 2.0), pow(r.y - 0.5, 2.0));
     p *= 1.0 - pow(min(1.0, 12.0 * dot(r, r)), 2.0);
-    greetsDiffuse *= p;
+    wallDiffuse *= p;
 
     float lighting = 1. - 4. * pow(length(dist) / 16. - 0.5, 2.);
     lighting = clamp(0., 1., lighting);
@@ -52,7 +52,7 @@ void main(void)
     vec4 orangeLighting = 1. - 8. * pow(length(dist) / 16. - 0.5, 2.) *
         vec4(9., .6, .0, .1);
 
-    vec4 outp = diffuse * p + greetsDiffuse * throb * centerDarkener + orangeLighting * 0.01;
+    vec4 outp = diffuse * p + wallDiffuse * throb * centerDarkener + orangeLighting * 0.01;
 
     if(t >= 1250.) {
         outp = mix(outp, outp + vec4(1.), smoothstep(0., 1., (t - 1250.) / 20.));
