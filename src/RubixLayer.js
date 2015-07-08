@@ -34,6 +34,7 @@ function RubixLayer(layer) {
   this.scene.add(this.outerBg);
 
   this.innerCubeGlow = 0;
+  this.snareGlow = 0;
 
 
   var cubeMaterials = [
@@ -187,8 +188,16 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
     this.innerCubeGlow *= 0.87;
   }
 
+  if(this.snareGlow > 0) {
+    this.snareGlow *= 0.95;
+  }
+
   if(BEAT && BEAN % 6 == 0) {
     this.innerCubeGlow = 1;
+  }
+
+  if(BEAT && BEAN % 12 == 6) {
+    this.snareGlow = 1;
   }
 
   for(var i = 0; i < this.innerCubeMaterials.length; i++) {
@@ -198,6 +207,6 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
       this.innerCubeMaterialColors[i].b / 255 * this.innerCubeGlow
     );
   }
-  var color = this.innerCubeGlow * 0.5 + 0.13;
+  var color = this.snareGlow * 0.5 + 0.13;
   this.outerBg.material.color.setRGB(color, color, color);
 };
