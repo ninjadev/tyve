@@ -153,8 +153,8 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
   this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
   var flyoutScaler = 1;
-  if(frame > 2430) {
-    flyoutScaler = smoothstep(1, 1.01 + 0.01 * Math.sin(frame / 100), (frame - 2430) / 50);
+  if(relativeFrame > 252) {
+    flyoutScaler = smoothstep(1, 1.01 + 0.01 * Math.sin(frame / 100), (relativeFrame - 252) / 50);
   }
   for(var x = 0; x < 3; x++) {
     for(var y = 0; y < 3; y++) {
