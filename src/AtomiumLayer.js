@@ -219,4 +219,19 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
       this.pinMeshes[pinCount].scale.y = scale;
     }
   }
+
+  for(var i = 0; i < this.sphereMeshes.length; i++) {
+    var sphere = this.sphereMeshes[i];
+    sphere.glow = sphere.glow || 0;
+    if(sphere.glow > 0) {
+      sphere.glow *= 0.87;
+    }
+    if(BEAN > 550) {
+      if(BEAT && BEAN % 6 == (i % 6)) {
+        sphere.glow = 1;
+      }
+    }
+    var color = sphere.glow * 0.3;
+    sphere.material.emissive.setRGB(color, color, color);
+  }
 };
