@@ -80,8 +80,8 @@
   {
     "type": "ToonShaderLayer",
     "displayName": "Cel shading",
-    "startFrame": 2752,
-    "endFrame": 3750,
+    "startFrame": 2719,
+    "endFrame": 3798,
     "color": "#c0392b",
     "config": {}
   },
@@ -103,18 +103,18 @@
   {
     "type": "NoiseFXLayer",
     "displayName": "Noise fx",
-    "startFrame": 2752,
-    "endFrame": 3750,
+    "startFrame": 2719,
+    "endFrame": 3798,
     "color": "#521b9f",
     "config": {
-      "amount": 0.15
+      "amount": 0.05
     }
   },
   {
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 0,
-    "endFrame": 2752,
+    "endFrame": 2718,
     "color": "#5bbb1f",
     "config": {}
   }

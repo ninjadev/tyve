@@ -36,6 +36,15 @@ function AtomiumLayer(layer) {
     [0,-1,-1]
   ];
 
+  var colors = [
+    0x79bfa3,
+    0xcd5079,
+    0x5f4530,
+    0xe84530,
+    0x3f324a,
+    0x4e8393
+  ];
+
   for (var i=0; i < 410; i++) {
     var parentSphere = this.spheres[i];
     for (var j=0; j < 4; j++) {
@@ -47,11 +56,10 @@ function AtomiumLayer(layer) {
         rotations[rotIndex][2]
       );
 
-      var color = new THREE.Color(
-        85 / 255,
-        (128 + this.random()*127) / 255,
-        (128 + this.random()*127) / 255
-      );
+      var colorIndex = (this.random() * colors.length) | 0;
+      var color = new THREE.Color(colors[colorIndex]);
+
+      this.random(); // For old times sake
 
       var ray = new THREE.Ray(parentSphere.position, rotation.normalize());
       var pos = ray.at(600);
