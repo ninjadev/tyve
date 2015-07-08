@@ -4,15 +4,19 @@
 function TextOverlayLayer(layer) {
   this.config = layer.config;
 
-  var s = document.createElement('style');
-  Loader.loadAjax('res/yellow.base64', function(response) {
-    s.innerHTML = [
-      "@font-face {",
-        "font-family: 'Yellowjacket'",
-        "src: url(data:font/ttf;base64," + response + ") format('truetype');",
-      "}"
-    ].join('\n');
-  })
+  if (!document.getElementById('yellow-font')) {
+    var s = document.createElement('style');
+    s.setAttribute('id', 'yellow-font');
+    Loader.loadAjax('res/yellow.base64', function(response) {
+      s.innerHTML = [
+        "@font-face {",
+          "font-family: 'Yellowjacket';",
+          "src: url(data:application/x-font-woff;charset=utf-8;base64," + response + ") format('woff');",
+        "}"
+      ].join('\n');
+    })
+    document.body.appendChild(s);
+  }
 
   this.scene = new THREE.Scene();
   this.camera = new THREE.OrthographicCamera(16 / -2, 16 / 2, 9 / 2, 9 / -2, 1, 1000);
