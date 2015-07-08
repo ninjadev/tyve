@@ -1,21 +1,21 @@
 /**
  * @constructor
  */
-function NoiseFXLayer(layer) {
+function ToonShaderLayer(layer) {
   this.shaderPass = new THREE.ShaderPass(SHADERS.toon);
   this.shaderPass.uniforms.GU.value = GU;
 }
 
-NoiseFXLayer.prototype.getEffectComposerPass = function() {
+ToonShaderLayer.prototype.getEffectComposerPass = function() {
   return this.shaderPass;
 };
 
-NoiseFXLayer.prototype.start = function() {
+ToonShaderLayer.prototype.start = function() {
 };
 
-NoiseFXLayer.prototype.end = function() {
+ToonShaderLayer.prototype.end = function() {
 };
 
-NoiseFXLayer.prototype.update = function(frame, relativeFrame) {
+ToonShaderLayer.prototype.update = function(frame, relativeFrame) {
   this.shaderPass.uniforms.GU.value = GU;
 };
