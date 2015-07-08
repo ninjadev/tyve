@@ -80,9 +80,29 @@ function AtomiumLayer(layer) {
                                new THREE.MeshLambertMaterial({color: 0x55aaff}));
   this.sphere.scale.set(0, 0, 0);
 
-  this.pin = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
-                            new THREE.MeshLambertMaterial({color: 0xffffff}));
-  this.pin.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 300, 0));
+  this.pin = new THREE.Object3D();
+  var subPin1 = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
+                               new THREE.MeshLambertMaterial({color: 0x888888}));
+  var subPin2 = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
+                               new THREE.MeshLambertMaterial({color: 0x666666}));
+  var subPin3 = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
+                               new THREE.MeshLambertMaterial({color: 0x444444}));
+  subPin1.scale.set(0.4, 1.1, 0.4);
+  subPin2.scale.set(0.4, 1.0, 0.4);
+  subPin3.scale.set(0.4, 0.9, 0.4);
+  var distance = 10;
+  subPin1.position.x = distance * Math.sin(1 / 3 * Math.PI * 2);
+  subPin1.position.z = distance * Math.cos(1 / 3 * Math.PI * 2);
+  subPin2.position.x = distance * Math.sin(2 / 3 * Math.PI * 2);
+  subPin2.position.z = distance * Math.cos(2 / 3 * Math.PI * 2);
+  subPin3.position.x = distance * Math.sin(3 / 3 * Math.PI * 2);
+  subPin3.position.z = distance * Math.cos(3 / 3 * Math.PI * 2);
+  this.pin.add(subPin1);
+  this.pin.add(subPin2);
+  this.pin.add(subPin3);
+  subPin1.position.y = 300;
+  subPin2.position.y = 300;
+  subPin3.position.y = 300;
   this.pin.scale.y = 0;
 
   this.sphereMeshes = [];
