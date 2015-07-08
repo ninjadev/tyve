@@ -2,6 +2,7 @@
  * @constructor
  */
 function GridLayer(layer) {
+  this.freezeAt = 5550;
   this.neonGreen = 0x316276;
   this.neonPink = 0x9B7EBA;
   this.viewDistance = 400;
@@ -146,8 +147,33 @@ GridLayer.prototype.end = function() {
 };
 
 GridLayer.prototype.update = function(frame, relativeFrame) {
+  if (frame > this.freezeAt) {
+    return;
+  }
+
   this.camera.rotation.z = 0.5 + Math.sin(relativeFrame / 60) * 0.1;
   this.grid.position.z = -this.sizeZ + (relativeFrame % this.sizeZ);
+
+  /*                  */
+  /* Update lightning */
+  /*                  */
+
+  if (BEAT && frame < this.freezeAt) {
+    if (BEAN % 3 == 0) {
+        this.lightning[1].update();
+    }
+    if (BEAN % 12 == 6) {
+        this.lightning[0].update();
+    }
+  }
+
+  if (relativeFrame % 25) {
+    for (var i=0; i<this.lightning.length; i++) {
+      var r = this.random() - 0.5;
+      this.lightning[i].mesh.position.add(
+          new THREE.Vector3(r, 0, r));
+    }
+  }
 
   /*                */
   /* Update pyramid */
@@ -194,23 +220,6 @@ GridLayer.prototype.update = function(frame, relativeFrame) {
       vertexHorizontalB.y = scale * Math.sin(vertexVerticalB.x);
     }
     this.grid.geometry.verticesNeedUpdate = true;
-  }
-
-  if (BEAT) {
-    if (BEAN % 3 == 0) {
-        this.lightning[1].update();
-    }
-    if (BEAN % 12 == 6) {
-        this.lightning[0].update();
-    }
-  }
-
-  if (relativeFrame % 25) {
-    for (var i=0; i<this.lightning.length; i++) {
-      var r = this.random() - 0.5;
-      this.lightning[i].mesh.position.add(
-          new THREE.Vector3(r, 0, r));
-    }
   }
 };
 
