@@ -50,6 +50,24 @@
     "color": "#a19bf2"
   },
   {
+    "type": "TextOverlayLayer",
+    "displayName": "Rubix text",
+    "startFrame": 4323,
+    "endFrame": 4838,
+    "color": "#b5b1fb",
+    "config": {
+      "title": "Rubik's cube",
+      "body": [
+        "- invented: 1977",
+        "- fashionable: 1980s"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
+  },
+  {
     "type": "RobotsLayer",
     "displayName": "RobotsLayer",
     "startFrame": 1177,
