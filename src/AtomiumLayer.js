@@ -36,7 +36,7 @@ function AtomiumLayer(layer) {
     [0,-1,-1]
   ];
 
-  for (var i=0; i < 100; i++) {
+  for (var i=0; i < 410; i++) {
     var parentSphere = this.spheres[i];
     for (var j=0; j < 4; j++) {
 
@@ -54,12 +54,15 @@ function AtomiumLayer(layer) {
       );
 
       var ray = new THREE.Ray(parentSphere.position, rotation.normalize());
+      var pos = ray.at(600);
 
       var matchesExistingSphere = false;
       for (var k=0; k < this.spheres.length; k++) {
-        if (ray.at(600).equals(this.spheres[k].position)) {
+        var old = this.spheres[k].position;
+        if ((Math.abs(pos.x - old.x) < 1) &&
+            (Math.abs(pos.y - old.y) < 1) &&
+            (Math.abs(pos.z - old.z) < 1)) {
           matchesExistingSphere = true;
-          var sphereInfo = this.spheres[k];
           break;
         }
       }
@@ -69,7 +72,7 @@ function AtomiumLayer(layer) {
 
       var sphereInfo = {
         'color': color,
-        'position': ray.at(600)
+        'position': pos
       };
       this.spheres.push(sphereInfo);
 
@@ -143,7 +146,7 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
   this.camLight.position.copy(this.camera.position);
   this.camLight.rotation.copy(this.camera.rotation);
 
-  var sphereCount = ((BEAN - BEAN_FOR_FRAME(this.layer.startFrame)) / 6) | 0;
+  var layerTick = ((BEAN - BEAN_FOR_FRAME(this.layer.startFrame)) / 6) | 0;
 
   var progress = 0;
   var framesPerBeat = 32.727272727272727273;
@@ -158,39 +161,49 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
     progress = 1;
   }
 
-  if (sphereCount < this.spheres.length) {
-    if (sphereCount in this.sphereMeshes) {
-      this.scene.add(this.sphereMeshes[sphereCount]);
-    } else {
-      var sphereInfo = this.spheres[sphereCount];
-      var newSphere = this.sphere.clone();
-      newSphere.material = newSphere.material.clone();
-      newSphere.material.color = sphereInfo.color;
-
-      newSphere.position.copy(sphereInfo.position);
-
-      this.scene.add(newSphere);
-      this.sphereMeshes[sphereCount] = newSphere;
+  var multiplier = (layerTick >= 8) ? (layerTick >= 16) ? (layerTick >= 24) ? 32 : 16 : 4 : 1;
+  for (var i=0; i < multiplier; i++) {
+    var sphereCount = 8 + (layerTick - 8) * Math.min(multiplier, 4) + i;
+    if (layerTick >= 16) {
+      sphereCount += (layerTick - 16) * 12;
     }
-    var scale = smoothstep(0, 1, progress);
-    this.sphereMeshes[sphereCount].scale.set(scale, scale, scale);
-  }
-
-  var pinCount = sphereCount - 1;
-
-  if (pinCount >= 0 && pinCount < this.pins.length) {
-    if (pinCount in this.pinMeshes) {
-      this.scene.add(this.pinMeshes[pinCount]);
-    } else {
-      var pinInfo = this.pins[pinCount];
-      var newPin = this.pin.clone();
-      newPin.position.copy(pinInfo.from);
-      newPin.lookAt(pinInfo.to);
-      newPin.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI/2);
-      this.scene.add(newPin);
-      this.pinMeshes[pinCount] = newPin;
+    if (layerTick >= 24) {
+      sphereCount += (layerTick - 24) * 16;
     }
-    var scale = smoothstep(0, 1, progress);
-    this.pinMeshes[pinCount].scale.y = scale;
+    if (sphereCount < this.spheres.length) {
+      if (sphereCount in this.sphereMeshes) {
+        this.scene.add(this.sphereMeshes[sphereCount]);
+      } else {
+        var sphereInfo = this.spheres[sphereCount];
+        var newSphere = this.sphere.clone();
+        newSphere.material = newSphere.material.clone();
+        newSphere.material.color = sphereInfo.color;
+
+        newSphere.position.copy(sphereInfo.position);
+
+        this.scene.add(newSphere);
+        this.sphereMeshes[sphereCount] = newSphere;
+      }
+      var scale = smoothstep(0, 1, progress);
+      this.sphereMeshes[sphereCount].scale.set(scale, scale, scale);
+    }
+
+    var pinCount = sphereCount - 1;
+
+    if (pinCount >= 0 && pinCount < this.pins.length) {
+      if (pinCount in this.pinMeshes) {
+        this.scene.add(this.pinMeshes[pinCount]);
+      } else {
+        var pinInfo = this.pins[pinCount];
+        var newPin = this.pin.clone();
+        newPin.position.copy(pinInfo.from);
+        newPin.lookAt(pinInfo.to);
+        newPin.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI/2);
+        this.scene.add(newPin);
+        this.pinMeshes[pinCount] = newPin;
+      }
+      var scale = smoothstep(0, 1, progress);
+      this.pinMeshes[pinCount].scale.y = scale;
+    }
   }
 };

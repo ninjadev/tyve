@@ -7,7 +7,7 @@
     "position": [
       {
         "startFrame": 0,
-        "endFrame": 650,
+        "endFrame": 500,
         "points": [
           [-70, 200, -70],
           [-700, 800, -950],
@@ -33,12 +33,53 @@
       },
       {
         "startFrame": 351,
-        "endFrame": 850,
+        "endFrame": 650,
         "easing": "smoothstep",
         "points": [
           [0, 0, 0],
           [-200, 900, 800]
         ]
+      }
+    ],
+    "roll": [
+      {
+        "startFrame": 220,
+        "endFrame": 450,
+        "easing": "easeOut",
+        "points": [
+          0,
+          0.5
+        ]
+      },
+      {
+        "startFrame": 451,
+        "endFrame": 850,
+        "easing": "smoothstep",
+        "points": [
+          0.5,
+          1.2
+        ]
+      }
+    ],
+    "fov": [
+      {
+        "startFrame": 0,
+        "endFrame": 550,
+        "value": 45
+      },
+      {
+        "startFrame": 600,
+        "endFrame": 850,
+        "easing": "smoothstep",
+        "points": [
+          45,
+          25
+        ]
+      },
+      {
+        "startFrame": 851,
+        "endFrame": 852,
+        "value": 25
       }
     ]
   }
