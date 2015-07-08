@@ -45,6 +45,13 @@
     "color": "#a219bf"
   },
   {
+    "type": "ShockwaveLayer",
+    "displayName": "Shockwave",
+    "startFrame": 1595,
+    "endFrame": 2500,
+    "color": "#2a19bf"
+  },
+  {
     "type": "AtomiumLayer",
     "displayName": "Atomium",
     "startFrame": 2752,
