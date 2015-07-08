@@ -17,6 +17,25 @@
     "color": "#ecf0f1"
   },
   {
+    "type": "TextOverlayLayer",
+    "displayName": "GridLayer - TextOverlayLayer",
+    "startFrame": 5380,
+    "endFrame": 5816,
+    "color": "#5bbb1f",
+    "config": {
+      "title": "fashion",
+      "body": [
+        "- elastic base",
+        "- futuristic",
+        "- smartgrid"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
+  },
+  {
     "type": "ScreenLayer",
     "displayName": "Screen",
     "startFrame": 5756,
