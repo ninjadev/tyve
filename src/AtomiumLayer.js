@@ -78,9 +78,12 @@ function AtomiumLayer(layer) {
 
   this.sphere = new THREE.Mesh(new THREE.SphereGeometry(50, 8, 8),
                                new THREE.MeshLambertMaterial({color: 0x55aaff}));
+  this.sphere.scale.set(0, 0, 0);
 
   this.pin = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
                             new THREE.MeshLambertMaterial({color: 0xffffff}));
+  this.pin.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 300, 0));
+  this.pin.scale.y = 0;
 
   this.sphereMeshes = [];
   this.pinMeshes = [];
@@ -115,8 +118,21 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
   this.camLight.position.copy(this.camera.position);
   this.camLight.rotation.copy(this.camera.rotation);
 
-  if (BEAT % 6) {
     var sphereCount = ((BEAN - BEAN_FOR_FRAME(this.layer.startFrame)) / 6) | 0;
+
+    var progress = 0;
+    var framesPerBeat = 32.727272727272727273;
+    var flooredBean = (BEAN / 6 | 0) * 6;
+    var fromFrame = FRAME_FOR_BEAN(flooredBean);
+    var toFrame = FRAME_FOR_BEAN(flooredBean + 6);
+    progress = (frame - fromFrame) / (toFrame - fromFrame);
+    if(BEAT && BEAN % 6 == 0) {
+      progress = 0;
+    }   
+    if(BEAN % 6 == 5 && BEAN_FOR_FRAME(frame % 1) > BEAN) {
+      progress = 1;
+    } 
+    console.log('progress', progress);
 
     if (sphereCount < this.spheres.length) {
       if (sphereCount in this.sphereMeshes) {
@@ -132,21 +148,25 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
         this.scene.add(newSphere);
         this.sphereMeshes[sphereCount] = newSphere;
       }
+      var scale = smoothstep(0, 1, progress);
+      this.sphereMeshes[sphereCount].scale.set(scale, scale, scale);
     }
 
     var pinCount = sphereCount - 1;
+
     if (pinCount >= 0 && pinCount < this.pins.length) {
       if (pinCount in this.pinMeshes) {
         this.scene.add(this.pinMeshes[pinCount]);
       } else {
         var pinInfo = this.pins[pinCount];
         var newPin = this.pin.clone();
-        newPin.position.copy(new THREE.Vector3().lerpVectors(pinInfo.from, pinInfo.to, 0.5));
+        newPin.position.copy(pinInfo.from);
         newPin.lookAt(pinInfo.to);
         newPin.rotateOnAxis(new THREE.Vector3(1, 0, 0), Math.PI/2);
         this.scene.add(newPin);
         this.pinMeshes[pinCount] = newPin;
       }
-    }
+      var scale = smoothstep(0, 1, progress);
+      this.pinMeshes[pinCount].scale.y = scale;
   }
 };
