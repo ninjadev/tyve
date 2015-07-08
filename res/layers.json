@@ -52,6 +52,14 @@
     "color": "#99bbff"
   },
   {
+    "type": "ToonShaderLayer",
+    "displayName": "Cel shading",
+    "startFrame": 2752,
+    "endFrame": 3750,
+    "color": "#c0392b",
+    "config": {}
+  },
+  {
     "type": "VCRLayer",
     "displayName": "VCR FX",
     "startFrame": 0,
@@ -80,7 +88,7 @@
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 0,
-    "endFrame": 8000,
+    "endFrame": 2752,
     "color": "#5bbb1f",
     "config": {}
   }
