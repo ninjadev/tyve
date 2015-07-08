@@ -16,32 +16,64 @@ function AtomiumLayer(layer) {
   this.spheres = [sphereInfo];
   this.pins = [];
 
-  for (var i=0; i < 230; i++) {
-    var rotation = new THREE.Vector3(
-      this.random() * 2 - 1,
-      this.random() * 2 - 1,
-      this.random() * 2 - 1
-    );
+  var rotations = [
+    [1,0,1],
+    [1,1,0],
+    [0,1,1],
+    [1,0,-1],
+    [1,-1,0],
+    [0,-1,1],
+    [-1,0,1],
+    [-1,1,0],
+    [0,1,-1],
+    [-1,-1,0],
+    [-1,0,-1],
+    [0,-1,-1]
+  ];
 
-    var color = new THREE.Color(
-      85 / 255,
-      (128 + this.random()*127) / 255,
-      (128 + this.random()*127) / 255
-    );
+  for (var i=0; i < 100; i++) {
+    var parentSphere = this.spheres[i];
+    for (var j=0; j < 4; j++) {
 
-    var ray = new THREE.Ray(sphereInfo.position, rotation.normalize());
+      var rotIndex = (this.random() * rotations.length) | 0;
+      var rotation = new THREE.Vector3(
+        rotations[rotIndex][0],
+        rotations[rotIndex][1],
+        rotations[rotIndex][2]
+      );
 
-    var pinInfo = {
-      'from': sphereInfo.position,
-      'to': ray.at(600)
-    };
-    this.pins.push(pinInfo);
+      var color = new THREE.Color(
+        85 / 255,
+        (128 + this.random()*127) / 255,
+        (128 + this.random()*127) / 255
+      );
 
-    sphereInfo = {
-      'color': color,
-      'position': ray.at(600)
-    };
-    this.spheres.push(sphereInfo);
+      var ray = new THREE.Ray(parentSphere.position, rotation.normalize());
+
+      var matchesExistingSphere = false;
+      for (var k=0; k < this.spheres.length; k++) {
+        if (ray.at(600).equals(this.spheres[k].position)) {
+          matchesExistingSphere = true;
+          var sphereInfo = this.spheres[k];
+          break;
+        }
+      }
+      if (matchesExistingSphere) {
+        continue;
+      }
+
+      var sphereInfo = {
+        'color': color,
+        'position': ray.at(600)
+      };
+      this.spheres.push(sphereInfo);
+
+      var pinInfo = {
+        'from': parentSphere.position,
+        'to': sphereInfo.position
+      };
+      this.pins.push(pinInfo);
+    }
   }
 
   this.sphere = new THREE.Mesh(new THREE.SphereGeometry(50, 8, 8),
