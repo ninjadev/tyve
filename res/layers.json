@@ -18,7 +18,7 @@
   },
   {
     "type": "TextOverlayLayer",
-    "displayName": "GridLayer - TextOverlayLayer",
+    "displayName": "Grid text",
     "startFrame": 5380,
     "endFrame": 5816,
     "color": "#5bbb1f",
@@ -45,9 +45,27 @@
   {
     "type": "RubixLayer",
     "displayName": "Rubix",
-    "startFrame": 4337,
+    "startFrame": 4323,
     "endFrame": 4838,
     "color": "#a19bf2"
+  },
+  {
+    "type": "TextOverlayLayer",
+    "displayName": "Rubix text",
+    "startFrame": 4323,
+    "endFrame": 4838,
+    "color": "#b5b1fb",
+    "config": {
+      "title": "Rubik's cube",
+      "body": [
+        "- invented: 1977",
+        "- fashionable: 1980s"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
   },
   {
     "type": "RobotsLayer",
