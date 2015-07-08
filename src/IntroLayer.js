@@ -88,10 +88,12 @@ IntroLayer.prototype.end = function() {
 };
 
 IntroLayer.prototype.update = function(frame) {
-  if(frame < 130) {
+  if(frame < FRAME_FOR_BEAN(24)) {
     var colorStep = smoothstep(0, 1, (frame - 70) / (200 - 70));
+  } else if(frame < FRAME_FOR_BEAN(29)) {
+    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(24)) / 20);
   } else if(frame < 600) {
-    var colorStep = 1.2 - lerp(0, 0.2, (frame - 130) / (150 - 130));
+    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(29)) / 20);
   } else {
     var colorStep = 1 - lerp(0, 1, (frame - 630) / (648 - 630));
   }
