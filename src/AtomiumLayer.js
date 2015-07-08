@@ -222,6 +222,7 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
 
   for(var i = 0; i < this.sphereMeshes.length; i++) {
     var sphere = this.sphereMeshes[i];
+    if (!sphere) continue;
     sphere.glow = sphere.glow || 0;
     if(sphere.glow > 0) {
       sphere.glow *= 0.87;

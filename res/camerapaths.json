@@ -7,79 +7,96 @@
     "position": [
       {
         "startFrame": 0,
-        "endFrame": 500,
+        "endFrame": 250,
         "points": [
           [-70, 200, -70],
-          [-700, 800, -950],
-          [-1750, 800, -1500]
+          [-400, 700, -850],
+          [-1150, 800, -1000]
         ],
         "easing": "easeOut"
       },
       {
-        "startFrame": 651,
-        "endFrame": 1200,
+        "startFrame": 251,
+        "endFrame": 512,
         "points": [
-          [-1750, 800, -1500],
-          [-1000, 1000, -1000]
+          [-1000, 1000, -1000],
+          [-1750, 1000, -1500]
         ],
-        "easing": "smoothstep"
+        "easing": "easeIn"
+      },
+      {
+        "startFrame": 513,
+        "endFrame": 801,
+        "points": [
+          [2591,-660,-238],
+          [103.02,47.98,-139.65]
+        ],
+        "easing": "easeOut"
       }
     ],
     "lookAt": [
       {
         "startFrame": 0,
-        "endFrame": 350,
-        "point": [0, 0, 0]
+        "endFrame": 250,
+        "point": [
+          [0, 0, 0],
+          [4.07,85.09,65.53]
+        ]
       },
       {
-        "startFrame": 351,
-        "endFrame": 650,
+        "startFrame": 251,
+        "endFrame": 512,
         "easing": "smoothstep",
         "points": [
-          [0, 0, 0],
-          [-200, 900, 800]
+          [-445.15,-381.86,-864.48],
+          [5000,-2618.29,4663.31]
+        ]
+      },
+      {
+        "startFrame": 513,
+        "endFrame": 801,
+        "point": [
+          [-5000,2960.87,-301.92],
+          [2854.07,-5000,2592.25]
         ]
       }
     ],
     "roll": [
       {
-        "startFrame": 220,
-        "endFrame": 450,
+        "startFrame": 0,
+        "endFrame": 250,
+        "value": -1.35
+      },
+      {
+        "startFrame": 251,
+        "endFrame": 512,
         "easing": "easeOut",
         "points": [
-          0,
-          0.5
+          -1.0,
+          -1.68
         ]
       },
       {
-        "startFrame": 451,
-        "endFrame": 850,
-        "easing": "smoothstep",
-        "points": [
-          0.5,
-          1.2
-        ]
+        "startFrame": 513,
+        "endFrame": 801,
+        "value": [1.53, 0.95],
+        "easing": "easeOut"
       }
     ],
     "fov": [
       {
         "startFrame": 0,
-        "endFrame": 550,
+        "endFrame": 250,
         "value": 45
       },
       {
-        "startFrame": 600,
-        "endFrame": 850,
+        "startFrame": 251,
+        "endFrame": 512,
         "easing": "smoothstep",
         "points": [
-          45,
-          25
+          25,
+          45
         ]
-      },
-      {
-        "startFrame": 851,
-        "endFrame": 852,
-        "value": 25
       }
     ]
   }
