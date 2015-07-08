@@ -149,6 +149,11 @@ AtomiumLayer.prototype.start = function() {
 };
 
 AtomiumLayer.prototype.update = function(frame, relativeFrame) {
+  if (relativeFrame > 801) {
+    relativeFrame = 801;
+    frame = this.layer.startFrame + relativeFrame;
+    BEAN = BEAN_FOR_FRAME(frame);
+  }
   this.cameraController.updateCamera(relativeFrame);
 
   this.camLight.position.copy(this.camera.position);

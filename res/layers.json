@@ -96,6 +96,25 @@
     "color": "#99bbff"
   },
   {
+    "type": "TextOverlayLayer",
+    "displayName": "Atomium Text",
+    "startFrame": 3350,
+    "endFrame": 3850,
+    "color": "#aaccff",
+    "config": {
+      "title": "fashion",
+      "body": [
+        "- high neuro-capacity",
+        "- organic",
+        "- not tested on animals"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
+  },
+  {
     "type": "ToonShaderLayer",
     "displayName": "Cel shading",
     "startFrame": 2719,
