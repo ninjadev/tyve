@@ -7,6 +7,11 @@ function AtomiumLayer(layer) {
   this.cameraController = new CameraController(layer.type);
   this.camera = this.cameraController.camera;
 
+  this.bg = new THREE.Mesh(new THREE.BoxGeometry(10000, 10000, 10000),
+                           new THREE.MeshBasicMaterial({color: 0x3e3149,
+                                                        side: THREE.BackSide}));
+  this.scene.add(this.bg);
+
   this.random = Random(1337);
 
   var sphereInfo = {
@@ -82,11 +87,11 @@ function AtomiumLayer(layer) {
 
   this.pin = new THREE.Object3D();
   var subPin1 = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
-                               new THREE.MeshLambertMaterial({color: 0x888888}));
+                               new THREE.MeshLambertMaterial({color: 0xffffff}));
   var subPin2 = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
-                               new THREE.MeshLambertMaterial({color: 0x666666}));
+                               new THREE.MeshLambertMaterial({color: 0xffffff}));
   var subPin3 = new THREE.Mesh(new THREE.CylinderGeometry(25, 25, 600, 32),
-                               new THREE.MeshLambertMaterial({color: 0x444444}));
+                               new THREE.MeshLambertMaterial({color: 0xffffff}));
   subPin1.scale.set(0.4, 1.1, 0.4);
   subPin2.scale.set(0.4, 1.0, 0.4);
   subPin3.scale.set(0.4, 0.9, 0.4);

@@ -1,0 +1,4 @@
+{
+    tDiffuse: { type: 't', value: null },
+    GU: { type: 'f', value: null}
+}
