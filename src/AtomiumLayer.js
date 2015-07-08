@@ -39,10 +39,10 @@ function AtomiumLayer(layer) {
   var colors = [
     0x79bfa3,
     0xcd5079,
-    0x5f4530,
+    0xe3ae64,
     0xe84530,
-    0x3f324a,
-    0x4e8393
+    0xc9a0eb,
+    0x6dc8e3
   ];
 
   for (var i=0; i < 410; i++) {
