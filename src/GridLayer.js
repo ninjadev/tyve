@@ -11,6 +11,16 @@ function GridLayer(layer) {
   this.cameraController = new CameraController(layer.type);
   this.camera = this.cameraController.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, this.viewDistance);
 
+  this.bg = new THREE.Mesh(new THREE.CylinderGeometry(400, 400, 100, 32, 1, true),
+                           new THREE.MeshBasicMaterial({
+                             map: Loader.loadTexture('res/skybox/wrap.jpg'),
+                             side: THREE.BackSide
+                           }));
+  this.bg.material.map.wrapS = this.bg.material.map.wrapT = THREE.RepeatWrapping;
+  this.bg.material.map.repeat.set(6, 1);
+  this.bg.position.y = 50;
+  this.scene.add(this.bg);
+
   /*             */
   /* Create grid */
   /*             */

@@ -4,7 +4,7 @@
 function RubixLayer(layer) {
   this.layer = layer;
   this.scene = new THREE.Scene();
-  this.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, 10000);
+  this.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, 100000);
 
   var light = new THREE.PointLight( 0xffffff, 1, 100 );
   light.position.set( -500, -500, -500 );
@@ -15,6 +15,23 @@ function RubixLayer(layer) {
   pointLight.position.y = 500;
   pointLight.position.z = 1300;
   this.scene.add(pointLight);
+
+
+  this.outerBg = new THREE.Mesh(new THREE.BoxGeometry(20000, 20000, 20000),
+                                new THREE.MeshBasicMaterial({
+                                  color: 0x222222,
+                                  map: Loader.loadTexture('res/skybox/up.jpg'), 
+                                  side: THREE.BackSide
+                                }));
+  this.bg = new THREE.Mesh(new THREE.CylinderGeometry(10000, 10000, 2000, 32, 1, true),
+                           new THREE.MeshLambertMaterial({
+                             map: Loader.loadTexture('res/skybox/wrap.jpg'),
+                             side: THREE.BackSide
+                           }));
+  this.bg.material.map.wrapS = this.bg.material.map.wrapT = THREE.RepeatWrapping;
+  this.bg.material.map.repeat.set(4, 1);
+  //this.scene.add(this.bg);
+  this.scene.add(this.outerBg);
 
   this.innerCubeGlow = 0;
 
@@ -147,9 +164,9 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
       0, Math.PI / 2,
       (frame % framesPerBean) / framesPerBean);
 
-  this.camera.position.x = 100 * Math.sin(frame / 30);
-  this.camera.position.y = 100 * Math.sin(frame / 40);
-  this.camera.position.z = 100 * Math.cos(frame / 50);
+  this.camera.position.x = 200 * Math.sin(frame / 30);
+  this.camera.position.y = 20 + 75 * Math.sin(frame / 40);
+  this.camera.position.z = 200 * Math.cos(frame / 50);
   this.camera.lookAt(new THREE.Vector3(0, 0, 0));
 
   var flyoutScaler = 1;
@@ -181,4 +198,6 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
       this.innerCubeMaterialColors[i].b / 255 * this.innerCubeGlow
     );
   }
+  var color = this.innerCubeGlow * 0.5 + 0.13;
+  this.outerBg.material.color.setRGB(color, color, color);
 };
