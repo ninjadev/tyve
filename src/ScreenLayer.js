@@ -22,10 +22,10 @@ function ScreenLayer(layer) {
     this.screen[x] = [];
     for(var y = 0; y < 9; y++) {
       var frontPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshPhongMaterial({
-        color: 0xc45079
+        color: 0xe84530
       }));
       var backPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshPhongMaterial({
-        color: 0x4e8393
+        color: 0x3f324a
       }));
       var pixel = new THREE.Object3D();
       frontPixel.position.z = 0.5;
