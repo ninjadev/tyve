@@ -76,7 +76,7 @@ function AtomiumLayer(layer) {
     }
   }
 
-  this.sphere = new THREE.Mesh(new THREE.SphereGeometry(50, 8, 8),
+  this.sphere = new THREE.Mesh(new THREE.SphereGeometry(50, 32, 32),
                                new THREE.MeshLambertMaterial({color: 0x55aaff}));
   this.sphere.scale.set(0, 0, 0);
 
