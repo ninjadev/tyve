@@ -142,9 +142,6 @@ IntroLayer.prototype.update = function(frame) {
     this.bassScaler = 1;
   }
 
-  if(frame == 0) {
-    this.bassScaler = 1;
-  }
   this.ballLine[0].material.opacity = lerp(0, 1, 10 * this.bassScaler);
   this.bgBallLine[0].material.opacity = lerp(0, 1, 10 * this.bassScaler) * 0.5;
 
