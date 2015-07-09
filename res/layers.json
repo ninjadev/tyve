@@ -15,7 +15,9 @@
     "startFrame": 654,
     "endFrame": 1604,
     "color": "#ffaa66",
-    "dependencies": ["TextOverlayLayer"]
+    "dependencies": [
+      "TextOverlayLayer"
+    ]
   },
   {
     "type": "GridLayer",
@@ -85,7 +87,7 @@
   {
     "type": "BlinkyTunnelLayer",
     "displayName": "Blinky Tunnel",
-    "startFrame": 1595,
+    "startFrame": 1608,
     "endFrame": 2500,
     "color": "#a219bf"
   },

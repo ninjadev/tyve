@@ -9,7 +9,29 @@ function BlinkyTunnelLayer() {
   this.shaderPass.uniforms.wall.value.magFilter = THREE.NearestFilter;
   this.shaderPass.uniforms.wall.value.minFilter = THREE.NearestFilter;
   this.colorRandom = Random('yolo');
+
+  this.textOverlayLayer = new TextOverlayLayer({
+    "config": {
+      "title": "Tunnel",
+      "body": [
+        "- pressure equalizing ducts",
+        "- natural lighting",
+        "- endless"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
+  });
+  this.shaderPass.uniforms.textImage.value = this.textOverlayLayer.texture;
+  this.resize();
 }
+
+
+BlinkyTunnelLayer.prototype.resize = function() {
+  this.textOverlayLayer.resize();
+};
 
 
 BlinkyTunnelLayer.prototype.getEffectComposerPass = function() {
@@ -17,6 +39,8 @@ BlinkyTunnelLayer.prototype.getEffectComposerPass = function() {
 };
 
 BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
+  var offset = 400;
+  this.textOverlayLayer.update(frame - 400, relativeFrame - 400);
   if(this.musicThrob > 0) {
     this.musicThrob *= 0.95;
   }
