@@ -96,14 +96,12 @@ MaxLayer.prototype.update = function(frame, relativeFrame) {
     var sphere = this.spheres[i];
 
     sphere.position.set(
-        40 * (i + 1) * Math.sin((relativeFrame/60) + i + i * 40),
-        40 * (i + 1) * Math.sin((relativeFrame/60) + i + i * 40),
-        40 * (i + 1) * Math.cos((relativeFrame/60) + i + i * 40));
+        40 * (i + 1) * Math.sin((relativeFrame/30) + i + i * 60),
+        40 * (i + 1) * Math.sin((relativeFrame/30) + i + i * 40) + 40,
+        40 * (i + 1) * Math.cos((relativeFrame/30) + i + i * 70));
   }
 
-
-  /*
-  this.camera.rotation.x = 0.89 + Math.cos(relativeFrame / 60) * 0.9;
-  this.camera.rotation.y = 0.89 + Math.cos(relativeFrame / 60) * 0.9;
-  */
+  this.bg.rotation.x = Math.sin(relativeFrame/60);
+  this.bg.rotation.y = Math.sin(relativeFrame/60);
+  this.bg.rotation.z = Math.cos(relativeFrame/60);
 };
