@@ -371,6 +371,25 @@
     "color": "#99bbff"
   },
   {
+    "type": "TextOverlayLayer",
+    "displayName": "Atomium Text",
+    "startFrame": 3350,
+    "endFrame": 3850,
+    "color": "#aaccff",
+    "config": {
+      "title": "Atom Grid",
+      "body": [
+        "- high neuro-capacity",
+        "- organic",
+        "- not tested on animals"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
+  },
+  {
     "type": "SobelPulseLayer",
     "displayName": "Sobel pulse",
     "startFrame": 2719,
@@ -390,25 +409,6 @@
     "startFrame": 3798,
     "endFrame": 4322,
     "color": "#93f334"
-  },
-  {
-    "type": "TextOverlayLayer",
-    "displayName": "Atomium Text",
-    "startFrame": 3350,
-    "endFrame": 3850,
-    "color": "#aaccff",
-    "config": {
-      "title": "fashion",
-      "body": [
-        "- high neuro-capacity",
-        "- organic",
-        "- not tested on animals"
-      ],
-      "offset": {
-        "x": 1.5,
-        "y": 2
-      }
-    }
   },
   {
     "type": "ToonShaderLayer",
