@@ -104,6 +104,20 @@
     "color": "#99bbff"
   },
   {
+    "type": "SplooshLayer",
+    "displayName": "Sploosh",
+    "startFrame": 3798,
+    "endFrame": 4322,
+    "color": "#93f334"
+  },
+  {
+    "type": "SplooshSobelLayer",
+    "displayName": "Sploosh sobel",
+    "startFrame": 3798,
+    "endFrame": 4322,
+    "color": "#93f334"
+  },
+  {
     "type": "TextOverlayLayer",
     "displayName": "Atomium Text",
     "startFrame": 3350,
