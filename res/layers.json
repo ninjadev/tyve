@@ -106,6 +106,13 @@
     "color": "#99bbff"
   },
   {
+    "type": "SobelPulseLayer",
+    "displayName": "Sobel pulse",
+    "startFrame": 2719,
+    "endFrame": 3798,
+    "color": "#d36869"
+  },
+  {
     "type": "SplooshLayer",
     "displayName": "Sploosh",
     "startFrame": 3798,
