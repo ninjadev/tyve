@@ -351,7 +351,10 @@
     "color": "#a393a0",
     "config": {
       "freezeAt": 1150
-    }
+    },
+    "dependencies": [
+      "TextOverlayLayer"
+    ]
   },
   {
     "type": "TextOverlayLayer",
