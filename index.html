@@ -56,6 +56,19 @@
       width: 10%;
       border: 1px solid #2c7f61;
     }
+
+    #start-button {
+      position: fixed;
+      left: 45%;
+      top: 54.5%;
+      width: 10%;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      border: 1px solid white;
+      padding: 5px;
+      margin-top: -10px;
+    }
   </style>
 </head>
 
@@ -65,17 +78,28 @@
       <div class=progress-bar-inner>
       </div> 
     </div> 
+    <a id=start-button class=hide href=javascript:; onclick=STARTDEMO();>
+      START
+    </a>
   </div>
 <script>
 var progressBarInner = document.querySelector('.progress-bar-inner');
+var progressBarContainer = document.querySelector('.progress-bar-container');
 var wrapper = document.querySelector('#wrapper');
+var startButton = document.querySelector('#start-button');
 ONPROGRESS = function(progress) {
   progressBarInner.style.width = ((+progress * 100 | 0) / 100) + '%';
 };
 
 ONCOMPLETE = function() {
   progressBarInner.style.width = '100%';
+  progressBarContainer.classList.add('hide');
+  startButton.classList.remove('hide');
+};
+
+STARTDEMO = function() {
   wrapper.classList.remove('visible');
+  document.body.style.background = '#000';
   demo.start();
 };
 </script>
