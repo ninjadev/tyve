@@ -89,7 +89,10 @@
     "displayName": "Blinky Tunnel",
     "startFrame": 1608,
     "endFrame": 2500,
-    "color": "#a219bf"
+    "color": "#a219bf",
+    "dependencies": [
+      "TextOverlayLayer"
+    ]
   },
   {
     "type": "ShockwaveLayer",
