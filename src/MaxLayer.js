@@ -66,7 +66,6 @@ function MaxLayer(layer) {
     this.spheres.push(sphere);
     this.scene.add(sphere);
   }
-  this.scene.add(this.box);
 
   if(!window.FILES) {
     Loader.start(function(){}, function(){});
