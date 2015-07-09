@@ -4,3 +4,4 @@ bin/
 .*.swo
 *.iml
 .idea
+Thumbs.db
