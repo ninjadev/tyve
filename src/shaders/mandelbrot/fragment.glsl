@@ -27,7 +27,7 @@ float mandelbrot(vec2 c)
         z = complexMult(z, z) + c;
     }
 
-    return 1.0 - float(depth - depth_reached) / float(depth);
+    return float(depth_reached) / float(depth);
 }
 
 
@@ -40,10 +40,25 @@ void main(void)
     vec2 c = zoomCoordinate + uv * zoom;
 
     vec4 textImageColor = texture2D(textImage, vUv);
+
+    vec2 stepX = vec2(1. / resolution.x, 0.);
+    vec2 stepY = vec2(0., 1. / resolution.y);
+    float center = mandelbrot(c);
+
+    float mixer = 0.;
+    if(center <= 0.1) {
+        mixer = 0.;
+    } else if(center > 0.1) {
+        mixer = mix(1., 0., (center - 0.1) / 0.9);
+    } else {
+        mixer = 1.;
+    }
+
     vec4 mandelbrotColor =
-      mandelbrot(c) > 0.1 ?
-        vec4(0.56, 0.69, 0.60, 1.0) :
-        vec4(.0, .0, .0, 1.0);
+        mix(
+            vec4(.0, .0, .0, 1.0),
+            vec4(0.56, 0.69, 0.60, 1.0),
+            mixer);
 
     gl_FragColor = vec4(mix(1.0 - textImageColor.rgb, mandelbrotColor.rgb, 1.0 - textImageColor.a), 1.0);
 }
