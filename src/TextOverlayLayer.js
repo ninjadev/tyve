@@ -54,17 +54,30 @@ TextOverlayLayer.prototype.update = function(frame, relativeFrame) {
   var offsetY = this.config.offset.y * GU;
 
   this.ctx.clearRect(0, 0, 16 * GU, 9 * GU);
-  this.ctx.fillStyle = "white";
+  this.ctx.fillStyle = this.config.textColor || "white";
 
   this.ctx.font = (GU | 0) + "px Yellowjacket";
   var step = stepForFrame(relativeFrame, offsetX);
   this.ctx.fillText(this.config.title, offsetX - step, offsetY);
+
+  if(this.config.strokeColor) {
+    this.ctx.strokeStyle = this.config.strokeColor;
+    this.ctx.lineWidth = GU / 20;
+    this.ctx.strokeText(this.config.title, offsetX - step, offsetY);
+  }
 
   this.ctx.font = ((GU * 3 / 5) | 0) + "px Yellowjacket";
   for (var i=0; i<this.config.body.length; i++) {
     var step = stepForFrame(relativeFrame - 10 * i, offsetX);
     this.ctx.fillText(
         this.config.body[i], step + offsetX, offsetY + ((1 + i) * GU));
+
+    if(this.config.strokeColor) {
+      this.ctx.strokeStyle = this.config.strokeColor;
+      this.ctx.lineWidth = GU / 30;
+      this.ctx.strokeText(
+          this.config.body[i], step + offsetX, offsetY + ((1 + i) * GU));
+    }
   }
 
   this.texture.needsUpdate = true;
