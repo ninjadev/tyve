@@ -10,6 +10,14 @@
     }
   },
   {
+    "type": "Mandelbrot",
+    "displayName": "Mandelbrot Fractal",
+    "startFrame": 654,
+    "endFrame": 1604,
+    "color": "#ffaa66",
+    "dependencies": ["TextOverlayLayer"]
+  },
+  {
     "type": "GridLayer",
     "displayName": "Grid layer",
     "startFrame": 4840,

@@ -49,7 +49,7 @@ TextOverlayLayer.prototype.end = function() {
 };
 
 TextOverlayLayer.prototype.update = function(frame, relativeFrame) {
-  var offsetX = this.config.offset.x * GU;
+  var offsetX = (this.config.flip * 8 + this.config.offset.x) * GU;
   var offsetY = this.config.offset.y * GU;
 
   this.ctx.clearRect(0, 0, 16 * GU, 9 * GU);
