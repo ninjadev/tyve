@@ -24,6 +24,44 @@ function IntroLayer(layer) {
   this.moon.position.y = 7;
   this.scene.add(this.moon);
 
+  this.epBall = new THREE.Mesh(new THREE.BoxGeometry(4, 4, 0.001),
+                               new THREE.MeshBasicMaterial({
+                                 color: 0xce5079,
+                                 transparent: true,
+                                 opacity: .4
+                               }));
+  this.epBall.rotation.z = Math.PI / 4;
+  this.epStab = 0;
+  this.epBall.position.set(0, 0, 1);
+  this.scene.add(this.epBall);
+
+  this.greenBoxStab = 0;
+
+  var greenBoxGeometry = new THREE.BoxGeometry(1, .2, 0.01);
+  var greenBoxMaterial = new THREE.MeshLambertMaterial({
+    color: 0x4e8393,
+    transparent: true,
+    opacity: 0.4
+  });
+  this.greenBoxes = [
+    new THREE.Mesh(greenBoxGeometry, greenBoxMaterial),
+    new THREE.Mesh(greenBoxGeometry, greenBoxMaterial),
+    new THREE.Mesh(greenBoxGeometry, greenBoxMaterial),
+    new THREE.Mesh(greenBoxGeometry, greenBoxMaterial),
+    new THREE.Mesh(greenBoxGeometry, greenBoxMaterial),
+    new THREE.Mesh(greenBoxGeometry, greenBoxMaterial),
+  ];
+  this.greenBoxes[0].position.set(-2, -3, 0);
+  this.greenBoxes[1].position.set(0, -3, 0);
+  this.greenBoxes[2].position.set(2, -3, 0);
+  this.greenBoxes[3].position.set(-2, 3, 0);
+  this.greenBoxes[4].position.set(0, 3, 0);
+  this.greenBoxes[5].position.set(2, 3, 0);
+
+
+  for(var i = 0; i < this.greenBoxes.length; i++) {
+    this.scene.add(this.greenBoxes[i]);
+  }
   this.bassScaler = 0;
 
   this.ballLine = [];
@@ -88,12 +126,12 @@ IntroLayer.prototype.end = function() {
 };
 
 IntroLayer.prototype.update = function(frame) {
-  if(frame < FRAME_FOR_BEAN(24)) {
+  if(frame < FRAME_FOR_BEAN(25)) {
     var colorStep = smoothstep(0, 1, (frame - 70) / (200 - 70));
-  } else if(frame < FRAME_FOR_BEAN(29)) {
-    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(24)) / 20);
+  } else if(frame < FRAME_FOR_BEAN(30)) {
+    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(25)) / 20);
   } else if(frame < 600) {
-    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(29)) / 20);
+    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(30)) / 20);
   } else {
     var colorStep = 1 - lerp(0, 1, (frame - 630) / (648 - 630));
   }
@@ -129,7 +167,24 @@ IntroLayer.prototype.update = function(frame) {
     this.bassScaler = 0;
   }
 
+  this.greenBoxStab *= 0.8;
+  if(this.greenBoxStab < 0.01) {
+    this.greenBoxStab = 0;
+  }
+
+  this.epStab *= 0.7;
+  if(this.epStab < 0.01) {
+    this.epStab = 0;
+  }
+
+  var progress = (frame - FRAME_FOR_BEAN(80)) / FRAME_FOR_BEAN(12);
   this.camera.rotation.z = (frame - 500) / 5000;
+  if(progress < 0.5) {
+    this.camera.fov = smoothstep(45, 30, progress * 2);
+  } else {
+    this.camera.fov = smoothstep(30, 45, progress * 2 - 1);
+  }
+  this.camera.updateProjectionMatrix();
 
   if(BEAT && (BEAN == 33) ||
              (BEAN == 36) ||
@@ -144,8 +199,36 @@ IntroLayer.prototype.update = function(frame) {
     this.bassScaler = 1;
   }
 
+  if(BEAT && (BEAN == 48) ||
+             (BEAN == 53) ||
+             (BEAN == 72) ||
+             (BEAN == 77) ||
+             (BEAN == 96) ||
+             (BEAN == 101)
+             ) {
+    this.greenBoxStab = 1;
+  }
+
+  if(BEAT && (BEAN == 57) ||
+             (BEAN == 60) ||
+             (BEAN == 61) ||
+             (BEAN == 62) ||
+             (BEAN == 63) ||
+             (BEAN == 66) ||
+             (BEAN == 69)
+             ) {
+    this.epStab = 1;
+  }
+
+  this.epBall.material.opacity = this.epStab * 0.4;
+
   this.ballLine[0].material.opacity = lerp(0, 1, 10 * this.bassScaler);
   this.bgBallLine[0].material.opacity = lerp(0, 1, 10 * this.bassScaler) * 0.5;
+
+  for(var i = 0; i < this.greenBoxes.length; i++) {
+    this.greenBoxes[i].material.opacity = this.greenBoxStab;
+    this.greenBoxes[i].rotation.z = rotation * frame * 1.5;
+  }
 
   var length = this.ballLine.length;
   for(var i = 0; i < length; i++) {
@@ -154,6 +237,7 @@ IntroLayer.prototype.update = function(frame) {
     this.ballLine[i].position.y = y;
     this.bgBallLine[i].position.y = y;
   }
+
 
   this.moon.material.opacity = lerp(0, 1, (frame - 250) / (800 - 250));
   this.moon.position.x = 10 + lerp(20, -70, (frame - 300) / (750 - 250));
