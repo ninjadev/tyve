@@ -24,12 +24,13 @@ function SplooshLayer(layer) {
   this.create_droplet();
   this.create_droplet();
   this.create_droplet();
-  this.create_stain();
-  this.create_stain();
-  this.create_stain();
-  this.create_stain();
-  this.create_stain();
-  this.create_stain();
+  var local_random = Random(234);
+  this.create_stain(local_random);
+  this.create_stain(local_random);
+  this.create_stain(local_random);
+  this.create_stain(local_random);
+  this.create_stain(local_random);
+  this.create_stain(local_random);
 }
 
 SplooshLayer.prototype.create_droplet = function() {
@@ -52,10 +53,9 @@ SplooshLayer.prototype.create_droplet = function() {
     this.scene.add(droplet);
 }
 
-SplooshLayer.prototype.create_stain = function() {
+SplooshLayer.prototype.create_stain = function(local_random) {
     var stain = new THREE.Object3D();
     var circles = [];
-    var local_random = Random(234);
 
     for(var i=0;i<this.num_circles;i++) {
         var material = new THREE.MeshBasicMaterial({
