@@ -322,15 +322,15 @@
   {
     "type": "RobotsLayer",
     "displayName": "RobotsLayer",
-    "startFrame": 1177,
-    "endFrame": 2500,
+    "startFrame": 1394,
+    "endFrame": 2719,
     "color": "#af219b"
   },
   {
     "type": "BlinkyTunnelLayer",
     "displayName": "Blinky Tunnel",
-    "startFrame": 1608,
-    "endFrame": 2500,
+    "startFrame": 1825,
+    "endFrame": 2719,
     "color": "#a219bf",
     "dependencies": [
       "TextOverlayLayer"
@@ -347,21 +347,29 @@
     "type": "MaxLayer",
     "displayName": "Max Headroom",
     "startFrame": 655,
-    "endFrame": 1177,
+    "endFrame": 1394,
     "color": "#a393a0",
     "config": {
-      "freezeAt": 1000
+      "freezeAt": 1150
     }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Max Text",
-    "startFrame":750 , "endFrame": 1177,
-    "config": { "title": "Max Headroom Effect",
+    "type": "TextOverlayLayer",
+    "displayName": "Max Text",
+    "startFrame": 1027,
+    "endFrame": 1394,
+    "config": {
+      "title": "Max Headroom Effect",
       "body": [
         "- popular: 1987",
         "- famous dr. who interrupter",
         "- shoutout to Phreakers"
-      ], "offset": { "x": 1.5, "y": 2 } }
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
   },
   {
     "type": "AtomiumLayer",
