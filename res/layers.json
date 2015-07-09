@@ -347,15 +347,15 @@
     "type": "MaxLayer",
     "displayName": "Max Headroom",
     "startFrame": 655,
-    "endFrame": 1172,
+    "endFrame": 1177,
     "color": "#a393a0",
     "config": {
-      "freezeAt": 1077
+      "freezeAt": 1000
     }
   },
   {
     "type": "TextOverlayLayer", "displayName": "Max Text",
-    "startFrame":900 , "endFrame": 1172,
+    "startFrame":750 , "endFrame": 1177,
     "config": { "title": "Max Headroom Effect",
       "body": [
         "- popular: 1987",
