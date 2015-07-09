@@ -48,105 +48,251 @@
   {
     "type": "ScreenLayer",
     "displayName": "Screen",
-    "startFrame": 6800,
+    "startFrame": 6807,
     "endFrame": 8000,
     "color": "#0cffe1"
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet kewlers",
-    "startFrame": 6800, "endFrame": 7183,
-    "config": { "title": "Kewlers",
-      "body": [], "offset": { "x": 1.5, "y": 2 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Screen text",
+    "startFrame": 6694,
+    "endFrame": 6931,
+    "config": {
+      "title": "Greet screen",
+      "body": [
+        "- Two colors",
+        "- 16x9 resolution",
+        "- yolo"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet rgba",
-    "startFrame": 6868, "endFrame": 7249,
-    "config": { "title": "rgba",
-      "body": [], "offset": { "x": 1.5, "y": 4 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet kewlers",
+    "startFrame": 6800,
+    "endFrame": 7183,
+    "config": {
+      "title": "Kewlers",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet farbrausch",
-    "startFrame": 6931, "endFrame": 7314,
-    "config": { "title": "Farbrausch",
-      "body": [], "offset": { "x": 1.5, "y": 6 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet rgba",
+    "startFrame": 6868,
+    "endFrame": 7249,
+    "config": {
+      "title": "rgba",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 4
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet mrdoob",
-    "startFrame": 6997, "endFrame": 7380,
-    "config": { "title": "Mr.doob",
-      "body": [], "offset": { "x": 1.5, "y": 8 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet farbrausch",
+    "startFrame": 6931,
+    "endFrame": 7314,
+    "config": {
+      "title": "Farbrausch",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 6
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet gargaj",
-    "startFrame": 7062, "endFrame": 7445,
-    "config": { "title": "Gargaj",
-      "body": [], "offset": { "x": 1.5, "y": 2 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet mrdoob",
+    "startFrame": 6997,
+    "endFrame": 7380,
+    "config": {
+      "title": "Mr.doob",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 8
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet outracks",
-    "startFrame": 7128, "endFrame": 7511,
-    "config": { "title": "Outracks",
-      "body": [], "offset": { "x": 1.5, "y": 4 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet gargaj",
+    "startFrame": 7062,
+    "endFrame": 7445,
+    "config": {
+      "title": "Gargaj",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet excess",
-    "startFrame": 7193, "endFrame": 7576,
-    "config": { "title": "Excess",
-      "body": [], "offset": { "x": 1.5, "y": 6 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet outracks",
+    "startFrame": 7128,
+    "endFrame": 7511,
+    "config": {
+      "title": "Outracks",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 4
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet pandacube",
-    "startFrame": 7259, "endFrame": 7642,
-    "config": { "title": "Panda Cube",
-      "body": [], "offset": { "x": 1.5, "y": 8 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet excess",
+    "startFrame": 7193,
+    "endFrame": 7576,
+    "config": {
+      "title": "Excess",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 6
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet relapse",
-    "startFrame": 7324, "endFrame": 7707,
-    "config": { "title": "Relapse",
-      "body": [], "offset": { "x": 1.5, "y": 2 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet pandacube",
+    "startFrame": 7259,
+    "endFrame": 7642,
+    "config": {
+      "title": "Panda Cube",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 8
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet indigo",
-    "startFrame": 7390, "endFrame": 7773,
-    "config": { "title": "Indigo",
-      "body": [], "offset": { "x": 1.5, "y": 4 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet relapse",
+    "startFrame": 7324,
+    "endFrame": 7707,
+    "config": {
+      "title": "Relapse",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet odd",
-    "startFrame": 7455, "endFrame": 7838,
-    "config": { "title": "Odd",
-      "body": [], "offset": { "x": 1.5, "y": 6 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet indigo",
+    "startFrame": 7390,
+    "endFrame": 7773,
+    "config": {
+      "title": "Indigo",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 4
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet crew",
-    "startFrame": 7521, "endFrame": 7904,
-    "config": { "title": "Solskogen crew",
-      "body": [], "offset": { "x": 1.5, "y": 8 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet odd",
+    "startFrame": 7455,
+    "endFrame": 7838,
+    "config": {
+      "title": "Odd",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 6
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet desire",
-    "startFrame": 7586, "endFrame": 7969,
-    "config": { "title": "DESiRE",
-      "body": [], "offset": { "x": 1.5, "y": 2 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet crew",
+    "startFrame": 7521,
+    "endFrame": 7904,
+    "config": {
+      "title": "Solskogen crew",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 8
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet fnuque",
-    "startFrame": 7652, "endFrame": 8000,
-    "config": { "title": "Fnuque",
-      "body": [], "offset": { "x": 1.5, "y": 4 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet desire",
+    "startFrame": 7586,
+    "endFrame": 7969,
+    "config": {
+      "title": "DESiRE",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet ephidrena",
-    "startFrame": 7717, "endFrame": 8000,
-    "config": { "title": "Ephidrena",
-      "body": [], "offset": { "x": 1.5, "y": 6 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet fnuque",
+    "startFrame": 7652,
+    "endFrame": 8000,
+    "config": {
+      "title": "Fnuque",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 4
+      }
+    }
   },
   {
-    "type": "TextOverlayLayer", "displayName": "Greet all",
-    "startFrame": 7783, "endFrame": 8166,
-    "config": { "title": "And all of you!",
-      "body": [], "offset": { "x": 1.5, "y": 8 } }
+    "type": "TextOverlayLayer",
+    "displayName": "Greet ephidrena",
+    "startFrame": 7717,
+    "endFrame": 8000,
+    "config": {
+      "title": "Ephidrena",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 6
+      }
+    }
+  },
+  {
+    "type": "TextOverlayLayer",
+    "displayName": "Greet all",
+    "startFrame": 7783,
+    "endFrame": 8166,
+    "config": {
+      "title": "And all of you!",
+      "body": [],
+      "offset": {
+        "x": 1.5,
+        "y": 8
+      }
+    }
   },
   {
     "type": "RubixLayer",
