@@ -348,7 +348,10 @@
     "displayName": "Max Headroom",
     "startFrame": 655,
     "endFrame": 1172,
-    "color": "#a393a0"
+    "color": "#a393a0",
+    "config": {
+      "freezeAt": 1077
+    }
   },
   {
     "type": "TextOverlayLayer", "displayName": "Max Text",
