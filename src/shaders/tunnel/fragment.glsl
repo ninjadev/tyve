@@ -1,5 +1,6 @@
 uniform sampler2D tDiffuse;
 uniform sampler2D wall;
+uniform sampler2D textImage;
 uniform float t;
 uniform float tunnelAmount;
 uniform float throb;
@@ -57,6 +58,9 @@ void main(void)
     if(t >= 1250.) {
         outp = mix(outp, outp + vec4(1.), smoothstep(0., 1., (t - 1250.) / 20.));
     }
+
+    vec4 textImageColor = texture2D(textImage, vUv);
+    outp = vec4(mix(outp.xyz, 1. - textImageColor.xyz, textImageColor.a), 1.);
 
     gl_FragColor = mix(
         texture2D(tDiffuse, vUv),
