@@ -13,7 +13,7 @@
     "type": "Mandelbrot",
     "displayName": "Mandelbrot Fractal",
     "startFrame": 5756,
-    "endFrame": 6274,
+    "endFrame": 6800,
     "color": "#ffaa66",
     "dependencies": [
       "TextOverlayLayer"

@@ -5,27 +5,93 @@
 function Mandelbrot(layer) {
   this.resolutionPath = new PathController([
       {
-        startFrame: 25,
-        endFrame: 240,
+        startFrame: 90,
+        endFrame: 150,
         points: [
           [0, 0, 0],
-          [-0.015, -0.795467633298876, 0]
+          [-0.1002, 0.8373, 0]
         ],
-        easing: "smoothstep"
+        easing: 'smoothstep'
+      },
+      {
+        startFrame: 150,
+        endFrame: 350,
+        points: [
+          [-0.1002, 0.8373, 0],
+          [-0.0990, 0.8369, 0]
+        ]
+      },
+      {
+        startFrame: 350,
+        endFrame: 440,
+        points: [
+          [-0.0990, 0.8369, 0],
+          [-0.745, 0.101, 0]
+        ],
+        easing: 'smoothstep'
+      },
+      {
+        startFrame: 440,
+        endFrame: 600,
+        points: [
+          [-0.745, 0.101, 0],
+          [-0.744, 0.1005, 0]
+        ],
+      },
+      {
+        startFrame: 600,
+        endFrame: 710,
+        points: [
+          [-0.744, 0.1005, 0],
+          [-0.0152, -0.795567633298876, 0]
+        ],
+        easing: 'smoothstep'
+      },
+      {
+        startFrame: 710,
+        endFrame: 770,
+        points: [
+          [-0.0152, -0.795567633298876, 0],
+          [-0.015, -0.795467633298876, 0]
+        ]
       }
   ]);
   this.zoomPath = new PathController([
       {
-        startFrame: 25,
-        endFrame: 238,
-        points: [0, 6],
-        easing: "smoothstep"
+        startFrame: 0,
+        endFrame: 60,
+        points: [0, 2],
+        easing: 'smoothstep'
       },
       {
-        startFrame: 239,
-        endFrame: 250,
-        points: [6, 10],
-        easing: "smoothstep"
+        startFrame: 120,
+        endFrame: 180,
+        points: [2, 11],
+        easing: 'smoothstep'
+      },
+      { // Top -> Left
+        startFrame: 330,
+        endFrame: 400,
+        points: [11, 4],
+        easing: 'easeOut'
+      },
+      {
+        startFrame: 400,
+        endFrame: 440,
+        points: [4,  10],
+        easing: 'easeIn'
+      },
+      { // Left -> Right
+        startFrame: 600,
+        endFrame: 655,
+        points: [10, 4],
+        easing: 'easeOut'
+      },
+      {
+        startFrame: 655,
+        endFrame: 720,
+        points: [4,  10],
+        easing: 'easeIn'
       }
   ], '1D');
 
@@ -67,7 +133,7 @@ Mandelbrot.prototype.resize = function() {
 };
 
 Mandelbrot.prototype.update = function(frame, relativeFrame) {
-  this.textOverlayLayer.update(frame - 120, relativeFrame - 120);
+  this.textOverlayLayer.update(frame - 630, relativeFrame - 630);
 
   this.shaderPass.uniforms.resolution.value = new THREE.Vector2(16 * GU, 9 * GU);
 
