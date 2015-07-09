@@ -2,6 +2,7 @@
  * @constructor
  */
 function MaxLayer(layer) {
+  this.freezeAt = 430;
   this.viewDistance = 100000;
 
   this.random = Random(0x90);
@@ -9,7 +10,12 @@ function MaxLayer(layer) {
   this.scene = new THREE.Scene();
   this.cameraController = new CameraController(layer.type);
   this.camera = this.cameraController.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, this.viewDistance);
-  this.camera.position.z = 400;
+
+  this.camera.position.x =  250;
+  this.camera.position.y = -125;
+  this.camera.position.z =  260;
+
+  this.camera.lookAt(new THREE.Vector3(54, 30, 47));
 
   var skyboxMaterials = [
     new THREE.MeshBasicMaterial({
@@ -49,8 +55,17 @@ function MaxLayer(layer) {
 
   this.scene.add(this.bg);
 
-  this.box = new THREE.Mesh(new THREE.BoxGeometry(20, 20, 20),
-                            new THREE.MeshBasicMaterial({color:0x00ff00}));
+  this.NUM_OF_SPHERES = 3;
+  this.spheres = [];
+  var colors = [0x79bfa3, 0xcd5079, 0x4e8393];
+
+  for(var i = 0; i < this.NUM_OF_SPHERES; i++) {
+    var sphere = new THREE.Mesh(new THREE.SphereGeometry(20, 20, 20),
+                                new THREE.MeshBasicMaterial({color:colors[i]}));
+    sphere.position.set(i*40, i*40, i*40);
+    this.spheres.push(sphere);
+    this.scene.add(sphere);
+  }
   this.scene.add(this.box);
 
   if(!window.FILES) {
@@ -70,6 +85,22 @@ MaxLayer.prototype.end = function() {
 };
 
 MaxLayer.prototype.update = function(frame, relativeFrame) {
-  this.camera.rotation.y = 0.75 + Math.cos(relativeFrame / 60) * 0.9;
-  this.camera.rotation.x = 0.75 + Math.cos(relativeFrame / 60) * 0.9;
+  if(frame > this.freezeAt) {
+    return;
+  }
+
+  for(var i = 0; i < this.NUM_OF_SPHERES; i++) {
+    var sphere = this.spheres[i];
+
+    sphere.position.set(
+        40 * (i + 1) * Math.sin((relativeFrame/60) + i + i * 40),
+        40 * (i + 1) * Math.sin((relativeFrame/60) + i + i * 40),
+        40 * (i + 1) * Math.cos((relativeFrame/60) + i + i * 40));
+  }
+
+
+  /*
+  this.camera.rotation.x = 0.89 + Math.cos(relativeFrame / 60) * 0.9;
+  this.camera.rotation.y = 0.89 + Math.cos(relativeFrame / 60) * 0.9;
+  */
 };
