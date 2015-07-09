@@ -2,7 +2,7 @@
  * @constructor
  */
 function MaxLayer(layer) {
-  this.freezeAt = 1077;
+  this.freezeAt = layer.config.freezeAt;
   this.viewDistance = 100000;
 
   this.random = Random(0x90);
@@ -17,29 +17,33 @@ function MaxLayer(layer) {
 
   this.camera.lookAt(new THREE.Vector3(54, 30, 47));
 
+  var blueTexture = Loader.loadTexture('res/max/blue.png');
+  var greenTexture = Loader.loadTexture('res/max/green.png');
+  var redTexture = Loader.loadTexture('res/max/red.png');
+
   var skyboxMaterials = [
     new THREE.MeshBasicMaterial({
-      map: Loader.loadTexture('res/max/blue.png'),
+      map: blueTexture,
       side: THREE.BackSide
     }),
     new THREE.MeshBasicMaterial({
-      map: Loader.loadTexture('res/max/red.png'),
+      map: redTexture,
       side: THREE.BackSide
     }),
     new THREE.MeshBasicMaterial({
-      map: Loader.loadTexture('res/max/blue.png'),
+      map: blueTexture,
       side: THREE.BackSide
     }),
     new THREE.MeshBasicMaterial({
-      map: Loader.loadTexture('res/max/green.png'),
+      map: greenTexture,
       side: THREE.BackSide
     }),
     new THREE.MeshBasicMaterial({
-      map: Loader.loadTexture('res/max/red.png'),
+      map: redTexture,
       side: THREE.BackSide
     }),
     new THREE.MeshBasicMaterial({
-      map: Loader.loadTexture('res/max/green.png'),
+      map: greenTexture,
       side: THREE.BackSide
     }),
   ];
