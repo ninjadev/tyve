@@ -100,10 +100,4 @@ MaxLayer.prototype.update = function(frame, relativeFrame) {
         40 * (i + 1) * Math.sin((relativeFrame/60) + i + i * 40),
         40 * (i + 1) * Math.cos((relativeFrame/60) + i + i * 40));
   }
-
-
-  /*
-  this.camera.rotation.x = 0.89 + Math.cos(relativeFrame / 60) * 0.9;
-  this.camera.rotation.y = 0.89 + Math.cos(relativeFrame / 60) * 0.9;
-  */
 };
