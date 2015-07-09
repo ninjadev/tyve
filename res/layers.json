@@ -73,7 +73,7 @@
   {
     "type": "TextOverlayLayer",
     "displayName": "Greet kewlers",
-    "startFrame": 6868,
+    "startFrame": 6800,
     "endFrame": 7183,
     "config": {
       "title": "Kewlers",
