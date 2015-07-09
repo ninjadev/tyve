@@ -12,8 +12,8 @@
   {
     "type": "Mandelbrot",
     "displayName": "Mandelbrot Fractal",
-    "startFrame": 654,
-    "endFrame": 1604,
+    "startFrame": 5890,
+    "endFrame": 6947,
     "color": "#ffaa66",
     "dependencies": [
       "TextOverlayLayer"
@@ -48,8 +48,8 @@
   {
     "type": "ScreenLayer",
     "displayName": "Screen",
-    "startFrame": 5756,
-    "endFrame": 6395,
+    "startFrame": 6947,
+    "endFrame": 8000,
     "color": "#0cffe1"
   },
   {
