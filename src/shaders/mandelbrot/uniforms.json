@@ -1,0 +1,7 @@
+{
+    "time": { "type": "f", "value": 0 },
+    "resolution": { "type": "v2", "value": null },
+    "zoomCoordinate": { "type": "v2", "value": { "x": 0, "y": 0 } },
+    "textImage": { "type": "t", "value": null }
+}
+
