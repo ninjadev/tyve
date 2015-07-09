@@ -17,15 +17,29 @@
       },
       {
         "startFrame": 251,
-        "endFrame": 512,
-        "points": [
-          [-1000, 1000, -1000],
-          [-1750, 1000, -1500]
-        ],
-        "easing": "easeIn"
+        "endFrame": 283,
+        "point": [
+          [-559.79,465.5,-55.07],
+          [-672.3,498.33,-98.94]
+        ]
       },
       {
-        "startFrame": 513,
+        "startFrame": 284,
+        "endFrame": 414,
+        "point": [-1095.28,900.1,939.99]
+      },
+      {
+        "startFrame": 415,
+        "endFrame": 479,
+        "point": [-1246.01,1000,-1164.01]
+      },
+      {
+        "startFrame": 480,
+        "endFrame": 545,
+        "point": [606.84,512.08,10.15]
+      },
+      {
+        "startFrame": 546,
         "endFrame": 801,
         "points": [
           [2591,-660,-238],
@@ -38,27 +52,42 @@
       {
         "startFrame": 0,
         "endFrame": 250,
-        "point": [
+        "points": [
           [0, 0, 0],
           [4.07,85.09,65.53]
         ]
       },
       {
         "startFrame": 251,
-        "endFrame": 512,
-        "easing": "smoothstep",
+        "endFrame": 283,
+        "point": [-441.94,432.41,-7.15]
+      },
+      {
+        "startFrame": 284,
+        "endFrame": 414,
+        "point": [-884.12,855.54,814.34]
+      },
+      {
+        "startFrame": 415,
+        "endFrame": 479,
         "points": [
-          [-445.15,-381.86,-864.48],
-          [5000,-2618.29,4663.31]
+          [434.19, -20, 378],
+          [434.19, -60.97, 380]
         ]
       },
       {
-        "startFrame": 513,
+        "startFrame": 480,
+        "endFrame": 545,
+        "point": [351.58,455.25,-5000]
+      },
+      {
+        "startFrame": 546,
         "endFrame": 801,
         "point": [
           [-5000,2960.87,-301.92],
           [2854.07,-5000,2592.25]
-        ]
+        ],
+        "easing": "easeOut"
       }
     ],
     "roll": [
@@ -69,18 +98,28 @@
       },
       {
         "startFrame": 251,
-        "endFrame": 512,
-        "easing": "easeOut",
-        "points": [
-          -1.0,
-          -1.68
-        ]
+        "endFrame": 283,
+        "value": -1.52
       },
       {
-        "startFrame": 513,
+        "startFrame": 284,
+        "endFrame": 414,
+        "value": 0.1
+      },
+      {
+        "startFrame": 415,
+        "endFrame": 479,
+        "value": 1.6
+      },
+      {
+        "startFrame": 480,
+        "endFrame": 545,
+        "value": 2.42
+      },
+      {
+        "startFrame": 546,
         "endFrame": 801,
-        "value": [1.53, 0.95],
-        "easing": "easeOut"
+        "value": [1.93, 0.95]
       }
     ],
     "fov": [
@@ -90,13 +129,14 @@
         "value": 45
       },
       {
-        "startFrame": 251,
-        "endFrame": 512,
-        "easing": "smoothstep",
-        "points": [
-          25,
-          45
-        ]
+        "startFrame": 480,
+        "endFrame": 545,
+        "value": 60
+      },
+      {
+        "startFrame": 546,
+        "endFrame": 546,
+        "value": 45
       }
     ]
   }
