@@ -175,7 +175,7 @@ ScreenLayer.prototype.update = function(frame) {
   for(var x = 0; x < 16; x++) {
     for(var y = 0; y < 9; y++) {
       var pixel = this.screen[x][y];
-      if(BEAN < 1056) {
+      if(BEAN < 1151) {
         pixel.rotation.x = ((1 + x) * (1 + y) + frame / 20) % (Math.PI * 2);
       } else {
         pixel.rotation.x = lerp(pixel.rotation.x, pixel.targetRotation.x, 0.1);
@@ -187,7 +187,7 @@ ScreenLayer.prototype.update = function(frame) {
 
   this.camera.position.x = 0;
   this.camera.position.z = 130;
-  if(BEAN >= 1080) {
+  if(BEAN >= 1176) {
     if(BEAN % 24 < 12) {
       this.camera.position.x = -lerp(140, 120, (BEAN % 12) / 12);
       this.camera.position.z = 100;
@@ -205,7 +205,7 @@ ScreenLayer.prototype.update = function(frame) {
     this.camera.lookAt(new THREE.Vector3(0, 0, 0));
   }
 
-  if(BEAN >= 1056) {
-  this.screenSetBuffer(this.images[((BEAN - 1056) / 12 | 0) % this.images.length]);
+  if(BEAN >= 1151) {
+  this.screenSetBuffer(this.images[((BEAN - 1151) / 12 | 0) % this.images.length]);
   }
 };
