@@ -25,7 +25,7 @@ function GridLayer(layer) {
   /* Create grid */
   /*             */
 
-  var gridGeometry = new THREE.Geometry();
+  var gridGeometry = new THREE.Geometry(),
       gridMaterial = new THREE.LineBasicMaterial(
     {
       color: this.neonGreen,
