@@ -198,6 +198,23 @@
     "color": "#2a19bf"
   },
   {
+    "type": "MaxLayer",
+    "displayName": "Max Headroom",
+    "startFrame": 655,
+    "endFrame": 1172,
+    "color": "#a393a0"
+  },
+  {
+    "type": "TextOverlayLayer", "displayName": "Max Text",
+    "startFrame":900 , "endFrame": 1172,
+    "config": { "title": "Max Headroom Effect",
+      "body": [
+        "- popular: 1987",
+        "- famous dr. who interrupter",
+        "- shoutout to Phreakers"
+      ], "offset": { "x": 1.5, "y": 2 } }
+  },
+  {
     "type": "AtomiumLayer",
     "displayName": "Atomium",
     "startFrame": 2719,

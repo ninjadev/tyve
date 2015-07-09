@@ -2,7 +2,7 @@
  * @constructor
  */
 function MaxLayer(layer) {
-  this.freezeAt = 430;
+  this.freezeAt = 1077;
   this.viewDistance = 100000;
 
   this.random = Random(0x90);
