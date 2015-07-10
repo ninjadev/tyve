@@ -8,9 +8,17 @@ function AtomiumLayer(layer) {
   this.camera = this.cameraController.camera;
 
   this.bg = new THREE.Mesh(new THREE.BoxGeometry(10000, 10000, 10000),
-                           new THREE.MeshBasicMaterial({color: 0x3e3149,
-                                                        side: THREE.BackSide}));
+                           new THREE.MeshBasicMaterial({
+                               color: 0x3B3390,
+                               map: Loader.loadTexture('res/skybox/starbg.png'),
+                               side: THREE.BackSide
+                           }));
+  this.bg.material.map.wrapS = this.bg.material.map.wrapT = THREE.RepeatWrapping;
+  this.bg.material.map.repeat.set(8, 8);
   this.scene.add(this.bg);
+  this.innerCubeGlow = 0;
+  this.snareGlow = 0;
+  Loader.start(function(){}, function(){});
 
   this.random = Random(1337);
 
@@ -235,4 +243,15 @@ AtomiumLayer.prototype.update = function(frame, relativeFrame) {
     var color = sphere.glow * 0.3;
     sphere.material.emissive.setRGB(color, color, color);
   }
+
+  if (this.snareGlow > 0) {
+    this.snareGlow *= 0.95;
+  }
+
+  if (BEAN > 544 && BEAT && BEAN % 12 == 6) {
+    this.snareGlow = 1;
+  }
+
+  var color = this.snareGlow * 0.6 + 0.33;
+  this.bg.material.color.setRGB(color, color, color);
 };
