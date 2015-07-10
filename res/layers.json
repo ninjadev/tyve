@@ -329,8 +329,8 @@
   {
     "type": "BlinkyTunnelLayer",
     "displayName": "Blinky Tunnel",
-    "startFrame": 1825,
-    "endFrame": 2719,
+    "startFrame": 1638,
+    "endFrame": 2741,
     "color": "#a219bf",
     "dependencies": [
       "TextOverlayLayer"

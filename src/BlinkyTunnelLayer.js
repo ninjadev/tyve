@@ -54,6 +54,15 @@ BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
   this.shaderPass.uniforms.opacity.value = smoothstep(
       0, 1, (relativeFrame) / 20);
 
+  if(frame > 2641) {
+    this.shaderPass.uniforms.opacity.value = smoothstep(
+        1, 0, (frame - 2641) / 100);
+  }
+
+  if(frame > 2610) {
+    this.shaderPass.uniforms.tunnelAmount.value = smoothstep(
+        1, 4, (frame - 2610) / 100);
+  }
   this.wallCtx.fillStyle = '#5f4530';
   this.wallCtx.fillRect(0, 0, 32, 18);
   this.wallCtx.fillStyle = 'yellow';
