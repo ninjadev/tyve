@@ -475,6 +475,14 @@
     }
   },
   {
+    "type": "TileLayer",
+    "displayName": "Tile",
+    "startFrame": 655,
+    "endFrame": 1177,
+    "color": "#33ff88",
+    "config": {}
+  },
+  {
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 0,
@@ -483,11 +491,11 @@
     "config": {}
   },
   {
-    "type": "TileLayer",
-    "displayName": "Tile",
-    "startFrame": 655,
-    "endFrame": 1177,
-    "color": "#33ff88",
+    "type": "BloomLayer",
+    "displayName": "Bloom fx",
+    "startFrame": 2798,
+    "endFrame": 9300,
+    "color": "#5bbb1f",
     "config": {}
   }
 ]

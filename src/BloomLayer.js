@@ -3,7 +3,7 @@
  */
 function BloomLayer(layer) {
   this.config = layer.config;
-  this.shaderPass = new THREE.BloomPass(0.5, 16, 160, 512);
+  this.shaderPass = new THREE.BloomPass(1, 16, 160, 512);
 }
 
 BloomLayer.prototype.update = function(frame) {
