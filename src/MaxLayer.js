@@ -123,6 +123,9 @@ MaxLayer.prototype.update = function(frame, relativeFrame) {
   if(frame > this.resumeAt) {
     this.maxVersion1.position.x = 1000000;
     this.maxVersion2.position.x = 1000000;
+  } else {
+    this.maxVersion1.position.x =  240;
+    this.maxVersion2.position.x =  240;
   }
 
   if(BEAT && BEAN % 12 == 6) {
