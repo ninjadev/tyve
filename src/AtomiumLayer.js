@@ -18,7 +18,9 @@ function AtomiumLayer(layer) {
   this.scene.add(this.bg);
   this.innerCubeGlow = 0;
   this.snareGlow = 0;
-  Loader.start(function(){}, function(){});
+  if(!window.FILES) {
+    Loader.start(function(){}, function(){});
+  }
 
   this.random = Random(1337);
 
