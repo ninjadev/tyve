@@ -54,24 +54,6 @@
   },
   {
     "type": "TextOverlayLayer",
-    "displayName": "Screen text",
-    "startFrame": 6694,
-    "endFrame": 6931,
-    "config": {
-      "title": "Greet screen",
-      "body": [
-        "- Two colors",
-        "- 16x9 resolution",
-        "- yolo"
-      ],
-      "offset": {
-        "x": 1.5,
-        "y": 2
-      }
-    }
-  },
-  {
-    "type": "TextOverlayLayer",
     "displayName": "Greet kewlers",
     "startFrame": 6800,
     "endFrame": 7183,
