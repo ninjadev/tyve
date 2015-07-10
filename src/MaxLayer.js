@@ -3,6 +3,7 @@
  */
 function MaxLayer(layer) {
   this.freezeAt = layer.config.freezeAt;
+  this.resumeAt = layer.config.resumeAt;
   this.viewDistance = 100000;
 
   this.random = Random(0x90);
@@ -16,6 +17,33 @@ function MaxLayer(layer) {
   this.camera.position.z =  260;
 
   this.camera.lookAt(new THREE.Vector3(54, 30, 47));
+
+  var maxVersion1Map = Loader.loadTexture('res/max/max1.png');
+  var maxVersion2Map = Loader.loadTexture('res/max/max2.png');
+
+  this.maxVersion1 = new THREE.Mesh(new THREE.BoxGeometry(8, 4.5, 1),
+                                    new THREE.MeshBasicMaterial({
+                                      map: maxVersion1Map,
+                                      transparent: true
+                                    }));
+  this.maxVersion1.position.x =  240;
+  this.maxVersion1.position.y = -122;
+  this.maxVersion1.position.z =  250;
+  this.maxVersion1.rotation.y =   10;
+
+  this.scene.add(this.maxVersion1);
+
+  this.maxVersion2 = new THREE.Mesh(new THREE.BoxGeometry(8, 4.5, 1),
+                                    new THREE.MeshBasicMaterial({
+                                      map: maxVersion2Map,
+                                      transparent: true
+                                    }));
+  this.maxVersion2.position.x =  240;
+  this.maxVersion2.position.y =  122;
+  this.maxVersion2.position.z =  250;
+  this.maxVersion2.rotation.y =   10;
+
+  this.scene.add(this.maxVersion2);
 
   var blueTexture = Loader.loadTexture('res/max/blue.png');
   var greenTexture = Loader.loadTexture('res/max/green.png');
@@ -88,8 +116,18 @@ MaxLayer.prototype.end = function() {
 };
 
 MaxLayer.prototype.update = function(frame, relativeFrame) {
-  if(frame > this.freezeAt) {
+  if(frame > this.freezeAt && frame < this.resumeAt) {
     return;
+  }
+
+  if(frame > this.resumeAt) {
+    this.scene.remove(this.maxVersion1);
+    this.scene.remove(this.maxVersion2);
+  }
+
+  if(BEAT && BEAN % 12 == 6) {
+    this.maxVersion1.position.y = (-1) * this.maxVersion1.position.y;
+    this.maxVersion2.position.y = (-1) * this.maxVersion2.position.y;
   }
 
   for(var i = 0; i < this.NUM_OF_SPHERES; i++) {

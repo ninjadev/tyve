@@ -322,7 +322,7 @@
   {
     "type": "RobotsLayer",
     "displayName": "RobotsLayer",
-    "startFrame": 1394,
+    "startFrame": 1694,
     "endFrame": 2719,
     "color": "#af219b"
   },
@@ -346,11 +346,12 @@
   {
     "type": "MaxLayer",
     "displayName": "Max Headroom",
-    "startFrame": 655,
-    "endFrame": 1394,
+    "startFrame": 1181,
+    "endFrame": 1694,
     "color": "#a393a0",
     "config": {
-      "freezeAt": 1150
+      "freezeAt": 1580,
+      "resumaAt": 1694
     },
     "dependencies": [
       "TextOverlayLayer"
@@ -359,8 +360,8 @@
   {
     "type": "TextOverlayLayer",
     "displayName": "Max Text",
-    "startFrame": 1027,
-    "endFrame": 1394,
+    "startFrame": 1370,
+    "endFrame": 1694,
     "config": {
       "title": "Max Headroom Effect",
       "body": [
