@@ -3,6 +3,8 @@
  */
 
 function Mandelbrot(layer) {
+  this.startFrame = +layer.startFrame;
+  this.stab = 0;
   this.resolutionPath = new PathController([
       {
         startFrame: 90,
@@ -133,10 +135,35 @@ Mandelbrot.prototype.resize = function() {
 };
 
 Mandelbrot.prototype.update = function(frame, relativeFrame) {
+
   this.textOverlayLayer.update(frame - 630, relativeFrame - 630);
+
+  var freezeBean = 1205;
+  if(BEAN >= freezeBean) {
+    frame = 6570;
+    relativeFrame = frame - this.startFrame;
+  }
 
   this.shaderPass.uniforms.resolution.value = new THREE.Vector2(16 * GU, 9 * GU);
 
+  this.shaderPass.uniforms.time.value = this.zoomPath.getPoint(relativeFrame);
+
+  this.shaderPass.uniforms.frame.value = frame;
+
+  this.stab *= 0.95;
+  if(this.stab < 0.01) {
+    this.stab = 0;
+  }
+  if(BEAT && BEAN % 12 == 6) {
+    if(frame > 5896) {
+      this.stab = 1;
+    }
+  }
+
+  if(BEAN >= freezeBean) {
+    this.stab = 0;
+  }
+  this.shaderPass.uniforms.stab.value = this.stab;
   this.shaderPass.uniforms.time.value = this.zoomPath.getPoint(relativeFrame);
 
   var spline = this.resolutionPath.get3Dpoint(relativeFrame);
