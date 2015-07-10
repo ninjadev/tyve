@@ -304,8 +304,8 @@
   {
     "type": "RobotsLayer",
     "displayName": "RobotsLayer",
-    "startFrame": 1694,
-    "endFrame": 2719,
+    "startFrame": 2741,
+    "endFrame": 2741,
     "color": "#af219b"
   },
   {
@@ -329,7 +329,7 @@
     "type": "MaxLayer",
     "displayName": "Max Headroom",
     "startFrame": 1181,
-    "endFrame": 1694,
+    "endFrame": 2741,
     "color": "#a393a0",
     "config": {
       "freezeAt": 1580,
