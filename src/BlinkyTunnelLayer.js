@@ -67,7 +67,10 @@ BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
   }
   this.wallCtx.fillStyle = '#5f4530';
   this.wallCtx.fillRect(0, 0, 32, 18);
-  this.wallCtx.fillStyle = 'yellow';
+
+  var colors =  ['yellow', 'green', 'red', 'blue'];
+  this.wallCtx.fillStyle = colors[Math.floor(colors.length*this.colorRandom()*0.99)];
+
   var framesPerBeat = 32.727272727272727272727272727273;
   var progress = frame / framesPerBeat;
   progress *= 32;
