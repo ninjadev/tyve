@@ -21,7 +21,9 @@ function BlinkyTunnelLayer() {
       "offset": {
         "x": 1.5,
         "y": 2
-      }
+      },
+      "strokeColor": "white",
+      "textColor": "black"
     }
   });
   this.shaderPass.uniforms.textImage.value = this.textOverlayLayer.texture;
