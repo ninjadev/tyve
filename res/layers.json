@@ -10,6 +10,14 @@
     }
   },
   {
+    "type": "GhettoBlasterLayer",
+    "displayName": "Ghettoblaster",
+    "startFrame": 655,
+    "endFrame": 1177,
+    "color": "#a393a0",
+    "config": {}
+  },
+  {
     "type": "Mandelbrot",
     "displayName": "Mandelbrot Fractal",
     "startFrame": 5756,
@@ -450,10 +458,8 @@
     "type": "TileLayer",
     "displayName": "Tile",
     "startFrame": 655,
-    "endFrame": 1160,
+    "endFrame": 1177,
     "color": "#33ff88",
-    "config": {
-      "multiplier": 3
-    }
+    "config": {}
   }
 ]
