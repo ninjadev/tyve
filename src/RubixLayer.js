@@ -207,6 +207,6 @@ RubixLayer.prototype.update = function(frame, relativeFrame) {
       this.innerCubeMaterialColors[i].b / 255 * this.innerCubeGlow
     );
   }
-  var color = this.snareGlow * 0.5 + 0.13;
+  var color = this.snareGlow * 0.6 + 0.33;
   this.outerBg.material.color.setRGB(color, color, color);
 };
