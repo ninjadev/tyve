@@ -273,13 +273,15 @@ ScreenLayer.prototype.update = function(frame, relativeFrame) {
 
   this.camera.position.x = 0;
   this.camera.position.z = 230;
+  var framesPerBean = 32.727272727272727272727272727272727272727273;
   var xOffset = 30;
+  this.camera.rotation.z = 0.005 * Math.sin(frame / framesPerBean * Math.PI * 2);
   if(BEAN >= 1272) {
     if(BEAN % 24 < 12) {
-      this.camera.position.x = +100 -lerp(140, 120, (BEAN % 12) / 12);
+      this.camera.position.x = 25 -lerp(140, 120, (frame % (12 * framesPerBean)) / (12 * framesPerBean));
       this.camera.position.z = 230;
     } else {
-      this.camera.position.x = xOffset + lerp(140, 120, (BEAN % 12) / 12);
+      this.camera.position.x = xOffset + lerp(140, 120, (frame % (12 * framesPerBean)) / (12 * framesPerBean));
       this.camera.position.z = 230;
     }
     if(BEAT && BEAN % 24 == 0) {
