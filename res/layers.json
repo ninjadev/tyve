@@ -445,5 +445,15 @@
     "endFrame": 2718,
     "color": "#5bbb1f",
     "config": {}
+  },
+  {
+    "type": "TileLayer",
+    "displayName": "Tile",
+    "startFrame": 655,
+    "endFrame": 1160,
+    "color": "#33ff88",
+    "config": {
+      "multiplier": 3
+    }
   }
 ]
