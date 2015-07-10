@@ -1,6 +1,12 @@
 {
   "GridLayer": {
-    "position": [
+    "fov": [
+      {
+        "startFrame": 600,
+        "endFrame": 710,
+        "points": [45, 75],
+        "easing": "easeIn"
+      }
     ]
   },
   "MaxLayer": {

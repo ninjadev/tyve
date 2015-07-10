@@ -2,6 +2,7 @@
  * @constructor
  */
 function GridLayer(layer) {
+  this.layer = layer;
   this.freezeAt = 5550;
   this.neonGreen = 0x316276;
   this.neonPink = 0x9B7EBA;
@@ -65,14 +66,16 @@ function GridLayer(layer) {
   this.lightning = [];
   this.lightning.push(
     new Lightning(map,
-      new THREE.Vector3(-20, 16, -45),
+      new THREE.Vector3(-20, 16, -42),
       new THREE.Vector3(30, 0, 40),
-      Math.PI / 3));
+      Math.PI / 3,
+      1.1));
   this.lightning.push(
     new Lightning(map,
-      new THREE.Vector3(10, 24, -80),
+      new THREE.Vector3(10, 35, -80),
       new THREE.Vector3(50, 0, 50),
-      -Math.PI / 3
+      -Math.PI / 3,
+      1.4
     )
   );
 
@@ -117,22 +120,22 @@ function GridLayer(layer) {
   this.pyramidWrapper.add(pyramid);
 
   // Glow
-  var pyramidGlowMaterial = new THREE.ShaderMaterial(SHADERS.glow);
-  pyramidGlowMaterial.side = THREE.BackSide;
-  pyramidGlowMaterial.blending = THREE.AdditiveBlending;
-  pyramidGlowMaterial.transparent = true;
+  this.pyramidGlowMaterial = new THREE.ShaderMaterial(SHADERS.glow);
+  this.pyramidGlowMaterial.side = THREE.BackSide;
+  this.pyramidGlowMaterial.blending = THREE.AdditiveBlending;
+  this.pyramidGlowMaterial.transparent = true;
 
-  pyramidGlowMaterial.uniforms.glowColor.value = new THREE.Color(this.neonPink);
-  pyramidGlowMaterial.uniforms.viewVector.value = null;
-  pyramidGlowMaterial.uniforms.c.value = 0.1;
-  pyramidGlowMaterial.uniforms.p.value = 3.4;
+  this.pyramidGlowMaterial.uniforms.glowColor.value = new THREE.Color(this.neonPink);
+  this.pyramidGlowMaterial.uniforms.viewVector.value = null;
+  this.pyramidGlowMaterial.uniforms.c.value = 0.1;
+  this.pyramidGlowMaterial.uniforms.p.value = 3.4;
 
   var pyramidGlow = new THREE.Mesh(
     new THREE.PolyhedronGeometry(
       verticesOfPyramid, facesOfPyramid, this.pyramidSize + 5, 0
-    ), pyramidGlowMaterial);
+    ), this.pyramidGlowMaterial);
 
-  pyramidGlowMaterial.uniforms.viewVector.value = new THREE.Vector3().subVectors(
+  this.pyramidGlowMaterial.uniforms.viewVector.value = new THREE.Vector3().subVectors(
       this.camera.position, this.pyramidWrapper.position);
   this.pyramidWrapper.add(pyramidGlow);
 
@@ -161,8 +164,23 @@ GridLayer.prototype.update = function(frame, relativeFrame) {
     return;
   }
 
-  this.camera.rotation.z = 0.5 + Math.sin(relativeFrame / 60) * 0.1;
+  var duration = 250;
+  this.camera.position.y = easeOut(28, 15, (frame-this.layer.startFrame)/duration);
+  this.camera.rotation.y = easeOut(-0.5, 0.1, relativeFrame / 280);
+  this.camera.rotation.z = 0.5 + Math.sin(relativeFrame / 60) * 0.12;
+  if (relativeFrame <= 100) {
+    this.camera.rotation.z = easeOut(0.5, 0.7, relativeFrame/100);
+  } else if (relativeFrame <= 400) {
+    this.camera.rotation.z = smoothstep(0.7, -0.2, (relativeFrame-100)/300);
+  } else if (relativeFrame <= 710) {
+    this.camera.rotation.z = smoothstep(-0.2, 0.42, (relativeFrame-400)/310);
+  }
   this.grid.position.z = -this.sizeZ + (relativeFrame % this.sizeZ);
+
+  this.cameraController.updateCamera(relativeFrame);
+
+  this.pyramidGlowMaterial.uniforms.viewVector.value = new THREE.Vector3().subVectors(
+      this.camera.position, this.pyramidWrapper.position);
 
   /*                  */
   /* Update lightning */
@@ -198,7 +216,7 @@ GridLayer.prototype.update = function(frame, relativeFrame) {
       -this.viewDistance,
       -100,
       localFrame  / (4 * 60));
-  };
+  }
 
 
   var limit = 10 * 60,
@@ -233,7 +251,7 @@ GridLayer.prototype.update = function(frame, relativeFrame) {
   }
 };
 
-function Lightning(map, basePosition, jiggle, rotation) {
+function Lightning(map, basePosition, jiggle, rotation, height) {
     this.random = Random(14);
     this.basePosition = basePosition;
     this.jiggle = jiggle;
@@ -247,6 +265,7 @@ function Lightning(map, basePosition, jiggle, rotation) {
     });
     this.mesh = new THREE.Mesh(geometry, material);
     this.mesh.rotation.y = rotation;
+    this.mesh.scale.y = height;
 
     this.update();
 }
@@ -259,4 +278,4 @@ Lightning.prototype.update = function() {
         this.basePosition.z + this.jiggle.z * r
       );
   this.mesh.rotation.y = this.rotation * this.random();
-}
+};
