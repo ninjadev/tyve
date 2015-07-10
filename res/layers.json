@@ -18,6 +18,27 @@
     "config": {}
   },
   {
+    "type": "TextOverlayLayer",
+    "displayName": "ghetto text",
+    "startFrame": 560,
+    "endFrame": 1177,
+    "color": "#5bbb1f",
+    "config": {
+      "title": "Ghetto blaster",
+      "textColor": "white",
+      "strokeColor": "black",
+      "body": [
+        "- dual cassettes",
+        "- stereo",
+        "- back in fashion"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
+  },
+  {
     "type": "Mandelbrot",
     "displayName": "Mandelbrot Fractal",
     "startFrame": 5756,
