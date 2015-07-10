@@ -367,6 +367,13 @@
     }
   },
   {
+    "type": "GlitchLayer",
+    "displayName": "Glitch for Max",
+    "startFrame": 1181,
+    "endFrame": 1694,
+    "color": "#0a10bf"
+  },
+  {
     "type": "AtomiumLayer",
     "displayName": "Atomium",
     "startFrame": 2719,
