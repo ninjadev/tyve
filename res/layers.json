@@ -61,7 +61,7 @@
       "title": "Kewlers",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 2
       }
     }
@@ -75,7 +75,7 @@
       "title": "rgba",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 4
       }
     }
@@ -89,7 +89,7 @@
       "title": "Farbrausch",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 6
       }
     }
@@ -103,7 +103,7 @@
       "title": "Mr.doob",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 8
       }
     }
@@ -117,7 +117,7 @@
       "title": "Gargaj",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 2
       }
     }
@@ -131,7 +131,7 @@
       "title": "Outracks",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 4
       }
     }
@@ -145,7 +145,7 @@
       "title": "Excess",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 6
       }
     }
@@ -159,7 +159,7 @@
       "title": "Panda Cube",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 8
       }
     }
@@ -173,7 +173,7 @@
       "title": "Relapse",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 2
       }
     }
@@ -187,7 +187,7 @@
       "title": "Indigo",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 4
       }
     }
@@ -201,7 +201,7 @@
       "title": "Odd",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 6
       }
     }
@@ -215,7 +215,7 @@
       "title": "Solskogen crew",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 8
       }
     }
@@ -229,7 +229,7 @@
       "title": "DESiRE",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 2
       }
     }
@@ -243,7 +243,7 @@
       "title": "Fnuque",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 4
       }
     }
@@ -257,7 +257,7 @@
       "title": "Ephidrena",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 6
       }
     }
@@ -271,7 +271,7 @@
       "title": "And all of you!",
       "body": [],
       "offset": {
-        "x": 1.5,
+        "x": 0.5,
         "y": 8
       }
     }
