@@ -121,8 +121,8 @@ MaxLayer.prototype.update = function(frame, relativeFrame) {
   }
 
   if(frame > this.resumeAt) {
-    this.scene.remove(this.maxVersion1);
-    this.scene.remove(this.maxVersion2);
+    this.maxVersion1.position.x = 1000000;
+    this.maxVersion2.position.x = 1000000;
   }
 
   if(BEAT && BEAN % 12 == 6) {
