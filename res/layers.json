@@ -49,7 +49,7 @@
     "type": "ScreenLayer",
     "displayName": "Screen",
     "startFrame": 6807,
-    "endFrame": 8000,
+    "endFrame": 7984,
     "color": "#0cffe1"
   },
   {
@@ -238,7 +238,7 @@
     "type": "TextOverlayLayer",
     "displayName": "Greet fnuque",
     "startFrame": 7652,
-    "endFrame": 8000,
+    "endFrame": 7984,
     "config": {
       "title": "Fnuque",
       "body": [],
@@ -252,7 +252,7 @@
     "type": "TextOverlayLayer",
     "displayName": "Greet ephidrena",
     "startFrame": 7717,
-    "endFrame": 8000,
+    "endFrame": 7984,
     "config": {
       "title": "Ephidrena",
       "body": [],
