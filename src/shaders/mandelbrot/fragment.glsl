@@ -1,8 +1,11 @@
 uniform float time;
+uniform float frame;
+uniform float stab;
 uniform vec2 resolution;
 uniform vec2 zoomCoordinate;
 uniform sampler2D textImage;
 
+#define PI 3.14159265358979323846
 varying vec2 vUv;
 
 const int depth = 256;
@@ -33,17 +36,70 @@ float mandelbrot(vec2 c)
 
 void main(void)
 {
+    float framesPerBeat = 32.727272727272727273;
     vec2 uv = (gl_FragCoord.xy / resolution);
-    uv = vec2(uv.x * 3.5 - 2.5, uv.y * 2.0 - 1.0);
+    uv -= vec2(0.5, 0.5);
+
+    vec3 color = vec3(0.56, 0.69, 0.60);
+
+    float ratio = 16. / 9.;
+
+    if(0.5 + uv.x * ratio + 1.> uv.y + mod(0. / 3. + frame / 127. - 1., 2.)) {
+        uv.x -= 0.1 * stab;
+        color *= 1. + stab * 0.8;
+    }
+
+    if(0.5 + uv.x * ratio + 1.> uv.y + mod(1. / 3. + frame / 127. - 1., 2.)) {
+        uv.x -= 0.1 * stab;
+        color *= 1. + stab * 0.8;
+    }
+
+    if(0.5 + uv.x * ratio + 1.> uv.y + mod(2. / 3. + frame / 127. - 1., 2.)) {
+        uv.x -= 0.1 * stab;
+        color *= 1. + stab * 0.8;
+    }
+
+    if(0.5 + uv.x * ratio + 1.> uv.y + mod(3. / 3. + frame / 127. - 1., 2.)) {
+        uv.x -= 0.1 * stab;
+        color *= 1. + stab * 0.8;
+    }
+
+    if(0.5 + uv.x * ratio + 1.> uv.y + mod(4. / 3. + frame / 127. - 1., 2.)) {
+        uv.x -= 0.1 * stab;
+        color *= 1. + stab * 0.8;
+    }
+
+    if(0.5 + uv.x * ratio + 1.> uv.y + mod(5. / 3. + frame / 127. - 1., 2.)) {
+        uv.x -= 0.1 * stab;
+        color *= 1. + stab * 0.8;
+    }
 
     float zoom = pow(2.0, -time) * 3.5;
-    vec2 c = zoomCoordinate + uv * zoom;
+    zoom += 0.00005 * sin(frame / framesPerBeat * PI * 2.);
+
+    uv *= vec2(3.5, 2.0) * zoom;
+    /*
+    */
+
+    //uv += vec2(2.5, -1.0) + zoomCoordinate;
+
+    float angle = 0.02 * sin(frame / framesPerBeat * PI);
+    uv = vec2(uv.x * cos(angle) - uv.y * sin(angle),
+              uv.x * sin(angle) + uv.y * cos(angle));
+
+    uv += zoomCoordinate;
+
+    /*
+    */
+
+    /*
+    */
 
     vec4 textImageColor = texture2D(textImage, vUv);
 
     vec2 stepX = vec2(1. / resolution.x, 0.);
     vec2 stepY = vec2(0., 1. / resolution.y);
-    float center = mandelbrot(c);
+    float center = mandelbrot(uv);
 
     float mixer = 0.;
     if(center <= 0.1) {
@@ -56,8 +112,8 @@ void main(void)
 
     vec4 mandelbrotColor =
         mix(
-            vec4(.0, .0, .0, 1.0),
-            vec4(0.56, 0.69, 0.60, 1.0),
+            vec4(color * stab * 0.2, 1.0),
+            vec4(vec3(color), 1.0),
             mixer);
 
     gl_FragColor = vec4(mix(1.0 - textImageColor.rgb, mandelbrotColor.rgb, 1.0 - textImageColor.a), 1.0);
