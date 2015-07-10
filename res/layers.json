@@ -333,7 +333,7 @@
     "color": "#a393a0",
     "config": {
       "freezeAt": 1580,
-      "resumaAt": 1694
+      "resumeAt": 1694
     },
     "dependencies": [
       "TextOverlayLayer"
