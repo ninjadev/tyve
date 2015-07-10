@@ -371,7 +371,7 @@
   {
     "type": "TextOverlayLayer",
     "displayName": "Max Text",
-    "startFrame": 1370,
+    "startFrame": 1280,
     "endFrame": 1694,
     "config": {
       "title": "Max Headroom Effect",
