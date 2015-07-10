@@ -317,6 +317,20 @@
     "color": "#af219b"
   },
   {
+    "type": "MaxLayer",
+    "displayName": "Max Headroom",
+    "startFrame": 1181,
+    "endFrame": 2741,
+    "color": "#a393a0",
+    "config": {
+      "freezeAt": 1580,
+      "resumeAt": 1694
+    },
+    "dependencies": [
+      "TextOverlayLayer"
+    ]
+  },
+  {
     "type": "BlinkyTunnelLayer",
     "displayName": "Blinky Tunnel",
     "startFrame": 1638,
@@ -332,20 +346,6 @@
     "startFrame": 2246,
     "endFrame": 2500,
     "color": "#2a19bf"
-  },
-  {
-    "type": "MaxLayer",
-    "displayName": "Max Headroom",
-    "startFrame": 1181,
-    "endFrame": 2741,
-    "color": "#a393a0",
-    "config": {
-      "freezeAt": 1580,
-      "resumeAt": 1694
-    },
-    "dependencies": [
-      "TextOverlayLayer"
-    ]
   },
   {
     "type": "TextOverlayLayer",
@@ -370,7 +370,7 @@
     "type": "GlitchLayer",
     "displayName": "Glitch for Max",
     "startFrame": 1181,
-    "endFrame": 1694,
+    "endFrame": 1500,
     "color": "#0a10bf"
   },
   {
