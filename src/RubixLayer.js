@@ -23,14 +23,6 @@ function RubixLayer(layer) {
                                   map: Loader.loadTexture('res/skybox/up.jpg'), 
                                   side: THREE.BackSide
                                 }));
-  this.bg = new THREE.Mesh(new THREE.CylinderGeometry(10000, 10000, 2000, 32, 1, true),
-                           new THREE.MeshLambertMaterial({
-                             map: Loader.loadTexture('res/skybox/wrap.jpg'),
-                             side: THREE.BackSide
-                           }));
-  this.bg.material.map.wrapS = this.bg.material.map.wrapT = THREE.RepeatWrapping;
-  this.bg.material.map.repeat.set(4, 1);
-  //this.scene.add(this.bg);
   this.scene.add(this.outerBg);
 
   this.innerCubeGlow = 0;
