@@ -78,7 +78,7 @@
     "endFrame": 5825,
     "color": "#79592f",
     "config": {
-        "bgColor": "#79bfa3"
+      "bgColor": "#79bfa3"
     }
   },
   {
@@ -316,12 +316,12 @@
     }
   },
   {
-      "type": "OutroLayer",
-      "displayName": "OutroLayer",
-      "startFrame": 8200,
-      "endFrame": 9200,
-      "color": "red",
-      "config": {}
+    "type": "OutroLayer",
+    "displayName": "OutroLayer",
+    "startFrame": 8200,
+    "endFrame": 8775,
+    "color": "red",
+    "config": {}
   },
   {
     "type": "RubixLayer",
@@ -387,7 +387,7 @@
     "endFrame": 2750,
     "color": "#7059ff",
     "config": {
-        "bgColor": "#ffffff"
+      "bgColor": "#ffffff"
     }
   },
   {
@@ -526,7 +526,9 @@
     "startFrame": 654,
     "endFrame": 686,
     "color": "#5bbb1f",
-    "config": {"amount": 1}
+    "config": {
+      "amount": 1
+    }
   },
   {
     "type": "BloomLayer",
@@ -534,7 +536,10 @@
     "startFrame": 0,
     "endFrame": 1177,
     "color": "#5bbb1f",
-    "config": {"amount": 1, "noStabs": true}
+    "config": {
+      "amount": 1,
+      "noStabs": true
+    }
   },
   {
     "type": "BloomLayer",
@@ -550,7 +555,9 @@
     "startFrame": 1708,
     "endFrame": 2718,
     "color": "#5bbb1f",
-    "config": {"amount": 5.3}
+    "config": {
+      "amount": 5.3
+    }
   },
   {
     "type": "BloomLayer",
@@ -558,7 +565,9 @@
     "startFrame": 1181,
     "endFrame": 1694,
     "color": "#5bbb1f",
-    "config": {"amount": 2.5}
+    "config": {
+      "amount": 2.5
+    }
   },
   {
     "type": "BloomLayer",
@@ -566,7 +575,9 @@
     "startFrame": 2748,
     "endFrame": 2778,
     "color": "#5bbb1f",
-    "config": {"amount": 4.8}
+    "config": {
+      "amount": 4.8
+    }
   },
   {
     "type": "BloomLayer",
@@ -574,7 +585,9 @@
     "startFrame": 2969,
     "endFrame": 4840,
     "color": "#5bbb1f",
-    "config": {"amount": 1.5}
+    "config": {
+      "amount": 1.5
+    }
   },
   {
     "type": "BloomLayer",
@@ -582,7 +595,9 @@
     "startFrame": 4841,
     "endFrame": 5761,
     "color": "#5bbb1f",
-    "config": {"amount": 4.5}
+    "config": {
+      "amount": 4.5
+    }
   },
   {
     "type": "BloomLayer",
@@ -590,7 +605,9 @@
     "startFrame": 5750,
     "endFrame": 5791,
     "color": "#5bbb1f",
-    "config": {"amount": 4.8}
+    "config": {
+      "amount": 4.8
+    }
   },
   {
     "type": "BloomLayer",
@@ -598,7 +615,9 @@
     "startFrame": 5860,
     "endFrame": 5920,
     "color": "#5bbb1f",
-    "config": {"amount": 10.8}
+    "config": {
+      "amount": 10.8
+    }
   },
   {
     "type": "BloomLayer",
@@ -606,7 +625,9 @@
     "startFrame": 5892,
     "endFrame": 6901,
     "color": "#5bbb1f",
-    "config": {"amount": 4.5}
+    "config": {
+      "amount": 4.5
+    }
   },
   {
     "type": "BloomLayer",
@@ -614,6 +635,8 @@
     "startFrame": 6937,
     "endFrame": 8183,
     "color": "#5bbb1f",
-    "config": {"amount": 1.1}
+    "config": {
+      "amount": 1.1
+    }
   }
 ]
