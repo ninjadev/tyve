@@ -12,13 +12,13 @@ varying vec2 vUv;
 float metaball(vec3 p){
     float fv[5];
     float tt = t * 0.01;
-    fv[0] = length(p - vec3(3.0 * sin(tt), 0.1, 2.0 * cos(tt)));
-    fv[1] = length(p - vec3(4.1 * sin(tt), sin(tt), 1.0 * cos(tt * 0.7)));
-    fv[2] = length(p - vec3(1.2 * sin(tt), 2.0 * cos(tt * 1.4), 5.0 * cos(tt)));
-    fv[3] = length(p - vec3(4.0 * cos(tt), 2.0 * cos(tt * 1.3), 1.5 * cos(tt)));
-    fv[4] = length(p - vec3(3.5 * sin(tt * 0.3), 2.0 * cos(tt * 1.6), 0.5 * sin(tt)));
+    fv[0] = length(p - vec3(2.0 * sin(tt + 3.14), 0.1, 2.0 * cos(tt + 3.1)));
+    fv[1] = length(p - vec3(3.1 * sin(tt), sin(tt), 1.0 * cos(tt * 0.7)));
+    fv[2] = length(p - vec3(1.2 * sin(tt), 2.0 * cos(tt * 1.4), 5.0 * cos(tt + 2.1)));
+    fv[3] = length(p - vec3(2.0 * cos(tt), 2.0 * cos(tt * 1.3), 1.5 * cos(tt)));
+    fv[4] = length(p - vec3(2.5 * sin(tt * 0.3), 2.0 * cos(tt * 1.6), 0.5 * sin(tt)));
     float len = 0.0;
-    float fs = .4;
+    float fs = .5;
     for (int i = 0; i < 5; i ++) {
         len += fs / (fv[i] * fv[i]);
     }
