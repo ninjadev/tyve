@@ -3,7 +3,7 @@
     "type": "IntroLayer",
     "displayName": "Intro",
     "startFrame": 0,
-    "endFrame": 654,
+    "endFrame": 655,
     "color": "#1b592f",
     "config": {
       "offset": 2
@@ -20,7 +20,7 @@
   {
     "type": "TextOverlayLayer",
     "displayName": "ghetto text",
-    "startFrame": 560,
+    "startFrame": 500,
     "endFrame": 1177,
     "color": "#5bbb1f",
     "config": {
@@ -28,7 +28,7 @@
       "textColor": "white",
       "strokeColor": "black",
       "body": [
-        "- dual cassettes",
+        "- dual cassette deck",
         "- stereo",
         "- back in fashion"
       ],
