@@ -66,6 +66,13 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
 
   this.ctx.clearRect(0, 0, this.screenWidth, this.screenHeight);
 
+  var framesPerBeat = 32.727272727272727272727273;
+  var zoom = 1 - 0.005 * Math.sin(frame / framesPerBeat * Math.PI * 2);
+  this.ctx.save();
+  this.ctx.translate(8 * GU, 4.5 * GU);
+  this.ctx.scale(zoom, zoom);
+  this.ctx.translate(-8 * GU, -4.5 * GU);
+
   this.ctx.drawImage(this.background, 0, 0, this.screenWidth, this.screenHeight);
   this.ctx.drawImage(this.ghettoblaster, 0, 0, this.screenWidth, this.screenHeight);
 
@@ -75,6 +82,8 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
   this.drawAmplitudeLedLights(frame, relativeFrame);
   this.drawMeters(frame, relativeFrame);
   this.drawEqMask(frame, relativeFrame);
+
+  this.ctx.restore();
 
   this.texture.needsUpdate = true;
 };
