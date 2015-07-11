@@ -58,7 +58,7 @@ BlinkyTunnelLayer.prototype.getEffectComposerPass = function() {
 BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
   var offset = 0;
   this.textOverlayLayer.update(frame - offset, relativeFrame - offset);
-  var offset2 = 400;
+  var offset2 = 590;
   this.textOverlayLayer2.update(frame - offset2, relativeFrame - offset2);
   if(this.musicThrob > 0) {
     this.musicThrob *= 0.95;
@@ -94,7 +94,7 @@ BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
   this.wallCtx.globalAlpha = 1 * this.musicThrob;
   var bgFromR = 10;
   var bgFromG = 30;
-  var bgFromB = 10;
+  var bgFromB = 20;
   var bgToR = 30;
   var bgToG = 50;
   var bgToB = 60;

@@ -12,11 +12,11 @@ varying vec2 vUv;
 float metaball(vec3 p){
     float fv[5];
     float tt = t * 0.01;
-    fv[0] = length(p - vec3(2.0 * sin(tt + 3.14), 0.1, 2.0 * cos(tt + 3.1)));
-    fv[1] = length(p - vec3(3.1 * sin(tt), sin(tt), 1.0 * cos(tt * 0.7)));
-    fv[2] = length(p - vec3(1.2 * sin(tt), 2.0 * cos(tt * 1.4), 5.0 * cos(tt + 2.1)));
+    fv[0] = length(p - vec3(2.0 * sin(tt + 3.14), 0.1, 1.0 * cos(tt + 3.1)));
+    fv[1] = length(p - vec3(3.1 * sin(tt), sin(tt), 0.5 * cos(tt * 0.7)));
+    fv[2] = length(p - vec3(1.2 * sin(tt), 2.0 * cos(tt * 1.4), 0.1 * cos(tt + 2.1)));
     fv[3] = length(p - vec3(2.0 * cos(tt), 2.0 * cos(tt * 1.3), 1.5 * cos(tt)));
-    fv[4] = length(p - vec3(2.5 * sin(tt * 0.3), 2.0 * cos(tt * 1.6), 0.5 * sin(tt)));
+    fv[4] = length(p - vec3(2.5 * sin(tt * 0.3), 2.0 * cos(tt * 0.6), 0.5 * sin(tt)));
     float len = 0.0;
     float fs = .5;
     for (int i = 0; i < 5; i ++) {
@@ -49,6 +49,7 @@ void main(void)
     vec2 tiles = vec2(32., 18.);
 
     vec4 diffuse = texture2D(tDiffuse, (0.5 + floor(uv * tiles)) / tiles);
+    diffuse += 0.02;
     vec4 wallDiffuse = texture2D(wall, 0.01 + floor(uv * tiles) / tiles);
     float p = 1.0 - (diffuse.r + diffuse.g + diffuse.b) / 3.;
     p = min(max(p * 3.0 - 1.8, 0.1), 10.0);
@@ -66,6 +67,8 @@ void main(void)
 
     float centerDarkener = mix(1., length(dist * 4.) / length(center * 16.),
         tunnelAmount);
+
+    centerDarkener = sqrt(centerDarkener);
 
     /* metaballs */
     vec3 camera_pos = vec3(0.0, 0.0, -23.0);
@@ -88,6 +91,7 @@ void main(void)
     orangeLighting = mix(black, orangeLighting, metaballAmount);
 
     vec4 outp = diffuse * p + wallDiffuse * throb * centerDarkener + orangeLighting * 0.01;
+
     if(length(col.xyz) > 0.1) {
         outp = col;
     }
