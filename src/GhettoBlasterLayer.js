@@ -13,12 +13,14 @@ function GhettoBlasterLayer(layer) {
   this.radioMarker = new Image();
   this.meter = new Image();
   this.eqMask = new Image();
+  this.soundWave = new Image();
   Loader.load('res/ghettoblaster/ghettoblaster.png', this.ghettoblaster, function() {});
   Loader.load('res/ghettoblaster/cassette-roll.png', this.cassetteRoll, function() {});
   Loader.load('res/ghettoblaster/vibrating-speakers.png', this.vibratingSpeakers, function() {});
   Loader.load('res/ghettoblaster/radio-marker.png', this.radioMarker, function() {});
   Loader.load('res/ghettoblaster/meter.png', this.meter, function() {});
   Loader.load('res/ghettoblaster/eq-mask.png', this.eqMask, function() {});
+  Loader.load('res/ghettoblaster/sound-wave.png', this.soundWave, function() {});
 
   this.amplitudeLedLightColors = [
     '#20C0AF', // green
@@ -38,6 +40,7 @@ function GhettoBlasterLayer(layer) {
   this.smoothedVolume = 0.5;
   this.bassVolume = 0.5;
   this.framesPerBeat = 32.727272727272727272727273;
+  this.random = Random(23486);
 
   this.canvas = document.createElement('canvas');
   this.texture = new THREE.Texture(this.canvas);
@@ -87,6 +90,7 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
   this.drawMeters(frame, relativeFrame);
   this.drawEqMask(frame, relativeFrame);
   this.drawTunl(frame, relativeFrame);
+  this.drawSoundWaves(frame, relativeFrame);
 
   this.ctx.restore();
 
@@ -301,6 +305,43 @@ GhettoBlasterLayer.prototype.getTunlRectColor = function(i) {
   } else {
     return this.alternateTunlRectColor;
   }
+};
+
+
+GhettoBlasterLayer.prototype.drawSoundWaves = function(frame, relativeFrame) {
+  var xLeft = 0,
+    yLeft = 0.4120474206984941 * this.screenHeight,
+    xRight = 0.6601320264052811 * this.screenWidth,
+    yRight = 0.4174943928228132 * this.screenHeight,
+    width = 0.3228645729145829 * this.screenWidth,
+    height = 0.5443768023069529 * this.screenHeight,
+    scaleMultiplier = 1 + 0.5 * (1 - this.bassVolume) + 0.1 * this.random();
+
+  this.ctx.save();
+  this.ctx.translate(xLeft + width / 2, yLeft + height / 2);
+  this.ctx.scale(scaleMultiplier, scaleMultiplier);
+  this.ctx.globalAlpha = this.bassVolume;
+  this.ctx.drawImage(
+    this.soundWave,
+    -width / 2,
+    -height / 2,
+    width,
+    height
+  );
+  this.ctx.restore();
+
+  this.ctx.save();
+  this.ctx.translate(xRight + width / 2, yRight + height / 2);
+  this.ctx.scale(scaleMultiplier, scaleMultiplier);
+  this.ctx.globalAlpha = this.bassVolume;
+  this.ctx.drawImage(
+    this.soundWave,
+    -width / 2,
+    -height / 2,
+    width,
+    height
+  );
+  this.ctx.restore();
 };
 
 GhettoBlasterLayer.prototype.resize = function() {
