@@ -12,10 +12,10 @@ function BlinkyTunnelLayer() {
 
   this.textOverlayLayer = new TextOverlayLayer({
     "config": {
-      "title": "Tunnel",
+      "title": "Transductor",
       "textColor": "black",
       "body": [
-        "- pressure equalizing ducts",
+        "- pressure equalizing trenches",
         "- natural lighting",
         "- endless"
       ],
@@ -27,7 +27,7 @@ function BlinkyTunnelLayer() {
   });
   this.textOverlayLayer2 = new TextOverlayLayer({
     "config": {
-      "title": "Metaballs",
+      "title": "Metapearls",
       "textColor": "black",
       "body": [
         "- white as milk",

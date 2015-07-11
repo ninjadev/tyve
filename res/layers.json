@@ -321,8 +321,9 @@
     "config": {
       "title": "Rubik's cube",
       "body": [
-        "- invented: 1977",
-        "- fashionable: 1980s"
+        "- bespoke decals",
+        "- 9 degrees of freedom",
+        "- recently oiled"
       ],
       "offset": {
         "x": 1.5,
@@ -367,11 +368,11 @@
     "startFrame": 1100,
     "endFrame": 1694,
     "config": {
-      "title": "Max Headroom Effect",
+      "title": "Max Headroom",
       "body": [
-        "- popular: 1987",
-        "- famous dr. who interrupter",
-        "- shoutout to Phreakers"
+        "- dr. who interrupter",
+        "- non-human being",
+        "- witty"
       ],
       "offset": {
         "x": 1.5,
@@ -437,7 +438,7 @@
       "title": "Sploosh Effect",
       "body": [
         "- organic",
-        "- needed for human reproduction",
+        "- 100% home-grown",
         "- tested in humans"
       ],
       "offset": {

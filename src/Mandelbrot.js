@@ -103,15 +103,14 @@ function Mandelbrot(layer) {
       "body": [
         "- Chaos theory",
         "- Neon Genesis",
-        "- Fashionable: 80's"
+        "- Swirly patterns"
       ],
       "offset": {
         "x": 0,
         "y": 2
       },
       "flip": true,
-      "textColor": "black",
-      "strokeColor": "white"
+      "textColor": "white"
     }
   });
 
