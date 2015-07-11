@@ -126,21 +126,19 @@ IntroLayer.prototype.end = function() {
 };
 
 IntroLayer.prototype.update = function(frame) {
+  var colorStep = 1;
   if(frame < FRAME_FOR_BEAN(25)) {
-    var colorStep = smoothstep(0, 1, (frame - 70) / (200 - 70));
+    colorStep = smoothstep(0, 1, (frame - 70) / (200 - 70));
   } else if(frame < FRAME_FOR_BEAN(30)) {
-    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(25)) / 20);
+    colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(25)) / 20);
   } else if(frame < 600) {
-    var colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(30)) / 20);
-  } else {
-    var colorStep = 1 - lerp(0, 1, (frame - 630) / (648 - 630));
+    colorStep = 1.2 - lerp(0, 0.2, (frame - FRAME_FOR_BEAN(30)) / 20);
   }
+
   this.bg.material.color.setRGB(colorStep, colorStep, colorStep);
 
   if(frame < 600) {
     this.bg.position.z = -smoothstep(70, 100, (frame - 0) / (620 - 0));
-  } else {
-    this.bg.position.z = smoothstep(-100, -20, (frame - 620) / (648 - 620));
   }
 
   var rotation = 0.23;

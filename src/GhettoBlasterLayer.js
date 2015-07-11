@@ -30,6 +30,7 @@ function GhettoBlasterLayer(layer) {
   this.volume = 0.5;
   this.smoothedVolume = 0.5;
   this.bassVolume = 0.5;
+  this.framesPerBeat = 32.727272727272727272727273;
 
   this.canvas = document.createElement('canvas');
   this.texture = new THREE.Texture(this.canvas);
@@ -65,15 +66,13 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
   this.calculateVolume();
 
   this.ctx.clearRect(0, 0, this.screenWidth, this.screenHeight);
-
-  var framesPerBeat = 32.727272727272727272727273;
-  var zoom = 1 - 0.005 * Math.sin(frame / framesPerBeat * Math.PI * 2);
-  this.ctx.save();
-  this.ctx.translate(8 * GU, 4.5 * GU);
-  this.ctx.scale(zoom, zoom);
-  this.ctx.translate(-8 * GU, -4.5 * GU);
-
   this.ctx.drawImage(this.background, 0, 0, this.screenWidth, this.screenHeight);
+
+
+  this.ctx.save();
+
+  this.transformGhettoBlaster(frame, relativeFrame);
+
   this.ctx.drawImage(this.ghettoblaster, 0, 0, this.screenWidth, this.screenHeight);
 
   this.drawCassetteRolls(frame, relativeFrame);
@@ -86,6 +85,25 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
   this.ctx.restore();
 
   this.texture.needsUpdate = true;
+};
+
+GhettoBlasterLayer.prototype.transformGhettoBlaster = function(frame, relativeFrame) {
+  var zoom = 1 - 0.005 * Math.sin(frame / this.framesPerBeat * Math.PI * 2);
+  this.ctx.translate(8 * GU, 4.5 * GU);
+  this.ctx.scale(zoom, zoom);
+  this.ctx.translate(-8 * GU, -4.5 * GU);
+
+  if (relativeFrame < 90) {
+    var x = smoothstep(16 * GU, 8 * GU, (relativeFrame) / 60);
+    this.ctx.translate(x, GU);
+  } else if (relativeFrame < 240) {
+    this.ctx.translate(8 * GU, GU);
+  } else if (relativeFrame < 300) {
+    var x = smoothstep(8 * GU, 0, (relativeFrame - 240) / 30);
+    var y = smoothstep(GU, 0, (relativeFrame - 240) / 30);
+    this.ctx.translate(x, y);
+  }
+
 };
 
 GhettoBlasterLayer.prototype.calculateVolume = function() {
