@@ -4,6 +4,7 @@ uniform float stab;
 uniform vec2 resolution;
 uniform vec2 zoomCoordinate;
 uniform sampler2D textImage;
+uniform sampler2D tDiffuse;
 
 #define PI 3.14159265358979323846
 varying vec2 vUv;
@@ -40,7 +41,7 @@ void main(void)
     vec2 uv = (gl_FragCoord.xy / resolution);
     uv -= vec2(0.5, 0.5);
 
-    vec3 color = vec3(0.56, 0.69, 0.60);
+    vec3 color = vec3(0.56, 0.69, 0.60) * 0.8;
 
     float ratio = 16. / 9.;
 
@@ -77,17 +78,24 @@ void main(void)
     float zoom = pow(2.0, -time) * 3.5;
     zoom += 0.00005 * sin(frame / framesPerBeat * PI * 2.);
 
+   vec2 lastTranslate = vec2(0., 0.);
+
+   if(frame >= 6778. + 136.) {
+        zoom -= mix(0., .003, clamp((frame - 6778. - 136.) / 100., 0., 1.));
+        lastTranslate -= mix(vec2(0.),
+                             vec2(0.005, -0.001),
+                             clamp((frame - 6778. - 136.) / 100., 0., 1.));
+   }
+
     uv *= vec2(3.5, 2.0) * zoom;
     /*
     */
-
-    //uv += vec2(2.5, -1.0) + zoomCoordinate;
 
     float angle = 0.02 * sin(frame / framesPerBeat * PI);
     uv = vec2(uv.x * cos(angle) - uv.y * sin(angle),
               uv.x * sin(angle) + uv.y * cos(angle));
 
-    uv += zoomCoordinate;
+    uv += zoomCoordinate + lastTranslate;
 
     /*
     */
@@ -115,6 +123,10 @@ void main(void)
             vec4(color * stab * 0.2, 1.0),
             vec4(vec3(color), 1.0),
             mixer);
+
+    if(mixer < 0.1) {
+        mandelbrotColor = texture2D(tDiffuse, vUv);
+    }
 
     gl_FragColor = vec4(mix(1.0 - textImageColor.rgb, mandelbrotColor.rgb, 1.0 - textImageColor.a), 1.0);
 }
