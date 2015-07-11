@@ -425,13 +425,6 @@
     }
   },
   {
-    "type": "SobelPulseLayer",
-    "displayName": "Sobel pulse",
-    "startFrame": 2719,
-    "endFrame": 3798,
-    "color": "#d36869"
-  },
-  {
     "type": "SplooshLayer",
     "displayName": "Sploosh",
     "startFrame": 3798,
@@ -544,7 +537,7 @@
   {
     "type": "BloomLayer",
     "displayName": "Bloom fx",
-    "startFrame": 2798,
+    "startFrame": 2969,
     "endFrame": 4840,
     "color": "#5bbb1f",
     "config": {"amount": 1.5}
