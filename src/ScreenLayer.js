@@ -19,12 +19,13 @@ function ScreenLayer(layer) {
 
   this.bg = new THREE.Mesh(new THREE.BoxGeometry(1000, 1000, 1000),
                                 new THREE.MeshBasicMaterial({
+                                  map: Loader.loadTexture('res/skybox/up.jpg'), 
                                   side: THREE.BackSide
                                 }));
   this.bgTargetColor = new THREE.Vector3();
-  this.bgTargetColor.x = 0x3f / 255 * 0.2;
-  this.bgTargetColor.y = 0x32 / 255 * 0.2;
-  this.bgTargetColor.z = 0x4a / 255 * 0.2;
+  this.bgTargetColor.x = 0.3;
+  this.bgTargetColor.y = 0.3;
+  this.bgTargetColor.z = 0.3;
   this.bgStab = 0;
   this.scene.add(this.bg);
 
@@ -33,10 +34,10 @@ function ScreenLayer(layer) {
   for(var x = 0; x < 16; x++) {
     this.screen[x] = [];
     for(var y = 0; y < 9; y++) {
-      var frontPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshPhongMaterial({
+      var frontPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshLambertMaterial({
         color: 0xcd5079
       }));
-      var backPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshPhongMaterial({
+      var backPixel = new THREE.Mesh(pixelGeometry, new THREE.MeshLambertMaterial({
         color: 0x3f324a
       }));
       var pixel = new THREE.Object3D();
@@ -294,7 +295,7 @@ ScreenLayer.prototype.update = function(frame, relativeFrame) {
     this.camera.lookAt(new THREE.Vector3(0, 0, 0));
   }
 
-  this.bgStab *= 0.85;
+  this.bgStab *= 0.95;
   if(this.bgStab < 0.01) {
     this.bgStab = 0;
   }
@@ -303,9 +304,11 @@ ScreenLayer.prototype.update = function(frame, relativeFrame) {
     this.bgStab = 1;
   }
 
-  this.bg.material.color.setRGB(lerp(this.bgTargetColor.x, this.bgTargetColor.x * 2, this.bgStab),
-                                lerp(this.bgTargetColor.y, this.bgTargetColor.y * 2, this.bgStab),
-                                lerp(this.bgTargetColor.z, this.bgTargetColor.z * 2, this.bgStab));
+  this.bg.rotation.set(frame / 243, frame / 343, frame / 123);
+
+  this.bg.material.color.setRGB(lerp(this.bgTargetColor.x, this.bgTargetColor.x * 3, this.bgStab),
+                                lerp(this.bgTargetColor.y, this.bgTargetColor.y * 3, this.bgStab),
+                                lerp(this.bgTargetColor.z, this.bgTargetColor.z * 3, this.bgStab));
 
   if(BEAN >= 1272) {
     this.screenSetBuffer(this.images[((BEAN - 1272) / 12 | 0) % this.images.length]);
