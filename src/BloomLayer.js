@@ -3,7 +3,9 @@
  */
 function BloomLayer(layer) {
   this.config = layer.config;
-  this.shaderPass = new THREE.BloomPass(this.config.amount || 1, 16, 160, 512);
+  this.amount = this.config.amount;
+  this.noStabs = !!this.config.noStabs;
+  this.shaderPass = new THREE.BloomPass(this.amount, 16, 160, 512);
   this.stab = 0;
 }
 
@@ -16,7 +18,8 @@ BloomLayer.prototype.update = function(frame) {
   if(BEAT && BEAN % 6 == 0) {
     this.stab = 1;
   }
-  this.shaderPass.copyUniforms.opacity.value = (this.config.amount || 1) * this.stab;
+  var multiplier = this.noStabs ? 1 : this.stab;
+  this.shaderPass.copyUniforms.opacity.value = this.amount * multiplier;
 };
 
 BloomLayer.prototype.getEffectComposerPass = function() {
