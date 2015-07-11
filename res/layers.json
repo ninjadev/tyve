@@ -381,6 +381,16 @@
     ]
   },
   {
+    "type": "GhettoBlasterLayer",
+    "displayName": "transition",
+    "startFrame": 2680,
+    "endFrame": 2750,
+    "color": "#7059ff",
+    "config": {
+        "bgColor": "#ffffff"
+    }
+  },
+  {
     "type": "TextOverlayLayer",
     "displayName": "Max Text",
     "startFrame": 1100,
