@@ -13,6 +13,7 @@ function BlinkyTunnelLayer() {
   this.textOverlayLayer = new TextOverlayLayer({
     "config": {
       "title": "Tunnel",
+      "textColor": "black",
       "body": [
         "- pressure equalizing ducts",
         "- natural lighting",
@@ -63,16 +64,22 @@ BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
     this.shaderPass.uniforms.tunnelAmount.value = smoothstep(
         1, 4, (frame - 2610) / 100);
   }
-  this.wallCtx.fillStyle = '#5f4530';
-  this.wallCtx.fillRect(0, 0, 32, 18);
 
-  this.wallCtx.fillStyle = 'yellow';
+  this.wallCtx.globalAlpha = 1 * this.musicThrob;
+  this.wallCtx.fillStyle = 'rgb(10, 30, 10)';
+  this.wallCtx.fillRect(0, 0, 32, 18);
+  this.wallCtx.fillStyle = '#d88d2c';
 
   var framesPerBeat = 32.727272727272727272727272727273;
-  var progress = frame / framesPerBeat;
-  progress *= 32;
+  var progress = 0.5 * (1 + Math.sin(frame / framesPerBeat * Math.PI / 4));
+  var linprog = frame / framesPerBeat / 3;
+  linprog *= 18;
+  linprog |= 0;
+  progress *= 128;
   progress |= 0;
-  this.wallCtx.fillRect(progress % 64 - 32, 0, 32, 18);
+  console.log(linprog);
+  this.wallCtx.fillRect(progress % 32, 0, 1, 18);
+  this.wallCtx.fillRect(0, linprog % 18, 32, 1);
 
   this.shaderPass.uniforms.wall.value.needsUpdate = true;
 };
