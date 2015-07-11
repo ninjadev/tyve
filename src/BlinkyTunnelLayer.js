@@ -14,7 +14,6 @@ function BlinkyTunnelLayer() {
     "config": {
       "title": "Transductor",
       "textColor": "black",
-      "strokeColor": "white",
       "body": [
         "- pressure equalizing trenches",
         "- natural lighting",
@@ -30,7 +29,6 @@ function BlinkyTunnelLayer() {
     "config": {
       "title": "Metapearls",
       "textColor": "black",
-      "strokeColor": "white",
       "body": [
         "- white as milk",
         "- premium taste",
