@@ -8,6 +8,7 @@ function GridLayer(layer) {
   this.neonPink = 0x9B7EBA;
   this.viewDistance = 400;
   this.random = Random(14);
+  this.stab = 0;
   this.scene = new THREE.Scene();
   this.cameraController = new CameraController(layer.type);
   this.camera = this.cameraController.camera = new THREE.PerspectiveCamera(45, 16 / 9, 1, this.viewDistance);
@@ -41,6 +42,16 @@ function GridLayer(layer) {
       step = 10;
   this.sizeZ = sizeZ;
 
+  this.horizontalLineGeometry = new THREE.BoxGeometry(2 * sizeX, 0.5, 0.5);
+  this.verticalLineGeometry = new THREE.BoxGeometry(0.5, 0.5, 2 * sizeZ);
+  this.gridLineMaterial = new THREE.MeshBasicMaterial({color: 0xffaaff,
+  transparent: true, opacity: 0});
+
+  this.horizontalLines = [];
+  this.verticalLines = [];
+
+  this.grid = new THREE.Line( gridGeometry, gridMaterial, THREE.LinePieces );
+  this.scene.add(this.grid);
   for (var i=-sizeX; i<=sizeX; i+=step) {
     // Horizontal lines
     gridGeometry.vertices.push(new THREE.Vector3(-sizeX, 0, i * stretch));
@@ -49,10 +60,21 @@ function GridLayer(layer) {
     // Vertical lines
     gridGeometry.vertices.push(new THREE.Vector3(i, 0, -sizeZ));
     gridGeometry.vertices.push(new THREE.Vector3(i, 0, sizeZ));
-  }
 
-  this.grid = new THREE.Line( gridGeometry, gridMaterial, THREE.LinePieces );
-  this.scene.add(this.grid);
+    var mesh = new THREE.Mesh(
+                    this.horizontalLineGeometry,
+                    this.gridLineMaterial);
+    mesh.position.z = i * stretch;
+    this.horizontalLines.push(mesh);
+    this.grid.add(mesh);
+
+    var mesh = new THREE.Mesh(
+                    this.verticalLineGeometry,
+                    this.gridLineMaterial);
+    mesh.position.x = i;
+    this.verticalLines.push(mesh);
+    this.grid.add(mesh);
+  }
 
   this.camera.position.y = 15;
   this.camera.rotation.set(-0.15, 0.1, 0.5);
@@ -143,7 +165,7 @@ function GridLayer(layer) {
   this.scene.add(this.pyramidWrapper);
 
   if (!window.FILES) {
-    Loader.start(function () {}, function() {});
+    //Loader.start(function () {}, function() {});
   }
 
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
@@ -163,6 +185,14 @@ GridLayer.prototype.update = function(frame, relativeFrame) {
   if (frame > this.freezeAt) {
     return;
   }
+  this.stab *= 0.92;
+  if(this.stab < 0.01) {
+    this.stab = 0;
+  }
+  if(BEAT && BEAN % 12 == 6) {
+    this.stab = 1;
+  }
+  this.gridLineMaterial.opacity = this.stab * 0.5;
 
   var duration = 250;
   this.camera.position.y = easeOut(28, 15, (frame-this.layer.startFrame)/duration);
