@@ -341,7 +341,7 @@
     "type": "MaxLayer",
     "displayName": "Max Headroom",
     "startFrame": 1181,
-    "endFrame": 2741,
+    "endFrame": 2610,
     "color": "#a393a0",
     "config": {
       "freezeAt": 1580,
@@ -355,18 +355,11 @@
     "type": "BlinkyTunnelLayer",
     "displayName": "Blinky Tunnel",
     "startFrame": 1638,
-    "endFrame": 2741,
+    "endFrame": 2610,
     "color": "#a219bf",
     "dependencies": [
       "TextOverlayLayer"
     ]
-  },
-  {
-    "type": "ShockwaveLayer",
-    "displayName": "Shockwave",
-    "startFrame": 2246,
-    "endFrame": 2500,
-    "color": "#2a19bf"
   },
   {
     "type": "TextOverlayLayer",
@@ -481,7 +474,7 @@
     "type": "NoiseFXLayer",
     "displayName": "Noise fx",
     "startFrame": 654,
-    "endFrame": 2633,
+    "endFrame": 2643,
     "color": "#521b9f"
   },
   {
