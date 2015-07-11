@@ -7,14 +7,12 @@ function GhettoBlasterLayer(layer) {
   this.scene = new THREE.Scene();
   this.camera = new THREE.OrthographicCamera(16 / -2, 16 / 2, 9 / 2, 9 / -2, 1, 1000);
 
-  this.background = new Image();
   this.ghettoblaster = new Image();
   this.cassetteRoll = new Image();
   this.vibratingSpeakers = new Image();
   this.radioMarker = new Image();
   this.meter = new Image();
   this.eqMask = new Image();
-  Loader.load('res/bg.jpg', this.background, function() {});
   Loader.load('res/ghettoblaster/ghettoblaster.png', this.ghettoblaster, function() {});
   Loader.load('res/ghettoblaster/cassette-roll.png', this.cassetteRoll, function() {});
   Loader.load('res/ghettoblaster/vibrating-speakers.png', this.vibratingSpeakers, function() {});
@@ -75,8 +73,6 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
   this.calculateVolume();
 
   this.ctx.clearRect(0, 0, this.screenWidth, this.screenHeight);
-  this.ctx.drawImage(this.background, 0, 0, this.screenWidth, this.screenHeight);
-
 
   this.ctx.save();
 
