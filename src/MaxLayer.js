@@ -50,27 +50,27 @@ function MaxLayer(layer) {
   var redTexture = Loader.loadTexture('res/max/red.png');
 
   var skyboxMaterials = [
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshLambertMaterial({
       map: blueTexture,
       side: THREE.BackSide
     }),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshLambertMaterial({
       map: redTexture,
       side: THREE.BackSide
     }),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshLambertMaterial({
       map: blueTexture,
       side: THREE.BackSide
     }),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshLambertMaterial({
       map: greenTexture,
       side: THREE.BackSide
     }),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshLambertMaterial({
       map: redTexture,
       side: THREE.BackSide
     }),
-    new THREE.MeshBasicMaterial({
+    new THREE.MeshLambertMaterial({
       map: greenTexture,
       side: THREE.BackSide
     }),
@@ -93,11 +93,21 @@ function MaxLayer(layer) {
 
   for(var i = 0; i < this.NUM_OF_SPHERES; i++) {
     var sphere = new THREE.Mesh(new THREE.SphereGeometry(20, 20, 20),
-                                new THREE.MeshBasicMaterial({color:colors[i]}));
+                                new THREE.MeshLambertMaterial({color:colors[i]}));
     sphere.position.set(i*40, i*40, i*40);
     this.spheres.push(sphere);
-    this.scene.add(sphere);
+    //this.scene.add(sphere);
   }
+
+  var light = new THREE.PointLight( 0xffffff, 1, 100 );
+  light.position.set( -500, -500, -500 );
+  this.scene.add(light);
+
+  var pointLight = new THREE.PointLight(0xFFFFFF);
+  pointLight.position.x = 100;
+  pointLight.position.y = 500;
+  pointLight.position.z = 1300;
+  this.scene.add(pointLight);
 
   if(!window.FILES) {
     Loader.start(function(){}, function(){});
@@ -116,17 +126,12 @@ MaxLayer.prototype.end = function() {
 };
 
 MaxLayer.prototype.update = function(frame, relativeFrame) {
-  if(frame > this.freezeAt && frame < this.resumeAt) {
+  if(frame > this.freezeAt) {
     return;
   }
 
-  if(frame > this.resumeAt) {
-    this.maxVersion1.position.x = 1000000;
-    this.maxVersion2.position.x = 1000000;
-  } else {
-    this.maxVersion1.position.x =  240;
-    this.maxVersion2.position.x =  240;
-  }
+  this.maxVersion1.position.x =  244;
+  this.maxVersion2.position.x =  244;
 
   if(BEAT && BEAN % 12 == 6) {
     this.maxVersion1.position.y = (-1) * this.maxVersion1.position.y;

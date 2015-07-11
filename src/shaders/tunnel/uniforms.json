@@ -3,6 +3,7 @@
     wall: { type: 't', value: null },
     textImage: { type: 't', value: null },
     tunnelAmount: { type: 'f', value: 0},
+    metaballAmount: { type: 'f', value: 0},
     throb: { type: 'f', value: 0},
     opacity: { type: 'f', value: 0},
     t: { type: 'f', value: 0}

@@ -364,7 +364,7 @@
   {
     "type": "TextOverlayLayer",
     "displayName": "Max Text",
-    "startFrame": 1280,
+    "startFrame": 1100,
     "endFrame": 1694,
     "config": {
       "title": "Max Headroom Effect",
@@ -384,7 +384,7 @@
     "type": "GlitchLayer",
     "displayName": "Glitch for Max",
     "startFrame": 1181,
-    "endFrame": 1500,
+    "endFrame": 1214,
     "color": "#0a10bf"
   },
   {
