@@ -109,7 +109,9 @@ function Mandelbrot(layer) {
         "x": 1,
         "y": 2
       },
-      "flip": true
+      "flip": true,
+      "textColor": "black",
+      "strokeColor": "white"
     }
   });
 
