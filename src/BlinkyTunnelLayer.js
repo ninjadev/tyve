@@ -25,6 +25,21 @@ function BlinkyTunnelLayer() {
       }
     }
   });
+  this.textOverlayLayer2 = new TextOverlayLayer({
+    "config": {
+      "title": "Metaballs",
+      "textColor": "black",
+      "body": [
+        "- white as milk",
+        "- premium taste",
+        "- no sugar added"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      }
+    }
+  });
   this.shaderPass.uniforms.textImage.value = this.textOverlayLayer.texture;
   this.resize();
 }
@@ -32,6 +47,7 @@ function BlinkyTunnelLayer() {
 
 BlinkyTunnelLayer.prototype.resize = function() {
   this.textOverlayLayer.resize();
+  this.textOverlayLayer2.resize();
 };
 
 
@@ -40,8 +56,10 @@ BlinkyTunnelLayer.prototype.getEffectComposerPass = function() {
 };
 
 BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
-  var offset = 400;
-  this.textOverlayLayer.update(frame - 400, relativeFrame - 400);
+  var offset = 0;
+  this.textOverlayLayer.update(frame - offset, relativeFrame - offset);
+  var offset2 = 400;
+  this.textOverlayLayer2.update(frame - offset2, relativeFrame - offset2);
   if(this.musicThrob > 0) {
     this.musicThrob *= 0.95;
   }
@@ -54,6 +72,14 @@ BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
       0, 1, (relativeFrame - 20) / 100);
   this.shaderPass.uniforms.opacity.value = smoothstep(
       0, 1, (relativeFrame) / 20);
+
+  this.shaderPass.uniforms.metaballAmount.value = smoothstep(
+      0, 1, (relativeFrame - 450) / 100);
+
+  this.shaderPass.uniforms.textImage.value = this.textOverlayLayer.texture;
+  if(frame > 2100) {
+    this.shaderPass.uniforms.textImage.value = this.textOverlayLayer2.texture;
+  }
 
   if(frame > 2641) {
     this.shaderPass.uniforms.opacity.value = smoothstep(
@@ -77,7 +103,6 @@ BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
   linprog |= 0;
   progress *= 128;
   progress |= 0;
-  console.log(linprog);
   this.wallCtx.fillRect(progress % 32, 0, 1, 18);
   this.wallCtx.fillRect(0, linprog % 18, 32, 1);
 
