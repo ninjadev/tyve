@@ -262,6 +262,19 @@ ScreenLayer.prototype.update = function(frame, relativeFrame) {
                                     pixel.regularPosition.z,
                                     positioner);
 
+      if(frame > 6860 && BEAN <= 1272) {
+        var positioner = (frame - 6860) / 24;
+        pixel.position.x = easeOut(pixel.startPosition.x * 2,
+                                      pixel.regularPosition.x,
+                                      1 - positioner);
+        pixel.position.y = easeOut(pixel.startPosition.y * 2,
+                                      pixel.regularPosition.y,
+                                      1 - positioner);
+        pixel.position.z = easeOut(pixel.startPosition.z * 2,
+                                      pixel.regularPosition.z,
+                                      1 - positioner);
+      }
+
       if(BEAN < 1272) {
         pixel.rotation.x = ((1 + x) * (1 + y) + frame / 20) % (Math.PI * 2);
       } else {

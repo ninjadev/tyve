@@ -604,8 +604,16 @@
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 5892,
-    "endFrame": 8183,
+    "endFrame": 6901,
     "color": "#5bbb1f",
     "config": {"amount": 4.5}
+  },
+  {
+    "type": "BloomLayer",
+    "displayName": "Bloom fx",
+    "startFrame": 6937,
+    "endFrame": 8183,
+    "color": "#5bbb1f",
+    "config": {"amount": 1.1}
   }
 ]
