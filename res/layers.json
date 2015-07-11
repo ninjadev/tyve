@@ -435,6 +435,26 @@
     "color": "#93f334"
   },
   {
+    "type": "TextOverlayLayer",
+    "displayName": "Sploosh Text",
+    "startFrame": 3998,
+    "endFrame": 4322,
+    "color": "#a0cc0f",
+    "config": {
+      "title": "Sploosh Effect",
+      "body": [
+        "- organic",
+        "- needed for human reproduction",
+        "- tested in humans"
+      ],
+      "offset": {
+        "x": 1.5,
+        "y": 2
+      },
+      "strokeColor": "black"
+    }
+  },
+  {
     "type": "SplooshSobelLayer",
     "displayName": "Sploosh sobel",
     "startFrame": 3798,
