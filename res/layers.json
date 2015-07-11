@@ -39,16 +39,6 @@
     }
   },
   {
-    "type": "Mandelbrot",
-    "displayName": "Mandelbrot Fractal",
-    "startFrame": 5756,
-    "endFrame": 6800,
-    "color": "#ffaa66",
-    "dependencies": [
-      "TextOverlayLayer"
-    ]
-  },
-  {
     "type": "GridLayer",
     "displayName": "Grid layer",
     "startFrame": 4840,
@@ -77,9 +67,19 @@
   {
     "type": "ScreenLayer",
     "displayName": "Screen",
-    "startFrame": 6807,
+    "startFrame": 6779,
     "endFrame": 7984,
     "color": "#0cffe1"
+  },
+  {
+    "type": "Mandelbrot",
+    "displayName": "Mandelbrot Fractal",
+    "startFrame": 5892,
+    "endFrame": 6939,
+    "color": "#ffaa66",
+    "dependencies": [
+      "TextOverlayLayer"
+    ]
   },
   {
     "type": "TextOverlayLayer",

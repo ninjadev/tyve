@@ -106,7 +106,7 @@ function Mandelbrot(layer) {
         "- Fashionable: 80's"
       ],
       "offset": {
-        "x": 1,
+        "x": 0,
         "y": 2
       },
       "flip": true,
@@ -137,14 +137,19 @@ Mandelbrot.prototype.resize = function() {
 };
 
 Mandelbrot.prototype.update = function(frame, relativeFrame) {
+  frame = frame + 136;
+  relativeFrame = relativeFrame + 136;
 
-  this.textOverlayLayer.update(frame - 630, relativeFrame - 630);
 
-  var freezeBean = 1205;
-  if(BEAN >= freezeBean) {
-    frame = 6570;
+  var freezeBean = 1200 + 12 + 12;
+  if(BEAN >= freezeBean && frame <= 6778 + 136) {
+    frame = 136 + FRAME_FOR_BEAN(freezeBean);
     relativeFrame = frame - this.startFrame;
   }
+
+  var textOverlayOffset = 600;
+  this.textOverlayLayer.update(frame - textOverlayOffset,
+                               relativeFrame - textOverlayOffset);
 
   this.shaderPass.uniforms.resolution.value = new THREE.Vector2(16 * GU, 9 * GU);
 
@@ -152,18 +157,16 @@ Mandelbrot.prototype.update = function(frame, relativeFrame) {
 
   this.shaderPass.uniforms.frame.value = frame;
 
-  this.stab *= 0.95;
-  if(this.stab < 0.01) {
-    this.stab = 0;
-  }
-  if(BEAT && BEAN % 12 == 6) {
-    if(frame > 5896) {
-      this.stab = 1;
+  if(BEAN < freezeBean || frame > 6778 + 136) {
+    this.stab *= 0.95;
+    if(this.stab < 0.01) {
+      this.stab = 0;
     }
-  }
-
-  if(BEAN >= freezeBean) {
-    this.stab = 0;
+    if(BEAT && BEAN % 12 == 6) {
+      if(frame > 5896) {
+        this.stab = 1;
+      }
+    }
   }
   this.shaderPass.uniforms.stab.value = this.stab;
   this.shaderPass.uniforms.time.value = this.zoomPath.getPoint(relativeFrame);
