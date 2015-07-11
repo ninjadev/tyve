@@ -38,9 +38,10 @@ function GhettoBlasterLayer(layer) {
   this.alternateTunlRectColor = "#70607D";
   this.volume = 0.5;
   this.smoothedVolume = 0.5;
-  this.bassVolume = 0.5;
+  this.beatVolume = 0.5;
   this.framesPerBeat = 32.727272727272727272727273;
   this.random = Random(23486);
+  this.frequencyConvolution = [0.0625, 0.25, 0.375, 0.25, 0.0625];
 
   this.canvas = document.createElement('canvas');
   this.texture = new THREE.Texture(this.canvas);
@@ -125,14 +126,30 @@ GhettoBlasterLayer.prototype.transformGhettoBlaster = function(frame, relativeFr
 GhettoBlasterLayer.prototype.calculateVolume = function() {
   var beanMod = BEAN % 6;
   if (beanMod == 0) {
-    this.bassVolume = 1;
+    this.beatVolume = 1;
     this.volume = 1;
   } else if (beanMod == 3 || beanMod == 5) {
     this.volume += 0.2;
+    this.trebleVolume = 1;
+  }
+  
+  if (BEAN % 12 == 0) {
+    this.bassVolume = 1;
+  } else if (BEAN % 12 == 6) {
+    this.midVolume = 1;
   }
 
-  this.bassVolume = (this.bassVolume - 0.05) * 0.95;
+  this.beatVolume = (this.beatVolume - 0.05) * 0.95;
+  this.beatVolume = clamp(0, this.beatVolume, 1);
+
+  this.bassVolume = (this.bassVolume - 0.04) * 0.96;
   this.bassVolume = clamp(0, this.bassVolume, 1);
+
+  this.midVolume = (this.midVolume - 0.04) * 0.96;
+  this.midVolume = clamp(0, this.midVolume, 1);
+
+  this.trebleVolume = (this.trebleVolume - 0.04) * 0.96;
+  this.trebleVolume = clamp(0, this.trebleVolume, 1);
 
   this.volume = (this.volume - (this.volume > 0.6 ? 0.05 : 0)) * 0.95;
   this.volume = clamp(0, this.volume, 1);
@@ -172,7 +189,7 @@ GhettoBlasterLayer.prototype.drawCassetteRolls = function(frame, relativeFrame) 
 
 GhettoBlasterLayer.prototype.drawVibratingSpeakers = function(frame, relativeFrame) {
   this.ctx.save();
-  this.ctx.globalAlpha = this.bassVolume;
+  this.ctx.globalAlpha = this.beatVolume;
   this.ctx.drawImage(this.vibratingSpeakers, 0, 0, this.screenWidth, this.screenHeight);
   this.ctx.restore();
 };
@@ -261,19 +278,33 @@ GhettoBlasterLayer.prototype.drawEqMask = function(frame, relativeFrame) {
     width = 0.2254450890178036 * this.screenWidth,
     height = 0.0925985261134252 * this.screenHeight;
 
-  var normalizedClipHeight = 1 - this.volume;
+  var frequencies = [0, 0, 1 - this.bassVolume, 0, 0, 1 - this.midVolume, 0, 0, 1 - this.trebleVolume, 0, 0];
+  var interpolatedFrequencies = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  this.ctx.drawImage(
-    this.eqMask,
-    0,
-    0,
-    this.eqMask.width,
-    this.eqMask.height * normalizedClipHeight,
-    x,
-    y,
-    width,
-    height * normalizedClipHeight
-  )
+  for (var i = 0; i < interpolatedFrequencies.length; i++) {
+    var s = 0.2;
+    for (var j = -2; j < 2; j++) {
+      var pointer = i + j;
+      if (pointer >= 0 && pointer < interpolatedFrequencies.length) {
+        s += this.frequencyConvolution[j + 2] * frequencies[pointer];
+      }
+    }
+    interpolatedFrequencies[i] = s;
+  }
+
+  for (var k = 0; k < interpolatedFrequencies.length; k++) {
+    this.ctx.drawImage(
+      this.eqMask,
+      k * this.eqMask.width / interpolatedFrequencies.length,
+      0,
+      this.eqMask.width / interpolatedFrequencies.length,
+      this.eqMask.height * interpolatedFrequencies[k],
+      x + k * width / interpolatedFrequencies.length,
+      y,
+      width / interpolatedFrequencies.length,
+      height * interpolatedFrequencies[k]
+    );
+  }
 };
 
 GhettoBlasterLayer.prototype.drawTunl = function(frame, relativeFrame) {
@@ -321,12 +352,12 @@ GhettoBlasterLayer.prototype.drawSoundWaves = function(frame, relativeFrame) {
     yRight = 0.4174943928228132 * this.screenHeight,
     width = 0.3228645729145829 * this.screenWidth,
     height = 0.5443768023069529 * this.screenHeight,
-    scaleMultiplier = 1 + 0.5 * (1 - this.bassVolume) + 0.1 * this.random();
+    scaleMultiplier = 1 + 0.5 * (1 - this.beatVolume) + 0.1 * this.random();
 
   this.ctx.save();
   this.ctx.translate(xLeft + width / 2, yLeft + height / 2);
   this.ctx.scale(scaleMultiplier, scaleMultiplier);
-  this.ctx.globalAlpha = this.bassVolume;
+  this.ctx.globalAlpha = this.beatVolume;
   this.ctx.drawImage(
     this.soundWave,
     -width / 2,
@@ -339,7 +370,7 @@ GhettoBlasterLayer.prototype.drawSoundWaves = function(frame, relativeFrame) {
   this.ctx.save();
   this.ctx.translate(xRight + width / 2, yRight + height / 2);
   this.ctx.scale(scaleMultiplier, scaleMultiplier);
-  this.ctx.globalAlpha = this.bassVolume;
+  this.ctx.globalAlpha = this.beatVolume;
   this.ctx.drawImage(
     this.soundWave,
     -width / 2,
