@@ -11,10 +11,17 @@ function SplooshLayer(layer) {
       9 / 2,
       9 / -2,
       1,
-      1000);
+      100000);
   this.scene.add(this.camera);
   this.camera.position.z = 100;
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
+
+  this.outerBg = new THREE.Mesh(new THREE.BoxGeometry(20000, 20000, 20000),
+                                new THREE.MeshBasicMaterial({
+                                  color: 0x5260BF,
+                                  side: THREE.BackSide
+                                }));
+  this.scene.add(this.outerBg);
 
   this.droplets = [];
   this.stains = [];
@@ -39,7 +46,7 @@ SplooshLayer.prototype.create_droplet = function() {
 
     for(var i=0;i<this.num_circles;i++) {
         var material = new THREE.MeshBasicMaterial({
-            color: 0x5260BF
+            color: 0
         });
         var radius = Math.sqrt(1/i);
         var segments = 32;
@@ -59,7 +66,7 @@ SplooshLayer.prototype.create_stain = function(local_random) {
 
     for(var i=0;i<this.num_circles;i++) {
         var material = new THREE.MeshBasicMaterial({
-            color: 0x5260BF
+            color: 0
         });
         var radius = 1.1;
         var segments = 32;

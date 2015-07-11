@@ -431,7 +431,7 @@
   {
     "type": "TextOverlayLayer",
     "displayName": "Sploosh Text",
-    "startFrame": 3998,
+    "startFrame": 3698,
     "endFrame": 4322,
     "color": "#a0cc0f",
     "config": {
