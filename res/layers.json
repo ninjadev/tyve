@@ -316,6 +316,14 @@
     }
   },
   {
+      "type": "OutroLayer",
+      "displayName": "OutroLayer",
+      "startFrame": 8200,
+      "endFrame": 9200,
+      "color": "red",
+      "config": {}
+  },
+  {
     "type": "RubixLayer",
     "displayName": "Rubix",
     "startFrame": 4323,
@@ -570,7 +578,7 @@
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 5892,
-    "endFrame": 9000,
+    "endFrame": 8183,
     "color": "#5bbb1f",
     "config": {"amount": 4.5}
   }
