@@ -1,5 +1,6 @@
 {
     tDiffuse: { type: 't', value: null },
     bg: { type: 't', value: null },
-    time: { type: 'f', value: null }
+    time: { type: 'f', value: null },
+    bgEnabled: { type: 'f', value: 0.0 }
 }
