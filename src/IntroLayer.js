@@ -97,8 +97,17 @@ function IntroLayer(layer) {
       new THREE.MeshBasicMaterial({
         transparent: true,
         map: Loader.loadTexture('res/is-fashion.png')}));
+
+  this.sploosh = new THREE.Mesh(
+      new THREE.BoxGeometry(5.12, 2.56, 0.0001),
+      new THREE.ShaderMaterial(SHADERS.reveal));
+
+  this.sploosh.material.uniforms.texture.value = Loader.loadTexture('res/sploosh.png');
+  this.sploosh.material.transparent = true; 
+
   this.scene.add(this.everything);
   this.scene.add(this.isfashion);
+  this.scene.add(this.sploosh);
 
   this.camera.position.z = 10;
 
@@ -146,6 +155,7 @@ IntroLayer.prototype.update = function(frame) {
   this.isfashion.rotation.z = rotation;
   this.everything.position.z = -3;
   this.isfashion.position.z = -3;
+  this.sploosh.position.z = -3.5;
 
   this.everything.position.x = smoothstep(-20, -5, (frame - 500) / (530 - 500)) +
                                lerp(0, 5, (frame - 520) / (640 - 520)) + 
@@ -159,6 +169,13 @@ IntroLayer.prototype.update = function(frame) {
 
   this.everything.position.z = smoothstep(-3, 10, (frame - 600) / (670 - 600));
   this.isfashion.position.z = smoothstep(-3, 10, (frame - 600) / (670 - 600));
+
+  this.sploosh.rotation.z = 0;
+  this.sploosh.scale.x = 2.5;
+  this.sploosh.scale.y = 2.5;
+
+  this.sploosh.material.uniforms.reveal.value = smoothstep(0., 1., (frame - 432) / (458 - 432));
+  this.sploosh.material.uniforms.alphaBound.value = smoothstep(0.5, 0., (frame - 610) / (628 - 610));
 
   this.bassScaler *= 0.8;
   if(this.bassScaler < 0.01) {

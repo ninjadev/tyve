@@ -1,0 +1,5 @@
+{
+  "texture": {type: "t", value: null},
+  "reveal": {type: "f", value: 0.0},
+  "alphaBound": {type: "f", value: 0.5}
+}
