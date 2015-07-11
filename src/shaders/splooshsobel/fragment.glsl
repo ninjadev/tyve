@@ -1,6 +1,8 @@
 uniform float time;
 uniform sampler2D tDiffuse;
 uniform sampler2D bg;
+uniform float bgEnabled;
+
 varying vec2 vUv;
 
 
@@ -75,7 +77,7 @@ void main() {
     
     vec4 outp;
     outp = pixel + clamp(vec4(color*4.-2.),0.,1.);
-    if(outp.r < 0.1) {
+    if(bgEnabled == 1.0 && outp.r < 0.1) {
         outp = texture2D(bg, vUv);
     }
     gl_FragColor = outp;

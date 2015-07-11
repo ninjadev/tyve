@@ -21,10 +21,11 @@ SplooshSobelLayer.prototype.end = function() {
 };
 
 SplooshSobelLayer.prototype.update = function(frame, relativeFrame) {
-    this.shaderPass.uniforms.time.value = relativeFrame;
-    if(frame > 3849) {
-      this.shaderPass.uniforms.bg.value = this.texture;
-    } else {
-      this.shaderPass.uniforms.bg.value = null;
-    }
+  this.shaderPass.uniforms.time.value = relativeFrame;
+  if(frame > 3849) {
+    this.shaderPass.uniforms.bgEnabled.value = 1.0;
+    this.shaderPass.uniforms.bg.value = this.texture;
+  } else {
+    this.shaderPass.uniforms.bgEnabled.value = 0.0;
+  }
 };
