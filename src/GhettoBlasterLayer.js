@@ -76,6 +76,12 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
   this.calculateVolume();
 
   this.ctx.clearRect(0, 0, this.screenWidth, this.screenHeight);
+  if(this.config.bgColor) {
+    this.ctx.fillStyle = this.config.bgColor;
+    this.ctx.fillRect(0, 0, this.screenWidth, this.screenHeight);
+    this.texture.needsUpdate = true;
+    return;
+  }
 
   this.ctx.save();
 

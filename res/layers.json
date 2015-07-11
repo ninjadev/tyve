@@ -42,14 +42,14 @@
     "type": "GridLayer",
     "displayName": "Grid layer",
     "startFrame": 4840,
-    "endFrame": 5755,
+    "endFrame": 5761,
     "color": "#ecf0f1"
   },
   {
     "type": "TextOverlayLayer",
     "displayName": "Grid text",
     "startFrame": 5380,
-    "endFrame": 5816,
+    "endFrame": 5761,
     "color": "#5bbb1f",
     "config": {
       "title": "fashion",
@@ -72,9 +72,19 @@
     "color": "#0cffe1"
   },
   {
+    "type": "GhettoBlasterLayer",
+    "displayName": "break",
+    "startFrame": 5761,
+    "endFrame": 5825,
+    "color": "#79592f",
+    "config": {
+        "bgColor": "#79bfa3"
+    }
+  },
+  {
     "type": "Mandelbrot",
     "displayName": "Mandelbrot Fractal",
-    "startFrame": 5892,
+    "startFrame": 5858,
     "endFrame": 6939,
     "color": "#ffaa66",
     "dependencies": [
@@ -543,6 +553,30 @@
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 4841,
+    "endFrame": 5761,
+    "color": "#5bbb1f",
+    "config": {"amount": 4.5}
+  },
+  {
+    "type": "BloomLayer",
+    "displayName": "Bloom fx",
+    "startFrame": 5750,
+    "endFrame": 5791,
+    "color": "#5bbb1f",
+    "config": {"amount": 4.8}
+  },
+  {
+    "type": "BloomLayer",
+    "displayName": "Bloom fx",
+    "startFrame": 5860,
+    "endFrame": 5920,
+    "color": "#5bbb1f",
+    "config": {"amount": 10.8}
+  },
+  {
+    "type": "BloomLayer",
+    "displayName": "Bloom fx",
+    "startFrame": 5892,
     "endFrame": 9000,
     "color": "#5bbb1f",
     "config": {"amount": 4.5}

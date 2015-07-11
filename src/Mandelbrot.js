@@ -136,13 +136,14 @@ Mandelbrot.prototype.resize = function() {
 };
 
 Mandelbrot.prototype.update = function(frame, relativeFrame) {
-  frame = frame + 136;
-  relativeFrame = relativeFrame + 136;
+  var pushOffset = 136 - 66 + 32 + 60;
+  frame = frame + pushOffset;
+  relativeFrame = relativeFrame + pushOffset;
 
 
-  var freezeBean = 1200 + 12 + 12;
-  if(BEAN >= freezeBean && frame <= 6778 + 136) {
-    frame = 136 + FRAME_FOR_BEAN(freezeBean);
+  var freezeBean = 1200 + 12 + 12 - 2 + 100;
+  if(BEAN >= freezeBean && frame <= 6778 + pushOffset) {
+    frame = pushOffset + FRAME_FOR_BEAN(freezeBean);
     relativeFrame = frame - this.startFrame;
   }
 
@@ -156,7 +157,7 @@ Mandelbrot.prototype.update = function(frame, relativeFrame) {
 
   this.shaderPass.uniforms.frame.value = frame;
 
-  if(BEAN < freezeBean || frame > 6778 + 136) {
+  if(BEAN < freezeBean || frame > 6778 + pushOffset) {
     this.stab *= 0.95;
     if(this.stab < 0.01) {
       this.stab = 0;
