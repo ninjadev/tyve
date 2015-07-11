@@ -165,7 +165,7 @@ function GridLayer(layer) {
   this.scene.add(this.pyramidWrapper);
 
   if (!window.FILES) {
-    //Loader.start(function () {}, function() {});
+    Loader.start(function () {}, function() {});
   }
 
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
