@@ -532,7 +532,7 @@
     "startFrame": 1708,
     "endFrame": 2718,
     "color": "#5bbb1f",
-    "config": {"amount": 4.8}
+    "config": {"amount": 5.3}
   },
   {
     "type": "BloomLayer",
