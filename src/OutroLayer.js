@@ -9,7 +9,7 @@ function OutroLayer(layer) {
 
   this.bg = new THREE.Mesh(new THREE.BoxGeometry(1920, 1080, 1),
                            new THREE.MeshBasicMaterial({
-                             map: Loader.loadTexture('res/inverted-solskogen-2015-tyve-crew.png'),
+                             map: Loader.loadTexture('res/solskogen-2015-tyve-crew.jpg'),
                              transparent: true}));
   this.bg.position.z = -2;
 
