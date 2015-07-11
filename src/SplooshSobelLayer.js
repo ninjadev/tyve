@@ -5,7 +5,9 @@ function SplooshSobelLayer(layer) {
   this.config = layer.config;
   this.shaderPass = new THREE.ShaderPass(SHADERS.splooshsobel);
   this.texture = Loader.loadTexture('res/skybox/ft.jpg');
-  Loader.start(function() {}, function() {});
+  if(!window.FILES) {
+    Loader.start(function() {}, function() {});
+  }
 }
 
 SplooshSobelLayer.prototype.getEffectComposerPass = function() {
