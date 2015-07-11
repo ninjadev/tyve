@@ -342,7 +342,7 @@
     "type": "MaxLayer",
     "displayName": "Max Headroom",
     "startFrame": 1181,
-    "endFrame": 2610,
+    "endFrame": 2224,
     "color": "#a393a0",
     "config": {
       "freezeAt": 1630,
@@ -511,9 +511,17 @@
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 1177,
-    "endFrame": 2718,
+    "endFrame": 1708,
     "color": "#5bbb1f",
     "config": {}
+  },
+  {
+    "type": "BloomLayer",
+    "displayName": "Bloom fx",
+    "startFrame": 1708,
+    "endFrame": 2718,
+    "color": "#5bbb1f",
+    "config": {"amount": 6}
   },
   {
     "type": "BloomLayer",
