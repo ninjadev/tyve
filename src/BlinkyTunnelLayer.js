@@ -92,9 +92,28 @@ BlinkyTunnelLayer.prototype.update = function(frame, relativeFrame) {
   }
 
   this.wallCtx.globalAlpha = 1 * this.musicThrob;
-  this.wallCtx.fillStyle = 'rgb(10, 30, 10)';
+  var bgFromR = 10;
+  var bgFromG = 30;
+  var bgFromB = 10;
+  var bgToR = 30;
+  var bgToG = 50;
+  var bgToB = 60;
+  var lineFromR = 0xd8;
+  var lineFromG = 0x8d;
+  var lineFromB = 0x2c;
+  var lineToR = 0x9 * 1.1f;
+  var lineToG = 0x9 * 1.12;
+  var lineToB = 0xca * 1.1;
+  var progress = (frame - 2220) / 10;
+  this.wallCtx.fillStyle = ('rgb(' +
+                            (smoothstep(bgFromR, bgToR, progress) | 0) + ',' +
+                            (smoothstep(bgFromG, bgToG, progress) | 0) + ',' +
+                            (smoothstep(bgFromB, bgToB, progress) | 0) + ')');
   this.wallCtx.fillRect(0, 0, 32, 18);
-  this.wallCtx.fillStyle = '#d88d2c';
+  this.wallCtx.fillStyle = ('rgb(' +
+                            (smoothstep(lineFromR, lineToR, progress) | 0) + ',' +
+                            (smoothstep(lineFromG, lineToG, progress) | 0) + ',' +
+                            (smoothstep(lineFromB, lineToB, progress) | 0) + ')');
 
   var framesPerBeat = 32.727272727272727272727272727273;
   var progress = 0.5 * (1 + Math.sin(frame / framesPerBeat * Math.PI / 4));
