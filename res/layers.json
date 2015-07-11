@@ -345,7 +345,7 @@
     "endFrame": 2610,
     "color": "#a393a0",
     "config": {
-      "freezeAt": 1580,
+      "freezeAt": 1630,
       "resumeAt": 1694
     },
     "dependencies": [
@@ -356,7 +356,7 @@
     "type": "BlinkyTunnelLayer",
     "displayName": "Blinky Tunnel",
     "startFrame": 1638,
-    "endFrame": 2610,
+    "endFrame": 2741,
     "color": "#a219bf",
     "dependencies": [
       "TextOverlayLayer"
