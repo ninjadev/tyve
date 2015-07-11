@@ -18,17 +18,15 @@ TileLayer.prototype.end = function() {
 };
 
 TileLayer.prototype.update = function(frame, relativeFrame) {
-  var startBean = 192;
+  var startBean = 198;
   if (BEAN < startBean) {
     this.multiplier = 1;
   } else if (BEAN < startBean + 6) {
     this.multiplier = 2;
   } else if (BEAN < startBean + 12) {
     this.multiplier = 3;
-  } else if (BEAN < startBean + 18) {
-    this.multiplier = 4;
   } else {
-    this.multiplier = 5;
+    this.multiplier = 4;
   }
   this.shaderPass.uniforms.multiplier.value = this.multiplier;
 };

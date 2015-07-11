@@ -27,6 +27,15 @@ function GhettoBlasterLayer(layer) {
     '#F9A840', // orange
     '#ED1556' // red
   ];
+  this.tunlRectColors = [
+    "#E195FF",
+    "#EE6A91",
+    "#25E9D1",
+    "#77F3FD",
+    "#F4EC48",
+    "#F9A840"
+  ];
+  this.alternateTunlRectColor = "#70607D";
   this.volume = 0.5;
   this.smoothedVolume = 0.5;
   this.bassVolume = 0.5;
@@ -81,6 +90,7 @@ GhettoBlasterLayer.prototype.update = function(frame, relativeFrame) {
   this.drawAmplitudeLedLights(frame, relativeFrame);
   this.drawMeters(frame, relativeFrame);
   this.drawEqMask(frame, relativeFrame);
+  this.drawTunl(frame, relativeFrame);
 
   this.ctx.restore();
 
@@ -239,7 +249,6 @@ GhettoBlasterLayer.prototype.drawMeters = function(frame, relativeFrame) {
   this.ctx.restore();
 };
 
-
 GhettoBlasterLayer.prototype.drawEqMask = function(frame, relativeFrame) {
   var x = 0.3054610922184437 * this.screenWidth,
     y = 0.474847805190644 * this.screenHeight,
@@ -259,6 +268,43 @@ GhettoBlasterLayer.prototype.drawEqMask = function(frame, relativeFrame) {
     width,
     height * normalizedClipHeight
   )
+};
+
+GhettoBlasterLayer.prototype.drawTunl = function(frame, relativeFrame) {
+  var x = 0.5355071014202841 * this.screenWidth,
+    y = 0.4863825696892022 * this.screenHeight,
+    width = 0.1190238047609522 * this.screenWidth,
+    height = 0.150272348606216 * this.screenHeight,
+    lineWidth = 0.0025 * this.screenWidth;
+
+  this.ctx.save();
+
+  this.ctx.translate(x + width / 2, y + height / 2);
+
+  this.ctx.beginPath();
+
+  for (var i = 0; i < 12; i++) {
+    this.ctx.beginPath();
+    this.ctx.lineWidth = lineWidth.toString();
+    this.ctx.strokeStyle = this.getTunlRectColor(i);
+    this.ctx.rect(-width / 2, -height / 2, width, height);
+    this.ctx.stroke();
+
+    width *= 0.8;
+    height *= 0.8;
+    lineWidth *= 0.8;
+  }
+
+  this.ctx.restore();
+};
+
+GhettoBlasterLayer.prototype.getTunlRectColor = function(i) {
+  i += Math.floor(BEAN / 3);
+  if (i % 3 == 0) {
+    return this.tunlRectColors[i % this.tunlRectColors.length];
+  } else {
+    return this.alternateTunlRectColor;
+  }
 };
 
 GhettoBlasterLayer.prototype.resize = function() {
