@@ -20,5 +20,10 @@ NoiseFXLayer.prototype.update = function(frame, relativeFrame) {
     this.shaderPass.uniforms.width.value = 16 * 10000;
     this.shaderPass.uniforms.height.value = 9 * 10000;
     this.shaderPass.uniforms.time.value = frame;
-    this.shaderPass.uniforms.amount.value = (this.config && this.config.amount) || 0.1;
+    if (this.config && this.config.fadeIn) {
+      var amount = (this.config && this.config.amount) || 0.1;
+      this.shaderPass.uniforms.amount.value = easeOut(0, amount, relativeFrame / 300);
+    } else {
+      this.shaderPass.uniforms.amount.value = (this.config && this.config.amount) || 0.1;
+    }
 };

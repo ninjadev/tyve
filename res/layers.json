@@ -3,7 +3,7 @@
     "type": "IntroLayer",
     "displayName": "Intro",
     "startFrame": 0,
-    "endFrame": 655,
+    "endFrame": 1177,
     "color": "#1b592f",
     "config": {
       "offset": 2
@@ -476,7 +476,10 @@
     "displayName": "Noise fx",
     "startFrame": 654,
     "endFrame": 1700,
-    "color": "#521b9f"
+    "color": "#521b9f",
+    "config": {
+      "fadeIn": true
+    }
   },
   {
     "type": "NoiseFXLayer",
@@ -500,14 +503,14 @@
     "type": "BloomLayer",
     "displayName": "Bloom fx",
     "startFrame": 0,
-    "endFrame": 654,
+    "endFrame": 1177,
     "color": "#5bbb1f",
     "config": {"amount": 1, "noStabs": true}
   },
   {
     "type": "BloomLayer",
     "displayName": "Bloom fx",
-    "startFrame": 654,
+    "startFrame": 1177,
     "endFrame": 2718,
     "color": "#5bbb1f",
     "config": {}

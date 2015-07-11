@@ -176,7 +176,11 @@ IntroLayer.prototype.update = function(frame) {
   }
 
   var progress = (frame - FRAME_FOR_BEAN(80)) / FRAME_FOR_BEAN(12);
-  this.camera.rotation.z = (frame - 500) / 5000;
+  if (frame < 600) {
+    this.camera.rotation.z = (frame - 500) / 5000;
+  } else {
+    this.camera.rotation.z = 100 / 5000;
+  }
   if(progress < 0.5) {
     this.camera.fov = smoothstep(45, 30, progress * 2);
   } else {
