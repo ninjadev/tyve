@@ -11,7 +11,7 @@ GlitchLayer.prototype.update = function(frame, relativeFrame) {
   this.shaderPass.uniforms.amount.value = 0.0;
   this.shaderPass.uniforms.time.value = 0;
 
-  if(frame >= 1184 && frame < 1230) {
+  if(frame >= 1180 && frame < 1192 || frame >= 1201 && frame < 1211) {
     this.shaderPass.uniforms.amount.value = 1;
     this.shaderPass.uniforms.time.value = frame;
   }
