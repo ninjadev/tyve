@@ -129,7 +129,7 @@ function GridLayer(layer) {
     verticesOfPyramid, facesOfPyramid, this.pyramidSize, 0
   );
 
-  var map = Loader.loadTexture('res/pyramid_gradient.png');
+  var map = Loader.loadTexture('res/pyramid_gradient.jpg');
   map.wrapS = map.wrapT = THREE.RepeatWrapping;
   map.repeat.set( 2, 2 );
 
