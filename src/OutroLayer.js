@@ -15,10 +15,6 @@ function OutroLayer(layer) {
 
   this.scene.add(this.bg);
 
-  if (!window.FILES) {
-    Loader.start(function () {}, function() {});
-  }
-
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
 }
 
