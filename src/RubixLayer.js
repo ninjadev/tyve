@@ -81,10 +81,6 @@ function RubixLayer(layer) {
 
   this.camera.position.z = 100;
 
-  if (!window.FILES) {
-    Loader.start(function () {}, function() {});
-  }
-
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
 }
 

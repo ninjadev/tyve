@@ -164,10 +164,6 @@ function GridLayer(layer) {
   this.pyramidWrapper.position.z = -this.viewDistance;
   this.scene.add(this.pyramidWrapper);
 
-  if (!window.FILES) {
-    Loader.start(function () {}, function() {});
-  }
-
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
 }
 

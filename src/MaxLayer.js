@@ -109,9 +109,6 @@ function MaxLayer(layer) {
   pointLight.position.z = 1300;
   this.scene.add(pointLight);
 
-  if(!window.FILES) {
-    Loader.start(function(){}, function(){});
-  }
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
 }
 

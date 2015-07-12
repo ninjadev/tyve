@@ -121,7 +121,6 @@ function IntroLayer(layer) {
   pointLight.position.z = 130;
   this.scene.add(pointLight);
   this.renderPass = new THREE.RenderPass(this.scene, this.camera);
-  Loader.start(function(){}, function(){});
 }
 
 IntroLayer.prototype.getEffectComposerPass = function() {
