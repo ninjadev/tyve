@@ -41,6 +41,16 @@
     .hide {
       display: none;
     }
+
+    .loading-text {
+      position: fixed;
+      left: 45%;
+      top: 52%;
+      width: 10%;
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+    }
     
     .progress-bar-inner {
       width: 0;
@@ -74,6 +84,7 @@
 
 <body>
   <div id=wrapper class=visible>
+    <div class=loading-text>Loading...</div>
     <div class=progress-bar-container>
       <div class=progress-bar-inner>
       </div> 
@@ -83,6 +94,7 @@
     </a>
   </div>
 <script>
+var loadingText = document.querySelector('.loading-text');
 var progressBarInner = document.querySelector('.progress-bar-inner');
 var progressBarContainer = document.querySelector('.progress-bar-container');
 var wrapper = document.querySelector('#wrapper');
@@ -93,6 +105,7 @@ ONPROGRESS = function(progress) {
 
 ONCOMPLETE = function() {
   progressBarInner.style.width = '100%';
+  loadingText.classList.add('hide');
   progressBarContainer.classList.add('hide');
   startButton.classList.remove('hide');
 };
