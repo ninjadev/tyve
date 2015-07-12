@@ -350,13 +350,6 @@
     }
   },
   {
-    "type": "RobotsLayer",
-    "displayName": "RobotsLayer",
-    "startFrame": 2741,
-    "endFrame": 2741,
-    "color": "#af219b"
-  },
-  {
     "type": "MaxLayer",
     "displayName": "Max Headroom",
     "startFrame": 1181,
