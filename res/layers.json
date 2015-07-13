@@ -89,6 +89,9 @@
     "color": "#ffaa66",
     "dependencies": [
       "TextOverlayLayer"
+    ],
+    "shaders": [
+      "mandelbrot"
     ]
   },
   {
@@ -371,6 +374,9 @@
     "color": "#a219bf",
     "dependencies": [
       "TextOverlayLayer"
+    ],
+    "shaders": [
+      "tunnel"
     ]
   },
   {
@@ -475,7 +481,10 @@
     "startFrame": 2719,
     "endFrame": 3798,
     "color": "#c0392b",
-    "config": {}
+    "config": {},
+    "shaders": [
+      "toon"
+    ]
   },
   {
     "type": "VCRLayer",
@@ -483,7 +492,10 @@
     "startFrame": 0,
     "endFrame": 8000,
     "color": "#c0392b",
-    "config": {}
+    "config": {},
+    "shaders": [
+      "vcr"
+    ]
   },
   {
     "type": "NoiseFXLayer",
@@ -493,7 +505,10 @@
     "color": "#521b9f",
     "config": {
       "fadeIn": true
-    }
+    },
+    "shaders": [
+      "noise"
+    ]
   },
   {
     "type": "NoiseFXLayer",
@@ -503,7 +518,10 @@
     "color": "#521b9f",
     "config": {
       "amount": 0.05
-    }
+    },
+    "shaders": [
+      "noise"
+    ]
   },
   {
     "type": "TileLayer",
@@ -511,7 +529,10 @@
     "startFrame": 655,
     "endFrame": 1177,
     "color": "#33ff88",
-    "config": {}
+    "config": {},
+    "shaders": [
+      "tile"
+    ]
   },
   {
     "type": "BloomLayer",
