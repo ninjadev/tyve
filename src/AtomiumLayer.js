@@ -147,12 +147,6 @@ AtomiumLayer.prototype.getEffectComposerPass = function() {
 };
 
 AtomiumLayer.prototype.start = function() {
-  for (var i=0; i < this.sphereMeshes.length; i++) {
-    this.scene.remove(this.sphereMeshes[i]);
-  }
-  for (var i=0; i < this.pinMeshes.length; i++) {
-    this.scene.remove(this.pinMeshes[i]);
-  }
 };
 
 AtomiumLayer.prototype.update = function(frame, relativeFrame) {
