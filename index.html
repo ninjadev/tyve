@@ -79,6 +79,15 @@
       padding: 5px;
       margin-top: -10px;
     }
+    #pouet-link {
+      position: fixed;
+      bottom: 10px;
+      text-align: center;
+      color: white;
+      left: 0;
+      right: 0;
+      font-size: 14px;
+    }
   </style>
 </head>
 
@@ -87,11 +96,12 @@
     <div class=loading-text>Loading...</div>
     <div class=progress-bar-container>
       <div class=progress-bar-inner>
-      </div> 
-    </div> 
+      </div>
+    </div>
     <a id=start-button class=hide href=javascript:; onclick=STARTDEMO();>
       START
     </a>
+    <a href="http://www.pouet.net/prod.php?which=65978" id="pouet-link">Read more about this demo on Pouet</a>
   </div>
 <script>
 var loadingText = document.querySelector('.loading-text');
