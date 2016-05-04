@@ -1,5 +1,7 @@
 # Everything is Fashion
 
+![](http://i.imgur.com/3JNTsVY.jpg)
+
 Fashion.nfo:
 
 ```
