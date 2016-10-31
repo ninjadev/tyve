@@ -2,6 +2,10 @@
 
 ![](http://i.imgur.com/3JNTsVY.jpg)
 
+[YouTube](https://www.youtube.com/watch?v=gVcshkaV4oc)
+
+[Pouët](http://www.pouet.net/prod.php?which=65978)
+
 Fashion.nfo:
 
 ```
